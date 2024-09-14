@@ -279,11 +279,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &415392006 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8573252073060825523, guid: 3d76bf0fbceebd94cad32b5eaa36f862, type: 3}
-  m_PrefabInstance: {fileID: 48941698}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &911735696 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5136083056829689646, guid: 6cbaba942ae6e6f408fc2281d51f934a, type: 3}
@@ -842,10 +837,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3991387528790945255, guid: 968d587842d26cd4495c1189891097de, type: 3}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 415392006}
     - target: {fileID: 5898173872730842869, guid: 968d587842d26cd4495c1189891097de, type: 3}
       propertyPath: m_Name
       value: DialogBox
