@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4191500558973154074}
   - component: {fileID: 6875987866589619831}
   - component: {fileID: 6353626752401706786}
-  - component: {fileID: 4937976996902233532}
-  - component: {fileID: 6849052030681313900}
+  - component: {fileID: 8679217811930849340}
+  - component: {fileID: 600898969353688576}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -161,7 +161,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &4937976996902233532
+--- !u!114 &8679217811930849340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 6
---- !u!114 &6849052030681313900
+--- !u!114 &600898969353688576
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,10 +183,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8573252073060825523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00b002bbdab548347a1e8a03aac03f68, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c3175d0298719a47b0adae34bb185c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _interactBubble: {fileID: 8923729602318029551}
+  _inventory: []
 --- !u!1001 &5130341397153061513
 PrefabInstance:
   m_ObjectHideFlags: 0
