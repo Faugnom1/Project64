@@ -25,8 +25,6 @@ public class DarknessController : MonoBehaviour
 
     public void SetPositiveCutoff(Vector2 cutoff)
     {
-        Debug.Log(cutoff);
-
         _spriteRenderer.GetPropertyBlock(_materialPropertyBlock);
         _materialPropertyBlock.SetVector(_positiveCutoffID, cutoff);
         _spriteRenderer.SetPropertyBlock(_materialPropertyBlock);
@@ -34,8 +32,6 @@ public class DarknessController : MonoBehaviour
 
     public void SetNegativeCutoff(Vector2 cutoff)
     {
-        Debug.Log(cutoff);
-
         _spriteRenderer.GetPropertyBlock(_materialPropertyBlock);
         _materialPropertyBlock.SetVector(_negativeCutoffID, cutoff);
         _spriteRenderer.SetPropertyBlock(_materialPropertyBlock);
