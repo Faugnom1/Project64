@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
 
     private Vector2 _moveInput;
+    private Vector2 _facingDirection;
 
     private void Awake()
     {
@@ -36,10 +37,24 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
+
+        UpdateFacingDirection();
     }
 
     private void FixedUpdate()
     {
         _rb.velocity = _moveInput * _moveSpeed;
+    }
+
+    private void UpdateFacingDirection()
+    {
+        if (_moveInput != Vector2.zero && _moveInput != _facingDirection)
+        {
+            _facingDirection = _moveInput;
+            
+            float angle = Mathf.Atan2(_facingDirection.y, _facingDirection.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90.0f));
+            transform.rotation = rotation;
+        }
     }
 }
