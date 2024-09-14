@@ -8,6 +8,7 @@ public class Interactable : MonoBehaviour
 
     private InputAction _interactInput;
     private bool _isPlayerNearby;
+    private bool _messageShown;
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class Interactable : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             _isPlayerNearby = true;
+            _messageShown = false;
         }
     }
 
@@ -38,13 +40,15 @@ public class Interactable : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             _isPlayerNearby = false;
+            DialogManager.Instance.ShowMessageBox(false);
         }
     }
 
     private void Update()
     {
-        if (_isPlayerNearby && _interactInput.WasPressedThisFrame())
+        if (_isPlayerNearby && !_messageShown && _interactInput.WasPressedThisFrame())
         {
+            _messageShown = true;
             DialogManager.Instance.ShowMessage(TextManager.GetText(_textKey), _textSpeed);
         }
     }
