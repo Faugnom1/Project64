@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.6, y: -3.6}
+  m_AnchoredPosition: {x: 3.6, y: -5.7}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8772641410102872338
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hello! Hello! Hello! Hello! Hello! Hello! Hello! Hello! Hello World! '
+  m_text: Hello!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 0
-  m_margin: {x: 8.83, y: 11.961372, z: 24.794342, w: 10.291943}
+  m_margin: {x: 8.83, y: 11.961372, z: 20.448914, w: 17.784054}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -221,6 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2257c109ce220418b4664194b103c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nextArrow: {fileID: 5967576157649319011}
+  _textMesh: {fileID: 5751052495293749351}
 --- !u!1 &5967576157649319011
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,12 +236,12 @@ GameObject:
   - component: {fileID: 1203069305876927998}
   - component: {fileID: 2891416567265779992}
   m_Layer: 5
-  m_Name: Image
+  m_Name: NextArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4582783486181710908
 RectTransform:
   m_ObjectHideFlags: 0
@@ -256,7 +258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60.5, y: -12.4}
+  m_AnchoredPosition: {x: 58.2, y: -14.9}
   m_SizeDelta: {x: 7, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &783449227443574783

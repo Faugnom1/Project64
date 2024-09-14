@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,11 +15,15 @@ public class DialogManager : MonoBehaviour
 
     private TextMeshProUGUI _textMeshPro;
     private InputAction _cancelInput;
-    private int _pages;
+    private InputAction _interactInput;
+    private int _currentPage;
+    private int _pageCount;
 
     private void Awake()
     {
-        _cancelInput = new PlayerInput().UI.Cancel;
+        PlayerInput input = new PlayerInput();
+        _cancelInput = input.UI.Cancel;
+        _interactInput = input.Player.Interact;
 
         if (Instance == null)
         {
@@ -28,17 +34,20 @@ public class DialogManager : MonoBehaviour
     private void Start()
     {
         gameObject.SetActive(false);
+        _currentPage = 1;
         _textMeshPro = _textMesh.GetComponent<TextMeshProUGUI>();
     }
 
     private void OnEnable()
     {
         _cancelInput.Enable();
+        _interactInput.Enable();
     }
 
     private void OnDisable()
     {
         _cancelInput.Disable();
+        _interactInput.Disable();
     }
 
     private void Update()
@@ -48,14 +57,21 @@ public class DialogManager : MonoBehaviour
             return;
         }
 
+        // Remove box when cancel button is pressed
         if (_cancelInput.WasPressedThisFrame())
         {
             gameObject.SetActive(false);
         }
 
-        if (_pages > 1)
+        // Show next arrow button and cycle through pages
+        if (_pageCount > 1 && _currentPage != _pageCount)
         {
             _nextArrow.SetActive(true);
+
+            if (_interactInput.WasPressedThisFrame())
+            {
+                _textMeshPro.pageToDisplay = ++_currentPage;
+            }
         }
         else
         {
@@ -65,16 +81,33 @@ public class DialogManager : MonoBehaviour
 
     public void ShowMessageBox(bool active)
     {
-        if (gameObject != null && !gameObject.IsDestroyed())
+        if (this != null)
         {
             gameObject.SetActive(active);
         }
     }
 
-    public void ShowMessage(string message, float speed = 0.05f)
+    public void ShowMessage(object message, float speed = 0.05f)
     {
+        // Combine the messages, if required
+        string fullMessage;
+
+        if (message is List<string> messageList)
+        {
+            fullMessage = string.Join(" ", messageList);
+        }
+        else if (message is Dictionary<string, string> messageDict)
+        {
+            fullMessage = string.Join(" ", messageDict.Values);
+        }
+        else
+        {
+            fullMessage = message.ToString();
+        }
+
+        // Show the box and type the message out
         gameObject.SetActive(true);
-        StartCoroutine(TypeText(message, speed));
+        StartCoroutine(TypeText(fullMessage, speed));
     }
 
     private IEnumerator TypeText(string message, float speed = 0.05f)
@@ -82,7 +115,7 @@ public class DialogManager : MonoBehaviour
         for (int i = 0; i < message.Length; i++)
         {
             _textMeshPro.SetText(message[..(i + 1)]);
-            _pages = _textMeshPro.textInfo.pageCount;
+            _pageCount = _textMeshPro.textInfo.pageCount;
             yield return new WaitForSeconds(speed);
         }
     }

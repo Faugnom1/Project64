@@ -1,12 +1,10 @@
 using UnityEngine;
-using Newtonsoft.Json;
-
-// Custom macros
-using TextDictionary = System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<string, string>>;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 public class TextManager : MonoBehaviour
 {
-    private static TextDictionary _textData;
+    private static JObject _textData;
 
     private static void LoadTextData()
     {
@@ -14,17 +12,30 @@ public class TextManager : MonoBehaviour
 
         if (textFile != null)
         {
-            _textData = JsonConvert.DeserializeObject<TextDictionary>(textFile.text);
+            _textData = JObject.Parse(textFile.text);
         }
     }
 
-    public static string GetText(string key, string language = "en")
+    public static object GetText(string key, string language = "en")
     {
-        if (_textData == null || _textData.Count == 0)
+        // Load the data if first time
+        if (_textData == null)
         {
             LoadTextData();
         }
 
-        return _textData[language][key];
+        // Get the value and convert to correct type
+        JToken value = _textData[language][key];
+
+        if (value.Type == JTokenType.Array)
+        {
+            return value.ToObject<List<string>>();
+        }
+        else if (value.Type == JTokenType.Object)
+        {
+            return value.ToObject<Dictionary<string, string>>();
+        }
+
+        return value.ToString();
     }
 }
