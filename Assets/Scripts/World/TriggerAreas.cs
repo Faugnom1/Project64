@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TriggerAreas : MonoBehaviour
 {
+    [SerializeField] private UnityEvent _triggerEvent;
+
     private BoxCollider2D _collider;
 
     private void Start()
@@ -16,6 +19,15 @@ public class TriggerAreas : MonoBehaviour
         if (collision != null && collision.CompareTag("Player"))
         {
             _collider.enabled = false;
+            InvokeSequence();
+        }
+    }
+
+    private void InvokeSequence()
+    {
+        if (_triggerEvent != null)
+        {
+            _triggerEvent.Invoke();
         }
     }
 }

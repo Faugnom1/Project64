@@ -30,14 +30,12 @@ public class PlayerScriptedEvents : MonoBehaviour
         // TODO: Kick off monster roaring sound effect
 
         _impulseSource.GenerateImpulseWithForce(1);
-        StartCoroutine(EnableMovement(_stompTriggerInteraction0_Duration));
+    }
+
+    public void StopSequence_StompTriggerInteraction0()
+    {
+
     }
 
     #endregion
-
-    private IEnumerator EnableMovement(float wait)
-    {
-        yield return new WaitForSeconds(wait);
-        _playerMovement.EnableMovement();
-    }
 }

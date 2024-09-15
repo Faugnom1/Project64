@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9be09689d52b5ce4580a112e1309d33b
+guid: 67ef58118d7c2d246b898d6b5a7e8392
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tiles_0
+      name: Tiles8_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 112
-        width: 16
-        height: 16
+        y: 24
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 930ff34ce1a605f47a5691e52dc25079
-      internalID: 1264743146
+      spriteID: 99ecee9f1cc262544a28031db4ef0382
+      internalID: -2010251365
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_1
+      name: Tiles8_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e49b49329f52ee459e14bf122839ab4
+      internalID: 1987690489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles8_2
       rect:
         serializedVersion: 2
         x: 16
-        y: 112
-        width: 16
-        height: 16
+        y: 24
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 359ae1ea5bc3a334da6af76ea443a1a4
-      internalID: -1782778495
+      spriteID: fa67da8f0ab01704a9fdbb1e927bb9c7
+      internalID: -1726941072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_2
+      name: Tiles8_3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 112
-        width: 16
-        height: 16
+        x: 24
+        y: 24
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,29 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6fd51f00930525469f5c1efed64bf9b
-      internalID: -1911452033
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tiles_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 112
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b67ecb86093a06740b16ce757fbcc75c
-      internalID: -1440521712
+      spriteID: 0fbedb6993d321141a38d1ea115985ca
+      internalID: 231245653
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tiles_0: 1264743146
-      Tiles_1: -1782778495
-      Tiles_2: -1911452033
-      Tiles_3: -1440521712
+      Tiles8_0: -2010251365
+      Tiles8_1: 1987690489
+      Tiles8_2: -1726941072
+      Tiles8_3: 231245653
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

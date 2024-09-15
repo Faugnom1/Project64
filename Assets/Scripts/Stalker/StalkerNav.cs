@@ -25,4 +25,10 @@ public class StalkerNav : MonoBehaviour
     {
         Debug.Log("Starting");
     }
+
+    public void SetScriptedEventDestination(Vector2 position)
+    {
+        _agent.SetDestination(position);
+        _agent.speed = 0.3f;
+    }
 }
