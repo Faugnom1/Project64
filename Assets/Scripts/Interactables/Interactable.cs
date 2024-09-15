@@ -6,6 +6,7 @@ public class Interactable : MonoBehaviour
     [Header("Message Properties")]
     [SerializeField] protected MessageType _messageType;
     [SerializeField] protected float _messageSpeed;
+    [SerializeField] protected GameObject _interactBubble;
 
     protected InputAction _interactInput;
     protected bool _isPlayerNearby;
@@ -38,6 +39,7 @@ public class Interactable : MonoBehaviour
         {
             _isPlayerNearby = true;
             _messageShown = false;
+            _interactBubble.SetActive(true);
         }
     }
 
@@ -46,6 +48,7 @@ public class Interactable : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             _isPlayerNearby = false;
+            _interactBubble.SetActive(false);
             MessageManager.Instance.ShowMessageBox(false, _messageType);
         }
     }
@@ -56,6 +59,7 @@ public class Interactable : MonoBehaviour
         {
             _isPlayerNearby = true;
             _messageShown = false;
+            _interactBubble.SetActive(true);
         }
     }
 
@@ -64,6 +68,7 @@ public class Interactable : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             _isPlayerNearby = false;
+            _interactBubble.SetActive(false);
             MessageManager.Instance.ShowMessageBox(false, _messageType);
         }
     }

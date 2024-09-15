@@ -31,7 +31,7 @@ public class Item : Interactable
             }
 
             // Add to inventory and stop updates/render
-            GameManager.Instance.PlayerInteraction.AddToInventory(this);
+            GameManager.Instance.PlayerInventory.AddToInventory(this);
             gameObject.SetActive(false);
         }
     }

@@ -15,7 +15,7 @@ public class Door : Interactable
     {
         base.Update();
 
-        if (IsPlayerInteracting() && !_messageShown && !GameManager.Instance.PlayerInteraction.HasKey())
+        if (IsPlayerInteracting() && !_messageShown && !GameManager.Instance.PlayerInventory.HasKey())
         {
             // Play sound effect
             SoundEffectsManager.Instance.PlaySoundEffect(_onDoorLockedClip, transform, _onDoorLockedVolume);
@@ -25,7 +25,7 @@ public class Door : Interactable
             MessageManager.Instance.ShowMessage(TextManager.GetText(_doorLockedTextKey), _messageType, _messageSpeed);
         }
 
-        if (IsPlayerInteracting() && GameManager.Instance.PlayerInteraction.ConsumeKey())
+        if (IsPlayerInteracting() && GameManager.Instance.PlayerInventory.ConsumeKey())
         {
             // Play sound effect
             SoundEffectsManager.Instance.PlaySoundEffect(_onDoorOpenedClip, transform, _onDoorOpenedVolume);
