@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,9 +15,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _moveInput;
     private Vector2 _facingDirection;
 
+    private bool _shouldUpdate;
+
     private void Awake()
     {
         _playerInput = new PlayerInput();
+        _shouldUpdate = true;
     }
 
     private void Start()
@@ -36,7 +40,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
+        if (_shouldUpdate)
+        {
+            _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
+        }
+        else
+        {
+            _moveInput = Vector2.zero;
+        }
 
         UpdateFacingDirection();
     }
@@ -56,5 +67,15 @@ public class PlayerMovement : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90.0f));
             transform.rotation = rotation;
         }
+    }
+
+    public void DisableMovement()
+    {
+        _shouldUpdate = false;
+    }
+
+    public void EnableMovement()
+    {
+        _shouldUpdate = true;
     }
 }

@@ -15,9 +15,14 @@ public class StalkerNav : MonoBehaviour
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
     }
-
+    
     private void Update()
     {
-        _agent.SetDestination(_target.position);
+        //_agent.SetDestination(_target.position);
+    }
+
+    public void StartSequence()
+    {
+        Debug.Log("Starting");
     }
 }
