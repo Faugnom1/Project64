@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5136083056829689646}
   - component: {fileID: 2272007537829726950}
   - component: {fileID: 3282729298588690762}
-  - component: {fileID: 49083839421267592}
+  - component: {fileID: 8944380041750217683}
   m_Layer: 0
   m_Name: Book
   m_TagString: Interactable
@@ -121,7 +121,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.24321482, y: -0.21472931}
   m_Size: {x: 1.8554868, y: 1.9366956}
   m_Direction: 0
---- !u!114 &49083839421267592
+--- !u!114 &8944380041750217683
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,8 +130,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6967224744972503550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef4c23554d92c548baab5b2698f8fb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 8529066aa78b1be41bfe66f4218484ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textKey: book_intro_1
-  _textSpeed: 0.02
+  _messageType: 1
+  _messageSpeed: 0.05
+  _bookTextKey: book_ending

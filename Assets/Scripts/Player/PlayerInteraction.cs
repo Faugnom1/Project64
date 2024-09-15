@@ -46,6 +46,19 @@ public class PlayerInteraction : MonoBehaviour
         _inventory.Add(item);
     }
 
+    public bool HasKey()
+    {
+        for (int i = 0; i < _inventory.Count; i++)
+        {
+            if (_inventory[i].Name == ItemName.KEY)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public bool ConsumeKey()
     {
         // Try to consume a key

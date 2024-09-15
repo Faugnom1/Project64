@@ -46,8 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80dc62b0c1ecbaf4da2bde5fa057ffe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textKey: 
-  _textSpeed: 0
+  _messageType: 0
+  _messageSpeed: 0.05
+  <Name>k__BackingField: 0
+  _itemTextKey: key_pickup
 --- !u!212 &1546747456308852477
 SpriteRenderer:
   m_ObjectHideFlags: 0

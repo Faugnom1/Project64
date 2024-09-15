@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] protected string _textKey;
-    [SerializeField] protected float _textSpeed;
+    [SerializeField] protected MessageType _messageType;
+    [SerializeField] protected float _messageSpeed;
 
     protected InputAction _interactInput;
     protected bool _isPlayerNearby;
@@ -14,6 +14,11 @@ public class Interactable : MonoBehaviour
     {
         _isPlayerNearby = false;
         _interactInput = new PlayerInput().Player.Interact;
+    }
+
+    protected virtual void Start()
+    {
+
     }
 
     protected virtual void OnEnable()
@@ -40,7 +45,7 @@ public class Interactable : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             _isPlayerNearby = false;
-            DialogManager.Instance.ShowMessageBox(false);
+            MessageManager.Instance.ShowMessageBox(false, _messageType);
         }
     }
 
@@ -58,17 +63,13 @@ public class Interactable : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             _isPlayerNearby = false;
-            DialogManager.Instance.ShowMessageBox(false);
+            MessageManager.Instance.ShowMessageBox(false, _messageType);
         }
     }
 
     protected virtual void Update()
     {
-        if (IsPlayerInteracting() && _textKey != null && _textKey != "" && !_messageShown)
-        {
-            _messageShown = true;
-            DialogManager.Instance.ShowMessage(TextManager.GetText(_textKey), _textSpeed);
-        }
+
     }
 
     protected bool IsPlayerInteracting()
