@@ -39,6 +39,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 4057692083
+    locked: 0
+  - name: Walls
+    uniqueID: 2945872769
+    locked: 0
+  - name: Interactables
+    uniqueID: 4056630015
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
