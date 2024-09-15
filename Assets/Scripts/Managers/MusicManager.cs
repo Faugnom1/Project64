@@ -28,7 +28,7 @@ public class MusicManager : MonoBehaviour
         // Stop previous playing music
         if (_currentAudioSource != null)
         {
-            Destroy(_currentAudioSource.gameObject, 2f);
+            Destroy(_currentAudioSource.gameObject);
         }
 
         // Spawn GameObject

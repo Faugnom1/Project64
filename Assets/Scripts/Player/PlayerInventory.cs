@@ -10,29 +10,32 @@ public class PlayerInventory : MonoBehaviour
         _inventory.Add(item);
     }
 
-    public bool HasKey()
+    private int GetKeyIndex()
     {
         for (int i = 0; i < _inventory.Count; i++)
         {
             if (_inventory[i].ItemName == ItemName.KEY)
             {
-                return true;
+                return i;
             }
         }
 
-        return false;
+        return -1;
+    }
+
+    public bool HasKey()
+    {
+        return GetKeyIndex() != -1;
     }
 
     public bool ConsumeKey()
     {
-        // Try to consume a key
-        for (int i = 0; i < _inventory.Count; i++)
+        int keyIndex = GetKeyIndex();
+
+        if (keyIndex != -1)
         {
-            if (_inventory[i].ItemName == ItemName.KEY)
-            {
-                _inventory.RemoveAt(i);
-                return true;
-            }
+            _inventory.RemoveAt(keyIndex);
+            return true;
         }
 
         // No key was found
