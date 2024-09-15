@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Interactable : MonoBehaviour
 {
+    [Header("Message Properties")]
     [SerializeField] protected MessageType _messageType;
     [SerializeField] protected float _messageSpeed;
 

@@ -48,8 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _messageType: 0
   _messageSpeed: 0.05
-  <Name>k__BackingField: 0
+  <ItemName>k__BackingField: 0
   _itemTextKey: key_pickup
+  _onInteractClip: {fileID: 8300000, guid: 21f437049a852fb4f939b584ba6b5db2, type: 3}
+  _onInteractClipVolume: 1
 --- !u!212 &1546747456308852477
 SpriteRenderer:
   m_ObjectHideFlags: 0

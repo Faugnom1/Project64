@@ -50,7 +50,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         for (int i = 0; i < _inventory.Count; i++)
         {
-            if (_inventory[i].Name == ItemName.KEY)
+            if (_inventory[i].ItemName == ItemName.KEY)
             {
                 return true;
             }
@@ -64,7 +64,7 @@ public class PlayerInteraction : MonoBehaviour
         // Try to consume a key
         for (int i = 0; i < _inventory.Count; i++)
         {
-            if (_inventory[i].Name == ItemName.KEY)
+            if (_inventory[i].ItemName == ItemName.KEY)
             {
                 _inventory.RemoveAt(i);
                 return true;

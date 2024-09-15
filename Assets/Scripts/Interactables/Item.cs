@@ -7,9 +7,12 @@ public enum ItemName
 
 public class Item : Interactable
 {
-    [field: SerializeField] public ItemName Name { get; private set; }
-
+    [field: SerializeField] public ItemName ItemName { get; private set; }
     [SerializeField] private string _itemTextKey;
+
+    [Header("Audio Properties")]
+    [SerializeField] private AudioClip _onInteractClip;
+    [SerializeField] private float _onInteractClipVolume;
 
     protected override void Update()
     {
@@ -17,12 +20,17 @@ public class Item : Interactable
 
         if (IsPlayerInteracting())
         {
+            // Play sound effect
+            SoundEffectsManager.Instance.PlaySoundEffect(_onInteractClip, transform, _onInteractClipVolume);
+
+            // Show message
             if (!_messageShown)
             {
                 _messageShown = true;
                 MessageManager.Instance.ShowMessage(TextManager.GetText(_itemTextKey), _messageType, _messageSpeed);
             }
 
+            // Add to inventory and stop updates/render
             GameManager.Instance.PlayerInteraction.AddToInventory(this);
             gameObject.SetActive(false);
         }
