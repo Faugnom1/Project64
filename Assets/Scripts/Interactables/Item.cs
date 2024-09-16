@@ -21,7 +21,7 @@ public class Item : Interactable
         if (IsPlayerInteracting())
         {
             // Play sound effect
-            SoundEffectsManager.Instance.PlaySoundEffect(_onInteractClip, transform, _onInteractClipVolume);
+            //SoundEffectsManager.Instance.PlaySoundEffect(_onInteractClip, transform, _onInteractClipVolume);
 
             // Show message
             if (!_messageShown)

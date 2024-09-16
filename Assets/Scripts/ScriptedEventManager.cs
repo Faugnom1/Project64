@@ -61,6 +61,7 @@ public class ScriptedEventManager : MonoBehaviour
 
     private void StalkerEventComplete()
     {
-        Debug.Log("COMPLETE");
+        _player.ReturnControl();
+        _stalker.ResetPosition();
     }
 }

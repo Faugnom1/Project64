@@ -27,10 +27,16 @@ public class StalkerNav : MonoBehaviour
         {
             CheckDestinationReached();
         }
+        else
+        {
+            Debug.Log("Stopped agent");
+            _agent.isStopped = true;
+        }
     }
 
     public void SetScriptedEventDestination(Vector2 position, float speed)
     {
+        _agent.isStopped = false;
         _inScriptedEvent = true;
         _agent.SetDestination(position);
         _agent.speed = speed;

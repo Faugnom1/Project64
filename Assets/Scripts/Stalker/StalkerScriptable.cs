@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class StalkerScriptable : MonoBehaviour
 {
+    [SerializeField] private Transform _resetPosition;
+
     public UnityEvent OnStalkerScriptedEventComplete {  get; private set; }
 
     private StalkerNav _navComponent;
@@ -43,5 +45,10 @@ public class StalkerScriptable : MonoBehaviour
     public void PathComplete()
     {
         OnStalkerScriptedEventComplete.Invoke();
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = _resetPosition.position;
     }
 }
