@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class TriggerAreas : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _triggerEvent;
+    [SerializeField] private ScriptedEventSO _scriptedEvent;
 
     private BoxCollider2D _collider;
 
@@ -19,15 +19,7 @@ public class TriggerAreas : MonoBehaviour
         if (collision != null && collision.CompareTag("Player"))
         {
             _collider.enabled = false;
-            InvokeSequence();
-        }
-    }
-
-    private void InvokeSequence()
-    {
-        if (_triggerEvent != null)
-        {
-            _triggerEvent.Invoke();
+            _scriptedEvent.StartEvent();
         }
     }
 }

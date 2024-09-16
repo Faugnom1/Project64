@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class StalkerNav : MonoBehaviour
 {
     [SerializeField] private Transform _target;
+    [SerializeField] private float _stoppingDistanceThreshold;
+    [SerializeField] private UnityEvent _onDestinationReached;
 
     private NavMeshAgent _agent;
+
+    private bool _inScriptedEvent;
 
     private void Start()
     {
@@ -18,17 +23,26 @@ public class StalkerNav : MonoBehaviour
     
     private void Update()
     {
-        //_agent.SetDestination(_target.position);
+        if (_inScriptedEvent)
+        {
+            CheckDestinationReached();
+        }
     }
 
-    public void StartSequence()
+    public void SetScriptedEventDestination(Vector2 position, float speed)
     {
-        Debug.Log("Starting");
-    }
-
-    public void SetScriptedEventDestination(Vector2 position)
-    {
+        _inScriptedEvent = true;
         _agent.SetDestination(position);
-        _agent.speed = 0.3f;
+        _agent.speed = speed;
+    }
+
+    public void CheckDestinationReached()
+    {
+        // Check if the agent has a valid path and its remaining distance is less than the threshold
+        if (!_agent.pathPending && _agent.remainingDistance <= _stoppingDistanceThreshold && !_agent.hasPath)
+        {
+            _inScriptedEvent = false;
+            _onDestinationReached.Invoke();
+        }
     }
 }
