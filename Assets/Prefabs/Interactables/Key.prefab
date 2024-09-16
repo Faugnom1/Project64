@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6947364143168659237}
-  - component: {fileID: 8808823874968547130}
+  - component: {fileID: 7014774529049817547}
   - component: {fileID: 1546747456308852477}
   - component: {fileID: 418552831363138160}
   m_Layer: 0
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 652710729493735957}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8808823874968547130
+--- !u!114 &7014774529049817547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,13 +44,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3891290125843066235}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80dc62b0c1ecbaf4da2bde5fa057ffe1, type: 3}
+  m_Script: {fileID: 11500000, guid: 231d983e72e675841a0c290376ea1333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _messageType: 0
   _messageSpeed: 0.05
   _interactBubble: {fileID: 352158717326180976}
-  <ItemName>k__BackingField: 0
+  <ItemName>k__BackingField: 1
   _itemTextKey: key_pickup
   _onInteractClip: {fileID: 8300000, guid: 21f437049a852fb4f939b584ba6b5db2, type: 3}
   _onInteractClipVolume: 1

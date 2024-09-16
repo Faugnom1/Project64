@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicSource: {fileID: 630655661589713132, guid: 2f95db06967877b4c9b4b9257ba689dc, type: 3}
   _defaultMusic: {fileID: 8300000, guid: 12876427b52522743b129672030a84bd, type: 3}
-  _defaultMusicVolume: 0.2
+  _defaultMusicVolume: 0
