@@ -10,11 +10,11 @@ public class PlayerInventory : MonoBehaviour
         _inventory.Add(item);
     }
 
-    private int GetKeyIndex()
+    private int GetKeyIndex(ItemName keyName)
     {
         for (int i = 0; i < _inventory.Count; i++)
         {
-            if (_inventory[i].ItemName == ItemName.KEY)
+            if (_inventory[i].ItemName == keyName)
             {
                 return i;
             }
@@ -23,14 +23,14 @@ public class PlayerInventory : MonoBehaviour
         return -1;
     }
 
-    public bool HasKey()
+    public bool HasKey(ItemName keyName)
     {
-        return GetKeyIndex() != -1;
+        return GetKeyIndex(keyName) != -1;
     }
 
-    public bool ConsumeKey()
+    public bool ConsumeKey(ItemName keyName)
     {
-        int keyIndex = GetKeyIndex();
+        int keyIndex = GetKeyIndex(keyName);
 
         if (keyIndex != -1)
         {

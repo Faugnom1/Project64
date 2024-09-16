@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Book : Interactable
 {
+    [Header("Message Properties")]
     [SerializeField] private string _bookTextKey;
 
     [Header("Audio Properties")]

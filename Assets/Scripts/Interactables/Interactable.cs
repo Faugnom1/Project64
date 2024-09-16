@@ -39,7 +39,7 @@ public class Interactable : MonoBehaviour
         {
             _isPlayerNearby = true;
             _messageShown = false;
-            _interactBubble.SetActive(true);
+            ToggleInteractBubble(true);
         }
     }
 
@@ -48,7 +48,7 @@ public class Interactable : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             _isPlayerNearby = false;
-            _interactBubble.SetActive(false);
+            ToggleInteractBubble(false);
             MessageManager.Instance.ShowMessageBox(false, _messageType);
         }
     }
@@ -59,7 +59,7 @@ public class Interactable : MonoBehaviour
         {
             _isPlayerNearby = true;
             _messageShown = false;
-            _interactBubble.SetActive(true);
+            ToggleInteractBubble(true);
         }
     }
 
@@ -68,7 +68,7 @@ public class Interactable : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             _isPlayerNearby = false;
-            _interactBubble.SetActive(false);
+            ToggleInteractBubble(false);
             MessageManager.Instance.ShowMessageBox(false, _messageType);
         }
     }
@@ -81,5 +81,13 @@ public class Interactable : MonoBehaviour
     protected bool IsPlayerInteracting()
     {
         return _isPlayerNearby && _interactInput.WasPressedThisFrame();
+    }
+
+    protected void ToggleInteractBubble(bool value)
+    {
+        if (_interactBubble != null)
+        {
+            _interactBubble.SetActive(value);
+        }
     }
 }
