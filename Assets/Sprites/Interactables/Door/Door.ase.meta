@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 833ae6ad9392a5149ab38169c6aaeae0
+guid: 7e0ebe19bbd7c2f449bc6880d0a6dc4e
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638621156357840177
+  platformSettingsDirtyTick: 638621234357915734
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: HorizontalDoor_Frame_0
+  - name: Door_Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 16
       height: 8
-    spriteID: 05e1169738cd2b74383318159f6edac6
+    spriteID: f108af70946d7454eb5dc2784229b449
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,7 +141,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: HorizontalDoor_Frame_1
+  - name: Door_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 4
       width: 16
       height: 8
-    spriteID: 4f314926def5bff4a9a1b00ef0c9e0cc
+    spriteID: e1c0bc33266c1374d81dcde701f5e2ba
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -161,7 +161,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 28, y: 4}
-  - name: HorizontalDoor_Frame_2
+  - name: Door_Frame_2
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 20
       width: 16
       height: 8
-    spriteID: 2ce2222e75ef12d449260a8d6730d84f
+    spriteID: 7db5df05e004a2944988ffcfcf34c44b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -181,7 +181,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 20}
-  - name: HorizontalDoor_Frame_3
+  - name: Door_Frame_3
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -192,7 +192,7 @@ ScriptedImporter:
       y: 20
       width: 16
       height: 8
-    spriteID: 81303e8a2b0ca6c4fbe8d398d1348e52
+    spriteID: eb9e57b861dae2d4bafb6ef8ef6abc81
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -201,7 +201,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 28, y: 20}
-  - name: HorizontalDoor_Frame_4
+  - name: Door_Frame_4
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -212,7 +212,7 @@ ScriptedImporter:
       y: 36
       width: 16
       height: 8
-    spriteID: 0aaea9bafbcf9304ca3e229679237bc5
+    spriteID: 1b3692f34e63a4543b6416c67263e822
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -221,7 +221,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 36}
-  - name: HorizontalDoor_Frame_5
+  - name: Door_Frame_5
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -232,7 +232,7 @@ ScriptedImporter:
       y: 36
       width: 16
       height: 8
-    spriteID: 46802789f9591d142b8e0f75418d0271
+    spriteID: c1429a5513f758145891e4aa197430c8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -241,7 +241,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 28, y: 36}
-  - name: HorizontalDoor_Frame_6
+  - name: Door_Frame_6
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -252,7 +252,7 @@ ScriptedImporter:
       y: 52
       width: 16
       height: 8
-    spriteID: fb03cde56b2fb3f49899b5754fceef92
+    spriteID: 22621269994adaf4e9137bf92e408761
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -261,7 +261,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 52}
-  - name: HorizontalDoor_Frame_7
+  - name: Door_Frame_7
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -272,7 +272,7 @@ ScriptedImporter:
       y: 52
       width: 16
       height: 8
-    spriteID: 69619ead1e913b44eb844a3b7c490556
+    spriteID: 503ee98679ae3e74e801bf7d20606055
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -284,13 +284,13 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 986298550
-    name: HorizontalDoor
+    guid: -1909541106
+    name: Door
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: HorizontalDoor_Frame_0
+    - name: Door_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -298,8 +298,8 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 05e1169738cd2b74383318159f6edac6
-    - name: HorizontalDoor_Frame_1
+      spriteId: f108af70946d7454eb5dc2784229b449
+    - name: Door_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -307,8 +307,8 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 4f314926def5bff4a9a1b00ef0c9e0cc
-    - name: HorizontalDoor_Frame_2
+      spriteId: e1c0bc33266c1374d81dcde701f5e2ba
+    - name: Door_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -316,8 +316,8 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 2ce2222e75ef12d449260a8d6730d84f
-    - name: HorizontalDoor_Frame_3
+      spriteId: 7db5df05e004a2944988ffcfcf34c44b
+    - name: Door_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -325,8 +325,8 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 81303e8a2b0ca6c4fbe8d398d1348e52
-    - name: HorizontalDoor_Frame_4
+      spriteId: eb9e57b861dae2d4bafb6ef8ef6abc81
+    - name: Door_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -334,8 +334,8 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 0aaea9bafbcf9304ca3e229679237bc5
-    - name: HorizontalDoor_Frame_5
+      spriteId: 1b3692f34e63a4543b6416c67263e822
+    - name: Door_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
@@ -343,8 +343,8 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 46802789f9591d142b8e0f75418d0271
-    - name: HorizontalDoor_Frame_6
+      spriteId: c1429a5513f758145891e4aa197430c8
+    - name: Door_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
@@ -352,8 +352,8 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: fb03cde56b2fb3f49899b5754fceef92
-    - name: HorizontalDoor_Frame_7
+      spriteId: 22621269994adaf4e9137bf92e408761
+    - name: Door_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
@@ -361,7 +361,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 69619ead1e913b44eb844a3b7c490556
+      spriteId: 503ee98679ae3e74e801bf7d20606055
     linkedCells: []
     parentIndex: -1
   platformSettings:

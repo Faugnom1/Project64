@@ -16,7 +16,6 @@ public class Door : Interactable
     [SerializeField] private ItemName _keyName;
 
     private Animator _animator;
-    private bool _doorIsOpening;
 
     protected override void Start()
     {
@@ -29,24 +28,25 @@ public class Door : Interactable
     {
         base.Update();
 
-        if (!_doorIsOpening && IsPlayerInteracting() && !_messageShown && !GameManager.Instance.PlayerInventory.HasKey(_keyName))
+        if (_canInteract && IsPlayerInteracting() && !_messageShown && !GameManager.Instance.PlayerInventory.HasKey(_keyName))
         {
             _messageShown = true;
             SoundEffectsManager.Instance.PlaySoundEffect(_onDoorLockedClip, transform, _onDoorLockedVolume);
             MessageManager.Instance.ShowMessage(TextManager.GetText(_doorLockedTextKey), _messageType, _messageSpeed);
         }
 
-        if (!_doorIsOpening && IsPlayerInteracting() && GameManager.Instance.PlayerInventory.ConsumeKey(_keyName))
+        if (_canInteract && IsPlayerInteracting() && GameManager.Instance.PlayerInventory.ConsumeKey(_keyName))
         {
-            _doorIsOpening = true;
+            _canInteract = false;
             _animator.SetTrigger("DoorOpen");
             SoundEffectsManager.Instance.PlaySoundEffect(_onDoorOpenedClip, transform, _onDoorOpenedVolume);
             MessageManager.Instance.ShowMessage(TextManager.GetText(_doorOpenedTextKey), _messageType, _messageSpeed);
         }
     }
 
-    public void DoorOpened()
+    public void SlamDoor()
     {
-        Destroy(gameObject);
+        _animator.SetTrigger("DoorSlam");
+        _canInteract = false;
     }
 }

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VerticalDoorClose
+  m_Name: DoorClosed
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 4258090661469658045, guid: 85052e259f10155488cc0394081fc946, type: 3}
+      value: {fileID: -2807743547185615669, guid: 7e0ebe19bbd7c2f449bc6880d0a6dc4e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,7 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 4258090661469658045, guid: 85052e259f10155488cc0394081fc946, type: 3}
+    - {fileID: -2807743547185615669, guid: 7e0ebe19bbd7c2f449bc6880d0a6dc4e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
