@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 833ae6ad9392a5149ab38169c6aaeae0
+guid: 7e0ebe19bbd7c2f449bc6880d0a6dc4e
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638621094784501027
+  platformSettingsDirtyTick: 638621234357915734
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 16
       height: 8
-    spriteID: 0b96bcd4edcce9544b4e06b36b5debb0
+    spriteID: f108af70946d7454eb5dc2784229b449
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 4
       width: 16
       height: 8
-    spriteID: 46afa6a5eb6669444843faaa742a539d
+    spriteID: e1c0bc33266c1374d81dcde701f5e2ba
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 20
       width: 16
       height: 8
-    spriteID: 3f41eb181d46c35419d6faabb714fc93
+    spriteID: 7db5df05e004a2944988ffcfcf34c44b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -192,7 +192,7 @@ ScriptedImporter:
       y: 20
       width: 16
       height: 8
-    spriteID: e9c2e9cf54a3e9244ac5852ec2628b69
+    spriteID: eb9e57b861dae2d4bafb6ef8ef6abc81
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -212,7 +212,7 @@ ScriptedImporter:
       y: 36
       width: 16
       height: 8
-    spriteID: 705c904184868a9489bbda4e83cbb087
+    spriteID: 1b3692f34e63a4543b6416c67263e822
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -232,7 +232,7 @@ ScriptedImporter:
       y: 36
       width: 16
       height: 8
-    spriteID: 8e0b842c29dbd1748be949fa9aaabd45
+    spriteID: c1429a5513f758145891e4aa197430c8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -252,7 +252,7 @@ ScriptedImporter:
       y: 52
       width: 16
       height: 8
-    spriteID: 358b2532411415640b497e460ea17f99
+    spriteID: 22621269994adaf4e9137bf92e408761
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -272,7 +272,7 @@ ScriptedImporter:
       y: 52
       width: 16
       height: 8
-    spriteID: 691dba32252d956419d08fc390402509
+    spriteID: 503ee98679ae3e74e801bf7d20606055
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -298,7 +298,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 0b96bcd4edcce9544b4e06b36b5debb0
+      spriteId: f108af70946d7454eb5dc2784229b449
     - name: Door_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
@@ -307,7 +307,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 46afa6a5eb6669444843faaa742a539d
+      spriteId: e1c0bc33266c1374d81dcde701f5e2ba
     - name: Door_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
@@ -316,7 +316,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 3f41eb181d46c35419d6faabb714fc93
+      spriteId: 7db5df05e004a2944988ffcfcf34c44b
     - name: Door_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
@@ -325,7 +325,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: e9c2e9cf54a3e9244ac5852ec2628b69
+      spriteId: eb9e57b861dae2d4bafb6ef8ef6abc81
     - name: Door_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
@@ -334,7 +334,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 705c904184868a9489bbda4e83cbb087
+      spriteId: 1b3692f34e63a4543b6416c67263e822
     - name: Door_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
@@ -343,7 +343,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 8e0b842c29dbd1748be949fa9aaabd45
+      spriteId: c1429a5513f758145891e4aa197430c8
     - name: Door_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
@@ -352,7 +352,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 358b2532411415640b497e460ea17f99
+      spriteId: 22621269994adaf4e9137bf92e408761
     - name: Door_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
@@ -361,7 +361,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 8
-      spriteId: 691dba32252d956419d08fc390402509
+      spriteId: 503ee98679ae3e74e801bf7d20606055
     linkedCells: []
     parentIndex: -1
   platformSettings:

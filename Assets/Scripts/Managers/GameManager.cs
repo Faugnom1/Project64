@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
 
+    private void Start()
+    {
         PlayerInventory = GameObject.Find("Player").GetComponent<PlayerInventory>();
     }
 }
