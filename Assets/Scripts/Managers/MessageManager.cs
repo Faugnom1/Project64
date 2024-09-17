@@ -93,13 +93,16 @@ public class MessageManager : MonoBehaviour
 
     public void ShowMessageBox(bool active, MessageType type = MessageType.LARGE)
     {
-        if (type == MessageType.LARGE)
+        if (this != null)
         {
-            _largeMessageBox.SetActive(active);
-        }
-        else if (type == MessageType.SMALL)
-        {
-            StartCoroutine(ToggleSmallMessageBox(active));
+            if (type == MessageType.LARGE)
+            {
+                _largeMessageBox.SetActive(active);
+            }
+            else if (type == MessageType.SMALL)
+            {
+                StartCoroutine(ToggleSmallMessageBox(active));
+            }
         }
     }
 

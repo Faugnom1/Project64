@@ -15,6 +15,7 @@ public class Interactable : MonoBehaviour
 
     protected virtual void Awake()
     {
+        _canInteract = true;
         _isPlayerNearby = false;
         _interactInput = new PlayerInput().Player.Interact;
     }
@@ -76,12 +77,15 @@ public class Interactable : MonoBehaviour
 
     protected virtual void Update()
     {
-
+        if (!_canInteract && _interactBubble.activeSelf)
+        {
+            _interactBubble.SetActive(false);
+        }
     }
 
     protected bool IsPlayerInteracting()
     {
-        return _isPlayerNearby && _interactInput.WasPressedThisFrame();
+        return _canInteract && _isPlayerNearby && _interactInput.WasPressedThisFrame();
     }
 
     protected void ToggleInteractBubble(bool value)

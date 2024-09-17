@@ -1,14 +1,10 @@
 {
     "en": {
-        "book_intro_1": [
-            "Hello World"
-        ],
         "book_ending": "Goodbye World :(",
-        "another_one": {
-            "test": "eek"
-        },
+        "flare_pickup": "Picked up flare",
         "key_pickup": "Picked up key",
         "door_closed": "Key is required",
-        "door_opened": "Door opened"
+        "door_opened": "Door opened",
+        "max_item_capcity": "No more room"
     }
 }
