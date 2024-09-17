@@ -52,7 +52,7 @@ MonoBehaviour:
   _messageType: 0
   _messageSpeed: 0.05
   _interactBubble: {fileID: 352158717326180976}
-  <ItemName>k__BackingField: 1
+  <ItemName>k__BackingField: 2
   _itemTextKey: key_pickup
   _onInteractClip: {fileID: 8300000, guid: 21f437049a852fb4f939b584ba6b5db2, type: 3}
   _onInteractClipVolume: 1

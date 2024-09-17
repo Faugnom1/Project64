@@ -785,10 +785,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 220543560}
     m_Modifications:
-    - target: {fileID: 2383600964539420361, guid: b6b18c6d59e685840b06c120f26b220d, type: 3}
-      propertyPath: _keyName
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5980010111006805054, guid: b6b18c6d59e685840b06c120f26b220d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.77
