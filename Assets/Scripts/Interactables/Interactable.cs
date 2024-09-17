@@ -15,6 +15,7 @@ public class Interactable : MonoBehaviour
 
     protected virtual void Awake()
     {
+        _canInteract = true;
         _isPlayerNearby = false;
         _interactInput = new PlayerInput().Player.Interact;
     }

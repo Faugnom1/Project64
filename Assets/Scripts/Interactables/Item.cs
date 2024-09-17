@@ -2,9 +2,8 @@ using UnityEngine;
 
 public enum ItemName
 {
-    GENERAL_KEY,
-    LAB_KEY,
-    UNDERGROUND_KEY
+    ROOM_KEY,
+    ARMORY_KEY
 }
 
 public class Item : Interactable

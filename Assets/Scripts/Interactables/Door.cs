@@ -15,6 +15,8 @@ public class Door : Interactable
     [Header("Key Requirements")]
     [SerializeField] private ItemName _keyName;
 
+    private bool _wasSlammed;
+
     private Animator _animator;
 
     protected override void Start()
@@ -44,9 +46,19 @@ public class Door : Interactable
         }
     }
 
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+        if (!_wasSlammed)
+        {
+            SlamDoor();
+        }
+    }
+
     public void SlamDoor()
     {
         _animator.SetTrigger("DoorSlam");
         _canInteract = false;
+        _wasSlammed = true;
     }
 }
