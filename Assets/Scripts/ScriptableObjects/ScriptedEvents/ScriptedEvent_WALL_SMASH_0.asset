@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cef0b1af6dca96449c9c34512536f3f, type: 3}
-  m_Name: ScriptedEvent_KEY_PICKUP_0
+  m_Name: ScriptedEvent_WALL_SMASH_0
   m_EditorClassIdentifier: 
   IsPlayerMovementDisabled: 1
   ShouldControlPlayerMovement: 0
@@ -18,10 +18,10 @@ MonoBehaviour:
   PlayerEnd: {x: 0, y: 0}
   PlayerSpeed: 0
   ShouldControlStalkerMovement: 1
-  StalkerStart: {x: -30.5, y: 17}
-  StalkerEnd: {x: -35.5, y: 17}
-  StalkerSpeed: 0.4
-  StalkerOnComplete: 1
+  StalkerStart: {x: -40, y: 12}
+  StalkerEnd: {x: -41.5, y: 12}
+  StalkerSpeed: 0.2
+  StalkerOnComplete: 0
   ShouldScreenShake: 1
   Event:
     m_PersistentCalls:

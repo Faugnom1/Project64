@@ -9,6 +9,10 @@ public class ScriptedEventManager : MonoBehaviour
 
     [SerializeField] private ScriptedEventSO[] _scriptedEvents;
 
+    // TODO: This implies no two events can be running at the same time
+    //       Add a check for this if needed
+    private ScriptedEventSO _currentEvent;
+
     private void OnEnable()
     {
         for (int i = 0; i < _scriptedEvents.Length; i++)
@@ -31,6 +35,7 @@ public class ScriptedEventManager : MonoBehaviour
 
     private void HandleScriptedEvent(ScriptedEventSO scriptedEvent)
     {
+        _currentEvent = scriptedEvent;
         if (scriptedEvent.IsPlayerMovementDisabled)
         {
             _player.TakeControl();
@@ -62,6 +67,13 @@ public class ScriptedEventManager : MonoBehaviour
     private void StalkerEventComplete()
     {
         _player.ReturnControl();
-        _stalker.ResetPosition();
+        if (_currentEvent.StalkerOnComplete == StalkerScriptedEventCompleteResponse.Chase)
+        {
+            _stalker.StartChase();
+        }
+        else if (_currentEvent.StalkerOnComplete == StalkerScriptedEventCompleteResponse.Reset)
+        {
+            _stalker.ResetPosition();
+        }
     }
 }

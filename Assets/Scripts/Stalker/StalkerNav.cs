@@ -9,10 +9,12 @@ public class StalkerNav : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField] private float _stoppingDistanceThreshold;
     [SerializeField] private UnityEvent _onDestinationReached;
+    [SerializeField] private float _chaseSpeed;
 
     private NavMeshAgent _agent;
 
     private bool _inScriptedEvent;
+    private bool _isChasing;
 
     private void Start()
     {
@@ -27,11 +29,30 @@ public class StalkerNav : MonoBehaviour
         {
             CheckDestinationReached();
         }
-        else
+        else if (_isChasing)
         {
-            Debug.Log("Stopped agent");
-            _agent.isStopped = true;
+            HandleChasing();
         }
+    }
+
+    private float _hopTimer;
+
+    private void HandleChasing()
+    {
+        if (_hopTimer >= 0)
+        {
+            _agent.speed = 3.85f;
+            _agent.SetDestination(_target.position);
+        }
+        else if (_hopTimer < 0)
+        {
+            _agent.speed = 1.35f;
+        }
+        if (_hopTimer < -.8f)
+        {
+            _hopTimer = .4f;
+        }
+        _hopTimer -= Time.deltaTime;
     }
 
     public void SetScriptedEventDestination(Vector2 position, float speed)
@@ -50,5 +71,17 @@ public class StalkerNav : MonoBehaviour
             _inScriptedEvent = false;
             _onDestinationReached.Invoke();
         }
+    }
+
+    public void ChasePlayer()
+    {
+        _isChasing = true;
+    }
+
+    public void SnapPosition(Vector2 position)
+    {
+        _agent.enabled = false;
+        transform.position = position;
+        _agent.enabled = true;
     }
 }
