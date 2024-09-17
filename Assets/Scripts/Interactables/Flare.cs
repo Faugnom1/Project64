@@ -55,7 +55,7 @@ public class Flare : Item
 
     public override void Consume()
     {
-        _animator.SetTrigger("FlareOpen");
         _canInteract = false;
+        _animator.SetTrigger("FlareOpen");
     }
 }

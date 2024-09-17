@@ -2,9 +2,9 @@
     "en": {
         "book_ending": "Goodbye World :(",
         "flare_pickup": "Picked up flare",
-        "key_pickup": "Picked up key",
-        "door_closed": "Key is required",
-        "door_opened": "Door opened",
+        "key_pickup": "Picked up {key}",
+        "door_closed": "{key} is required",
+        "door_opened": "{key} used",
         "max_item_capcity": "No more room"
     }
 }

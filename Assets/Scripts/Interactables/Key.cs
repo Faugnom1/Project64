@@ -22,7 +22,8 @@ public class Key : Item
             if (!_messageShown)
             {
                 _messageShown = true;
-                MessageManager.Instance.ShowMessage(TextManager.GetText(_itemTextKey), _messageType, _messageSpeed);
+                string message = ((string)TextManager.GetText(_itemTextKey)).Replace("{key}", ItemName.ToFormattedString());
+                MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
             }
 
             // Add to inventory and stop updates/render

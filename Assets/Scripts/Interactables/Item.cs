@@ -3,9 +3,9 @@ using UnityEngine;
 public enum ItemName
 {
     FLARE,
-    KEY_GENERAL,
-    KEY_LAB,
-    KEY_UNDERGROUND
+    GENERAL_KEY,
+    LAB_KEY,
+    UNDERGROUND_KEY
 }
 
 public class Item : Interactable

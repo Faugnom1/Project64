@@ -4,14 +4,19 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private List<Item> _inventory;
-    [SerializeField] private GameObject _flareUICounter;
 
     private PlayerInput _playerInput;
+    private GameObject _flareUICounter;
     private int _currentFlareCount;
 
     private void Awake()
     {
         _playerInput = new PlayerInput();
+    }
+
+    private void Start()
+    {
+        _flareUICounter = GameObject.Find("FlareCounter");
     }
 
     private void OnEnable()
@@ -42,9 +47,9 @@ public class PlayerInventory : MonoBehaviour
 
             if (flareCount < 3)
             {
-                _currentFlareCount = flareCount;
+                _currentFlareCount = flareCount + 1;
                 _inventory.Add(item);
-                _flareUICounter.transform.GetChild(flareCount).gameObject.SetActive(true);
+                UpdateFlareCounterUI(true);
             }
 
             return flareCount < 3;
@@ -106,18 +111,31 @@ public class PlayerInventory : MonoBehaviour
 
     public void UseItem(ItemName itemName)
     {
+        // Get item index
         int itemIndex = GetItemIndex(itemName);
 
+        // Drop item at player's position and consume
         Item item = _inventory[itemIndex];
         item.transform.position = new Vector2(transform.position.x, transform.position.y);
         item.gameObject.SetActive(true);
         item.Consume();
 
+        // Remove from inventory
         _inventory.RemoveAt(itemIndex);
 
+        // Item specific logic
         if (itemName == ItemName.FLARE)
         {
-            _flareUICounter.transform.GetChild(_currentFlareCount).gameObject.SetActive(false);
+            UpdateFlareCounterUI(false);
+            _currentFlareCount--;
+        }
+    }
+
+    private void UpdateFlareCounterUI(bool active)
+    {
+        if (_flareUICounter != null)
+        {
+            _flareUICounter.transform.GetChild(_currentFlareCount - 1).gameObject.SetActive(active);
         }
     }
 }
