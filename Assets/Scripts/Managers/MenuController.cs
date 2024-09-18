@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour
 
     public GameObject mainMenuPanel;
     public GameObject volumeSettingsPanel;
+    public GameObject pauseScreen;
 
     public AudioSource sfxSource;
     public AudioClip moveSound;
@@ -49,6 +50,11 @@ public class MenuController : MonoBehaviour
             SelectOption();
             PlaySelectSound();
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            AccessPauseScreen();
+        }
     }
 
     void UpdateMarkerPosition()
@@ -61,6 +67,14 @@ public class MenuController : MonoBehaviour
         {
             Debug.LogError("Menu options or marker not assigned correctly in the inspector.");
         }
+    }
+
+    void AccessPauseScreen()
+    {
+        Debug.Log("Accessing Pause Screen from Start Menu...");
+        pauseScreen.SetActive(true);
+        mainMenuPanel.SetActive(false);
+        Time.timeScale = 0f;
     }
 
     void SelectOption()
