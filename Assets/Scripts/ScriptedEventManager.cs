@@ -57,6 +57,10 @@ public class ScriptedEventManager : MonoBehaviour
         {
             _wallTiles.DestroyTiles(scriptedEvent.DestroyTiles, scriptedEvent.ShouldPlayParticleSystemOnDestroy);
         }
+        if (scriptedEvent.ShouldControlSirens)
+        {
+            ControlSirens(scriptedEvent);
+        }
     }
 
     private void ControlPlayerMovement(ScriptedEventSO scriptedEvent)
@@ -79,6 +83,16 @@ public class ScriptedEventManager : MonoBehaviour
         else if (_currentEvent.StalkerOnComplete == StalkerScriptedEventCompleteResponse.Reset)
         {
             _stalker.ResetPosition();
+        }
+    }
+
+    private void ControlSirens(ScriptedEventSO scriptedEvent)
+    {
+        for (int i = 0; i < scriptedEvent.AffectedSirens.Length; i++)
+        {
+            string sirenName = scriptedEvent.AffectedSirens[i];
+            Siren siren = GameObject.Find(sirenName).GetComponent<Siren>();
+            siren.ToggleSiren(scriptedEvent.SetSirensActive);
         }
     }
 }

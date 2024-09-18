@@ -42,6 +42,12 @@ public class ScriptedEventSO : ScriptableObject
     public bool ShouldPlayParticleSystemOnDestroy;
     public Vector3Int[] DestroyTiles;
 
+    [Space(20)]
+
+    public bool ShouldControlSirens;
+    public bool SetSirensActive;
+    public string[] AffectedSirens;
+
     [HideInInspector]
     public UnityEvent<ScriptedEventSO> Event;
 

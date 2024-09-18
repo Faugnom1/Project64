@@ -28,6 +28,13 @@ MonoBehaviour:
   DestroyTiles:
   - {x: -82, y: 24, z: 0}
   - {x: -82, y: 23, z: 0}
+  ShouldControlSirens: 1
+  SetSirensActive: 1
+  AffectedSirens:
+  - SirenRoomA
+  - SirenRoomB
+  - SirenLabA
+  - SirenLabB
   Event:
     m_PersistentCalls:
       m_Calls: []
