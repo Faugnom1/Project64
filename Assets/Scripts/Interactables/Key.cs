@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Key : Item
 {
@@ -8,6 +9,8 @@ public class Key : Item
     [Header("Audio Properties")]
     [SerializeField] private AudioClip _onInteractClip;
     [SerializeField] private float _onInteractClipVolume;
+
+    [SerializeField] private UnityEvent _onPickup;
 
     protected override void Update()
     {
@@ -28,6 +31,7 @@ public class Key : Item
             // Add to inventory and stop updates/render
             AddToPlayerInventory();
             gameObject.SetActive(false);
+            _onPickup.Invoke();
         }
     }
 }

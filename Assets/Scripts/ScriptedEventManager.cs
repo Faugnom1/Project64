@@ -6,6 +6,7 @@ public class ScriptedEventManager : MonoBehaviour
 {
     [SerializeField] private PlayerScriptable _player;
     [SerializeField] private StalkerScriptable _stalker;
+    [SerializeField] private WallsScriptable _wallTiles;
 
     [SerializeField] private ScriptedEventSO[] _scriptedEvents;
 
@@ -51,6 +52,10 @@ public class ScriptedEventManager : MonoBehaviour
         if (scriptedEvent.ShouldScreenShake)
         {
             _player.StartScreenShake();
+        }
+        if (scriptedEvent.ShouldDestroyTiles)
+        {
+            _wallTiles.DestroyTiles(scriptedEvent.DestroyTiles, scriptedEvent.ShouldPlayParticleSystemOnDestroy);
         }
     }
 

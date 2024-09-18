@@ -36,6 +36,12 @@ public class ScriptedEventSO : ScriptableObject
 
     public bool ShouldScreenShake;
 
+    [Space(20)]
+
+    public bool ShouldDestroyTiles;
+    public bool ShouldPlayParticleSystemOnDestroy;
+    public Vector3Int[] DestroyTiles;
+
     [HideInInspector]
     public UnityEvent<ScriptedEventSO> Event;
 

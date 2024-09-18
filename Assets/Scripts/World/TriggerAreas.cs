@@ -6,12 +6,14 @@ using UnityEngine.Events;
 public class TriggerAreas : MonoBehaviour
 {
     [SerializeField] private ScriptedEventSO _scriptedEvent;
+    [SerializeField] private bool _startEnabled;
 
     private BoxCollider2D _collider;
 
     private void Start()
     {
         _collider = GetComponent<BoxCollider2D>();
+        _collider.enabled = _startEnabled;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,5 +23,10 @@ public class TriggerAreas : MonoBehaviour
             _collider.enabled = false;
             _scriptedEvent.StartEvent();
         }
+    }
+
+    public void EnableTriggerArea()
+    {
+        _collider.enabled = true;
     }
 }

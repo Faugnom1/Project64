@@ -3,7 +3,8 @@ using UnityEngine;
 public enum ItemName
 {
     ROOM_KEY,
-    ARMORY_KEY
+    ARMORY_KEY,
+    LAB_KEY
 }
 
 public class Item : Interactable
