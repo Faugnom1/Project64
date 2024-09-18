@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public PlayerInteraction PlayerInteraction { get; private set; }
+    public PlayerInventory PlayerInventory { get; private set; }
 
     private void Awake()
     {
@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
 
-        PlayerInteraction = GameObject.Find("Player").GetComponent<PlayerInteraction>();
+    private void Start()
+    {
+        PlayerInventory = GameObject.Find("Player").GetComponent<PlayerInventory>();
     }
 }

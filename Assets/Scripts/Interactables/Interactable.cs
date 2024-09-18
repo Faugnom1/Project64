@@ -3,12 +3,15 @@ using UnityEngine.InputSystem;
 
 public class Interactable : MonoBehaviour
 {
+    [Header("Message Properties")]
     [SerializeField] protected MessageType _messageType;
     [SerializeField] protected float _messageSpeed;
+    [SerializeField] protected GameObject _interactBubble;
 
     protected InputAction _interactInput;
     protected bool _isPlayerNearby;
     protected bool _messageShown;
+    protected bool _canInteract;
 
     protected virtual void Awake()
     {
@@ -33,36 +36,40 @@ public class Interactable : MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (_canInteract && collision.collider.CompareTag("Player"))
         {
             _isPlayerNearby = true;
             _messageShown = false;
+            ToggleInteractBubble(true);
         }
     }
 
     protected virtual void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (_canInteract && collision.collider.CompareTag("Player"))
         {
             _isPlayerNearby = false;
+            ToggleInteractBubble(false);
             MessageManager.Instance.ShowMessageBox(false, _messageType);
         }
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player"))
+        if (_canInteract && collider.CompareTag("Player"))
         {
             _isPlayerNearby = true;
             _messageShown = false;
+            ToggleInteractBubble(true);
         }
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player"))
+        if (_canInteract && collider.CompareTag("Player"))
         {
             _isPlayerNearby = false;
+            ToggleInteractBubble(false);
             MessageManager.Instance.ShowMessageBox(false, _messageType);
         }
     }
@@ -75,5 +82,13 @@ public class Interactable : MonoBehaviour
     protected bool IsPlayerInteracting()
     {
         return _isPlayerNearby && _interactInput.WasPressedThisFrame();
+    }
+
+    protected void ToggleInteractBubble(bool value)
+    {
+        if (_interactBubble != null)
+        {
+            _interactBubble.SetActive(value);
+        }
     }
 }
