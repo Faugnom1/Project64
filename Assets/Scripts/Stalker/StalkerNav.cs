@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -9,12 +10,17 @@ public class StalkerNav : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField] private float _stoppingDistanceThreshold;
     [SerializeField] private UnityEvent _onDestinationReached;
-    [SerializeField] private float _chaseSpeed;
+
+    [SerializeField] private float _maxSpeedTime;
+    [SerializeField] private float _minSpeedTime;
+    [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _minSpeed;
 
     private NavMeshAgent _agent;
 
     private bool _inScriptedEvent;
     private bool _isChasing;
+    private float _speedTime;
 
     private void Start()
     {
@@ -22,7 +28,7 @@ public class StalkerNav : MonoBehaviour
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
     }
-    
+
     private void Update()
     {
         if (_inScriptedEvent)
@@ -35,24 +41,22 @@ public class StalkerNav : MonoBehaviour
         }
     }
 
-    private float _hopTimer;
-
     private void HandleChasing()
     {
-        if (_hopTimer >= 0)
+        if (_speedTime >= 0)
         {
-            _agent.speed = 3.85f;
+            _agent.speed = _maxSpeed;
             _agent.SetDestination(_target.position);
         }
-        else if (_hopTimer < 0)
+        else if (_speedTime < 0)
         {
-            _agent.speed = 1.35f;
+            _agent.speed = _minSpeed;
         }
-        if (_hopTimer < -.8f)
+        if (_speedTime < -_minSpeedTime)
         {
-            _hopTimer = .4f;
+            _speedTime = _maxSpeedTime;
         }
-        _hopTimer -= Time.deltaTime;
+        _speedTime -= Time.deltaTime;
     }
 
     public void SetScriptedEventDestination(Vector2 position, float speed)
