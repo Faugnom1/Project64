@@ -23,6 +23,11 @@ MonoBehaviour:
   StalkerSpeed: 0.2
   StalkerOnComplete: 0
   ShouldScreenShake: 1
+  ShouldDestroyTiles: 1
+  ShouldPlayParticleSystemOnDestroy: 1
+  DestroyTiles:
+  - {x: -82, y: 24, z: 0}
+  - {x: -82, y: 23, z: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []

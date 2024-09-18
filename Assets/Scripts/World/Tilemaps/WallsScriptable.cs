@@ -8,6 +8,7 @@ using UnityEngine.Tilemaps;
 public class WallsScriptable : MonoBehaviour
 {
     [SerializeField] private NavMeshSurface _navMesh;
+    [SerializeField] private ParticleSystem _tileDestroyParticles;
 
     private Tilemap _tilemap;
 
@@ -21,11 +22,18 @@ public class WallsScriptable : MonoBehaviour
         for (int i = 0; i < tiles.Length; i++)
         {
             _tilemap.SetTile(tiles[i], null);
-            // Start particles
+            if (playParticles)
+            {
+                CreateParticlesAtPosition(tiles[i]);
+            }
         }
-
-
         StartCoroutine(RebakeNavMesh());
+    }
+
+    private void CreateParticlesAtPosition(Vector3Int tile)
+    {
+        Vector2 centerWorld = _tilemap.GetCellCenterWorld(tile);
+        Instantiate(_tileDestroyParticles, centerWorld, Quaternion.identity);
     }
 
     private IEnumerator RebakeNavMesh()
