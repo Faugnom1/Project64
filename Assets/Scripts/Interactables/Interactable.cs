@@ -22,7 +22,12 @@ public class Interactable : MonoBehaviour
 
     protected virtual void Start()
     {
-
+        if (_interactBubble != null)
+        {
+            // Set interact bubble back to original size
+            Vector3 parentScale = transform.localScale;
+            _interactBubble.transform.localScale = new Vector3(1 / parentScale.x, 1 / parentScale.y, 1 / parentScale.z);
+        }
     }
 
     protected virtual void OnEnable()
@@ -77,12 +82,15 @@ public class Interactable : MonoBehaviour
 
     protected virtual void Update()
     {
-
+        if (!_canInteract && _interactBubble.activeSelf)
+        {
+            _interactBubble.SetActive(false);
+        }
     }
 
     protected bool IsPlayerInteracting()
     {
-        return _isPlayerNearby && _interactInput.WasPressedThisFrame();
+        return _canInteract && _isPlayerNearby && _interactInput.WasPressedThisFrame();
     }
 
     protected void ToggleInteractBubble(bool value)

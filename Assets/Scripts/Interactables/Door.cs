@@ -22,7 +22,6 @@ public class Door : Interactable
     protected override void Start()
     {
         base.Start();
-
         _animator = GetComponent<Animator>();
     }
 
@@ -30,19 +29,23 @@ public class Door : Interactable
     {
         base.Update();
 
-        if (_canInteract && IsPlayerInteracting() && !_messageShown && !GameManager.Instance.PlayerInventory.HasKey(_keyName))
+        if (IsPlayerInteracting() && !_messageShown && !GameManager.Instance.PlayerInventory.HasItem(_keyName))
         {
+            string message = ((string)TextManager.GetText(_doorLockedTextKey)).Replace("{key}", _keyName.ToFormattedString());
+
             _messageShown = true;
             SoundEffectsManager.Instance.PlaySoundEffect(_onDoorLockedClip, transform, _onDoorLockedVolume);
-            MessageManager.Instance.ShowMessage(TextManager.GetText(_doorLockedTextKey), _messageType, _messageSpeed);
+            MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
         }
 
-        if (_canInteract && IsPlayerInteracting() && GameManager.Instance.PlayerInventory.ConsumeKey(_keyName))
+        if (IsPlayerInteracting() && GameManager.Instance.PlayerInventory.TryConsumeKey(_keyName))
         {
+            string message = ((string)TextManager.GetText(_doorOpenedTextKey)).Replace("{key}", _keyName.ToFormattedString());
+
             _canInteract = false;
             _animator.SetTrigger("DoorOpen");
             SoundEffectsManager.Instance.PlaySoundEffect(_onDoorOpenedClip, transform, _onDoorOpenedVolume);
-            MessageManager.Instance.ShowMessage(TextManager.GetText(_doorOpenedTextKey), _messageType, _messageSpeed);
+            MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
         }
     }
 

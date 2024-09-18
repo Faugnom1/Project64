@@ -21,6 +21,7 @@ public class MessageManager : MonoBehaviour
     private GameObject _nextArrow;
     private PlayerInput _playerInput;
     private MessageType _messageType;
+    private Coroutine _currentCoroutine;
     private int _currentPage;
     private int _pageCount;
 
@@ -93,29 +94,17 @@ public class MessageManager : MonoBehaviour
 
     public void ShowMessageBox(bool active, MessageType type = MessageType.LARGE)
     {
-        if (type == MessageType.LARGE)
+        if (this != null)
         {
-            _largeMessageBox.SetActive(active);
-        }
-        else if (type == MessageType.SMALL)
-        {
-            StartCoroutine(ToggleSmallMessageBox(active));
-        }
-    }
+            // Reset page
+            _currentPage = 0;
 
-    private IEnumerator ToggleSmallMessageBox(bool active)
-    {
-        if (active)
-        {
-            yield return new WaitForSeconds(0);
+            // Show correct message box
+            if (type == MessageType.LARGE)
+            {
+                _largeMessageBox.SetActive(active);
+            }
         }
-        else
-        {
-            yield return new WaitForSeconds(2f);
-
-        }
-
-        _smallMessageBox.SetActive(active);
     }
 
     public void ShowMessage(object message, MessageType type, float speed = 0.05f)
@@ -147,8 +136,14 @@ public class MessageManager : MonoBehaviour
         }
         else
         {
+            if (_currentCoroutine != null)
+            {
+                StopCoroutine(_currentCoroutine);
+                _currentCoroutine = null;
+            }
+
             _smallMessageBox.SetActive(true);
-            StartCoroutine(TypeText(fullMessage, _smallTextMesh, speed));
+            _currentCoroutine = StartCoroutine(TypeText(fullMessage, _smallTextMesh, speed));
         }
     }
 
@@ -159,6 +154,12 @@ public class MessageManager : MonoBehaviour
             textMesh.SetText(message[..(i + 1)]);
             _pageCount = textMesh.textInfo.pageCount;
             yield return new WaitForSeconds(speed);
+        }
+
+        if (_messageType == MessageType.SMALL)
+        {
+            yield return new WaitForSeconds(2f);
+            _smallMessageBox.SetActive(false);
         }
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e31ad0a71c20b7741835fec7af572c46
+guid: 63f59e708623889439be51edbe3f57f0
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 16
+    spritePixelsToUnits: 8
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -71,7 +71,7 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 0
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -84,7 +84,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
-    fileImportMode: 0
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638618614888522162
+  platformSettingsDirtyTick: 638622102973426400
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Book1
+  - name: Siren_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -0.16666667}
+    pivot: {x: 0.5, y: -0.25}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 10
-      height: 12
-    spriteID: 96a9b36e41761634a9169a0e2a803dd4
+      width: 4
+      height: 4
+    spriteID: e4edcb7cb54abf343ad8c498b8352c94
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,19 +141,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  spriteSheetImportData:
-  - name: Book1_0
+  - name: Siren_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: -0.25}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 10
-      height: 12
-    spriteID: ff3eeefc21f8235478a2341793a8d01b
+      y: 16
+      width: 4
+      height: 4
+    spriteID: 0bdacd96ef770d44bb38922df05a2149
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -161,24 +160,34 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
+    uvTransform: {x: 4, y: 16}
+  spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1876221766
-    name: Book1
+    guid: -289982997
+    name: Siren
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Book1
+    - name: Siren_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 3
-        y: 2
-        width: 10
-        height: 12
-      spriteId: 96a9b36e41761634a9169a0e2a803dd4
+        x: 2
+        y: 1
+        width: 4
+        height: 4
+      spriteId: e4edcb7cb54abf343ad8c498b8352c94
+    - name: Siren_Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 2
+        y: 1
+        width: 4
+        height: 4
+      spriteId: 0bdacd96ef770d44bb38922df05a2149
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -221,4 +230,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 16}
+  canvasSize: {x: 8, y: 8}

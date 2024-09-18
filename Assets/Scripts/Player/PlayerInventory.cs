@@ -5,16 +5,83 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private List<Item> _inventory;
 
-    public void AddToInventory(Item item)
+    private PlayerInput _playerInput;
+    private GameObject _flareUICounter;
+    private int _currentFlareCount;
+
+    private void Awake()
     {
-        _inventory.Add(item);
+        _playerInput = new PlayerInput();
     }
 
-    private int GetKeyIndex(ItemName keyName)
+    private void Start()
+    {
+        _flareUICounter = GameObject.Find("FlareCounter");
+    }
+
+    private void OnEnable()
+    {
+        _playerInput.Player.Use.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _playerInput.Player.Use.Disable();
+    }
+
+    private void Update()
+    {
+        bool wasUsePressed = _playerInput.Player.Use.WasPressedThisFrame();
+
+        if (wasUsePressed && _currentFlareCount > 0)
+        {
+            UseItem(ItemName.FLARE);
+        }
+    }
+
+    public bool AddToInventory(Item item)
+    {
+        if (item.ItemName == ItemName.FLARE)
+        {
+            int flareCount = GetItemCount(ItemName.FLARE);
+
+            if (flareCount < 3)
+            {
+                _currentFlareCount = flareCount + 1;
+                _inventory.Add(item);
+                UpdateFlareCounterUI(true);
+            }
+
+            return flareCount < 3;
+        }
+        else
+        {
+            _inventory.Add(item);
+        }
+
+        return true;
+    }
+
+    private int GetItemCount(ItemName itemName)
+    {
+        int count = 0;
+
+        for (int i = 0; i < _inventory.Count; i++)
+        {
+            if (_inventory[i].ItemName == itemName)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private int GetItemIndex(ItemName itemName)
     {
         for (int i = 0; i < _inventory.Count; i++)
         {
-            if (_inventory[i].ItemName == keyName)
+            if (_inventory[i].ItemName == itemName)
             {
                 return i;
             }
@@ -23,14 +90,14 @@ public class PlayerInventory : MonoBehaviour
         return -1;
     }
 
-    public bool HasKey(ItemName keyName)
+    public bool HasItem(ItemName itemName)
     {
-        return GetKeyIndex(keyName) != -1;
+        return GetItemIndex(itemName) != -1;
     }
 
-    public bool ConsumeKey(ItemName keyName)
+    public bool TryConsumeKey(ItemName keyName)
     {
-        int keyIndex = GetKeyIndex(keyName);
+        int keyIndex = GetItemIndex(keyName);
 
         if (keyIndex != -1)
         {
@@ -40,5 +107,35 @@ public class PlayerInventory : MonoBehaviour
 
         // No key was found
         return false;
+    }
+
+    public void UseItem(ItemName itemName)
+    {
+        // Get item index
+        int itemIndex = GetItemIndex(itemName);
+
+        // Drop item at player's position and consume
+        Item item = _inventory[itemIndex];
+        item.transform.position = new Vector2(transform.position.x, transform.position.y);
+        item.gameObject.SetActive(true);
+        item.Consume();
+
+        // Remove from inventory
+        _inventory.RemoveAt(itemIndex);
+
+        // Item specific logic
+        if (itemName == ItemName.FLARE)
+        {
+            UpdateFlareCounterUI(false);
+            _currentFlareCount--;
+        }
+    }
+
+    private void UpdateFlareCounterUI(bool active)
+    {
+        if (_flareUICounter != null)
+        {
+            _flareUICounter.transform.GetChild(_currentFlareCount - 1).gameObject.SetActive(active);
+        }
     }
 }
