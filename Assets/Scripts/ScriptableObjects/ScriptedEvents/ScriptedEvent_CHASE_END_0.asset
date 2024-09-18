@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cef0b1af6dca96449c9c34512536f3f, type: 3}
-  m_Name: ScriptedEvent_KEY_PICKUP_0
+  m_Name: ScriptedEvent_CHASE_END_0
   m_EditorClassIdentifier: 
-  IsPlayerMovementDisabled: 1
+  IsPlayerMovementDisabled: 0
   ShouldControlPlayerMovement: 0
   PlayerStart: {x: 0, y: 0}
   PlayerEnd: {x: 0, y: 0}
   PlayerSpeed: 0
   ShouldControlStalkerMovement: 1
-  StalkerStart: {x: -32, y: 17}
-  StalkerEnd: {x: -35.5, y: 17}
-  StalkerSpeed: 0.4
+  StalkerStart: {x: -32.2, y: 17}
+  StalkerEnd: {x: -33.7, y: 17}
+  StalkerSpeed: 0.2
   StalkerOnComplete: 1
-  ShouldScreenShake: 1
+  ShouldScreenShake: 0
   ShouldDestroyTiles: 0
   ShouldPlayParticleSystemOnDestroy: 0
   DestroyTiles: []

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Door : Interactable
 {
@@ -14,6 +15,8 @@ public class Door : Interactable
 
     [Header("Key Requirements")]
     [SerializeField] private ItemName _keyName;
+
+    [SerializeField] private UnityEvent _onDoorSlammed;
 
     private bool _wasSlammed;
 
@@ -55,6 +58,10 @@ public class Door : Interactable
         if (!_wasSlammed)
         {
             SlamDoor();
+            if (_onDoorSlammed != null)
+            {
+                _onDoorSlammed.Invoke();
+            }
         }
     }
 

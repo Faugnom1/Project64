@@ -48,6 +48,11 @@ public class ScriptedEventSO : ScriptableObject
     public bool SetSirensActive;
     public string[] AffectedSirens;
 
+    [Space(20)]
+
+    public bool HasDelayOnComplete;
+    public float DelayTime;
+
     [HideInInspector]
     public UnityEvent<ScriptedEventSO> Event;
 

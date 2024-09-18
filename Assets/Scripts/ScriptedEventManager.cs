@@ -75,6 +75,24 @@ public class ScriptedEventManager : MonoBehaviour
 
     private void StalkerEventComplete()
     {
+        if (_currentEvent.HasDelayOnComplete)
+        {
+            StartCoroutine(DelayComplete(_currentEvent));
+        }
+        else
+        {
+            CompleteEvent(_currentEvent);
+        }
+    }
+
+    private IEnumerator DelayComplete(ScriptedEventSO scriptedEvent)
+    {
+        yield return new WaitForSeconds(scriptedEvent.DelayTime);
+        CompleteEvent(scriptedEvent);
+    }
+
+    private void CompleteEvent(ScriptedEventSO scriptedEvent)
+    {
         _player.ReturnControl();
         if (_currentEvent.StalkerOnComplete == StalkerScriptedEventCompleteResponse.Chase)
         {

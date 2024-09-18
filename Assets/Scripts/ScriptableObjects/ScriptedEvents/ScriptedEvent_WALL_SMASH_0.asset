@@ -35,6 +35,8 @@ MonoBehaviour:
   - SirenRoomB
   - SirenLabA
   - SirenLabB
+  HasDelayOnComplete: 1
+  DelayTime: 1.5
   Event:
     m_PersistentCalls:
       m_Calls: []

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - TriggerArea
+  - Stalker
   layers:
   - Default
   - TransparentFX

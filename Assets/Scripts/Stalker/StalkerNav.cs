@@ -82,6 +82,11 @@ public class StalkerNav : MonoBehaviour
         _isChasing = true;
     }
 
+    public void StopChase()
+    {
+        _isChasing = false;
+    }
+
     public void SnapPosition(Vector2 position)
     {
         _agent.enabled = false;

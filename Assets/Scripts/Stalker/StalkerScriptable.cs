@@ -38,6 +38,7 @@ public class StalkerScriptable : MonoBehaviour
 
     public void SetPath(Vector2 start, Vector2 end, float speed)
     {
+        Debug.Log("Doing it");
         _navComponent.SnapPosition(start);
         _navComponent.SetScriptedEventDestination(end, speed);
     }
@@ -55,5 +56,6 @@ public class StalkerScriptable : MonoBehaviour
     public void ResetPosition()
     {
         _navComponent.SnapPosition(_resetPosition.position);
+        _navComponent.StopChase();
     }
 }
