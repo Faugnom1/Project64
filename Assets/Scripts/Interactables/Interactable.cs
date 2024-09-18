@@ -22,7 +22,12 @@ public class Interactable : MonoBehaviour
 
     protected virtual void Start()
     {
-
+        if (_interactBubble != null)
+        {
+            // Set interact bubble back to original size
+            Vector3 parentScale = transform.localScale;
+            _interactBubble.transform.localScale = new Vector3(1 / parentScale.x, 1 / parentScale.y, 1 / parentScale.z);
+        }
     }
 
     protected virtual void OnEnable()

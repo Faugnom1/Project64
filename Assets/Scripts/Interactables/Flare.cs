@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Flare : Item
@@ -8,6 +9,9 @@ public class Flare : Item
     [Header("Audio Properties")]
     [SerializeField] private AudioClip _onInteractClip;
     [SerializeField] private float _onInteractClipVolume;
+
+    [Header("Flare Stats")]
+    [SerializeField] private float _lifetime;
 
     private Animator _animator;
 
@@ -56,6 +60,16 @@ public class Flare : Item
     public override void Consume()
     {
         _canInteract = false;
+        StartCoroutine(FlareOpen());
+    }
+
+    public IEnumerator FlareOpen()
+    {
         _animator.SetTrigger("FlareOpen");
+        MessageManager.Instance.ShowMessage(TextManager.GetText("flare_drop"), _messageType, _messageSpeed);
+
+        yield return new WaitForSeconds(_lifetime);
+
+        Destroy(gameObject);
     }
 }

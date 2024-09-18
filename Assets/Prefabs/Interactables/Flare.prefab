@@ -56,6 +56,7 @@ MonoBehaviour:
   _itemTextKey: flare_pickup
   _onInteractClip: {fileID: 0}
   _onInteractClipVolume: 1
+  _lifetime: 5
 --- !u!95 &7691138821261910550
 Animator:
   serializedVersion: 5
@@ -241,11 +242,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3533122377019842563, guid: d26c9620e61647947929c710b1a190ea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.85
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 3533122377019842563, guid: d26c9620e61647947929c710b1a190ea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.74
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 3533122377019842563, guid: d26c9620e61647947929c710b1a190ea, type: 3}
       propertyPath: m_LocalPosition.z
