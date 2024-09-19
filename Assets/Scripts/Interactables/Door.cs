@@ -2,6 +2,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
+public interface DoorTrigger
+{
+    void HandleTrigger();
+}
+
 public class Door : Interactable
 {
     [Header("Message Properties")]
@@ -19,19 +24,18 @@ public class Door : Interactable
     [SerializeField] private bool _eventControlled;
     [SerializeField] private bool _noKeyRequired;
 
-    [SerializeField] private UnityEvent _onDoorSlammed;
     [SerializeField] private UnityEvent _onDoorOpened;
-
-    private bool _wasSlammed;
 
     private Animator _animator;
     private NavMeshObstacle _navObstacle;
+    private DoorTrigger _doorTrigger;
 
     protected override void Start()
     {
         base.Start();
         _animator = GetComponent<Animator>();
         _navObstacle = GetComponent<NavMeshObstacle>();
+        _doorTrigger = GetComponent<DoorTrigger>();
 
         if (_eventControlled)
         {
@@ -75,14 +79,9 @@ public class Door : Interactable
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
-        if (!_wasSlammed)
+        if (_doorTrigger != null)
         {
-            SlamDoor();
-            if (_onDoorSlammed != null)
-            {
-                _onDoorSlammed.Invoke();
-            }
+            _doorTrigger.HandleTrigger();
         }
     }
 
@@ -100,6 +99,5 @@ public class Door : Interactable
         _animator.SetTrigger("DoorSlam");
         _navObstacle.enabled = true;
         _canInteract = false;
-        _wasSlammed = true;
     }
 }

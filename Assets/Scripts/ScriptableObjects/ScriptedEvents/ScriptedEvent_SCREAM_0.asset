@@ -21,8 +21,8 @@ MonoBehaviour:
   StalkerStart: {x: 0, y: 0}
   StalkerEnd: {x: 0, y: 0}
   StalkerSpeed: 0
-  StalkerOnComplete: 2
-  StalkerHoldPosition: {x: -31, y: 28.5}
+  StalkerOnComplete: 1
+  StalkerHoldPosition: {x: 0, y: 0}
   ShouldScreenShake: 1
   ShouldDestroyTiles: 0
   ShouldPlayParticleSystemOnDestroy: 0

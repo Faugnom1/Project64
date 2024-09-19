@@ -20,7 +20,7 @@ MonoBehaviour:
   ShouldControlStalkerMovement: 1
   StalkerStart: {x: -26, y: 27}
   StalkerEnd: {x: -26, y: 28.5}
-  StalkerSpeed: 2
+  StalkerSpeed: 20
   StalkerOnComplete: 0
   StalkerHoldPosition: {x: 0, y: 0}
   ShouldScreenShake: 1
@@ -28,12 +28,12 @@ MonoBehaviour:
   ShouldPlayParticleSystemOnDestroy: 1
   DestroyTiles:
   - {x: -52, y: 55, z: 0}
-  - {x: -51, y: 55, z: 0}
+  - {x: -53, y: 55, z: 0}
   ShouldControlSirens: 0
   SetSirensActive: 0
   AffectedSirens: []
   HasDelayOnComplete: 1
-  DelayTime: 0.5
+  DelayTime: 1.5
   ShouldControlDoors: 0
   SetDoorsOpen: 0
   AffectedDoors: []
