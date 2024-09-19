@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public enum StalkerScriptedEventCompleteResponse
 {
     Chase,
-    Reset
+    Reset,
+    Hold
 }
 
 [CreateAssetMenu(fileName = "NewScriptedEventSO", menuName = "ScriptableObjects/ScriptedEventSO")]
@@ -31,6 +32,7 @@ public class ScriptedEventSO : ScriptableObject
     [Space(20)]
 
     public StalkerScriptedEventCompleteResponse StalkerOnComplete;
+    public Vector2 StalkerHoldPosition;
 
     [Space(20)]
 

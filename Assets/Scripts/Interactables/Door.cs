@@ -16,8 +16,10 @@ public class Door : Interactable
     [Header("Key Requirements")]
     [SerializeField] private ItemName _keyName;
     [SerializeField] private bool _eventControlled;
+    [SerializeField] private bool _noKeyRequired;
 
     [SerializeField] private UnityEvent _onDoorSlammed;
+    [SerializeField] private UnityEvent _onDoorOpened;
 
     private bool _wasSlammed;
 
@@ -27,6 +29,11 @@ public class Door : Interactable
     {
         base.Start();
         _animator = GetComponent<Animator>();
+
+        if (_eventControlled)
+        {
+            _canInteract = false;
+        }
     }
 
     protected override void Update()
@@ -37,21 +44,27 @@ public class Door : Interactable
         {
             if (IsPlayerInteracting() && !_messageShown && !GameManager.Instance.PlayerInventory.HasItem(_keyName))
             {
-                string message = ((string)TextManager.GetText(_doorLockedTextKey)).Replace("{key}", _keyName.ToFormattedString());
-
-                _messageShown = true;
+                if (!_noKeyRequired)
+                {
+                    string message = ((string)TextManager.GetText(_doorLockedTextKey)).Replace("{key}", _keyName.ToFormattedString());
+                    MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
+                    _messageShown = true;
+                }
                 SoundEffectsManager.Instance.PlaySoundEffect(_onDoorLockedClip, transform, _onDoorLockedVolume);
-                MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
+
             }
 
-            if (IsPlayerInteracting() && GameManager.Instance.PlayerInventory.TryConsumeKey(_keyName))
+            if (IsPlayerInteracting() && GameManager.Instance.PlayerInventory.TryConsumeKey(_keyName) || IsPlayerInteracting() && _noKeyRequired)
             {
-                string message = ((string)TextManager.GetText(_doorOpenedTextKey)).Replace("{key}", _keyName.ToFormattedString());
-
+                if (!_noKeyRequired)
+                {
+                    string message = ((string)TextManager.GetText(_doorOpenedTextKey)).Replace("{key}", _keyName.ToFormattedString());
+                    MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
+                }
                 _canInteract = false;
                 _animator.SetTrigger("DoorOpen");
                 SoundEffectsManager.Instance.PlaySoundEffect(_onDoorOpenedClip, transform, _onDoorOpenedVolume);
-                MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
+                _onDoorOpened.Invoke();
             }
         }
     }
@@ -74,6 +87,7 @@ public class Door : Interactable
         _canInteract = false;
         _animator.SetTrigger("DoorOpen");
         SoundEffectsManager.Instance.PlaySoundEffect(_onDoorOpenedClip, transform, _onDoorOpenedVolume);
+        _onDoorOpened.Invoke();
     }
 
     public void SlamDoor()

@@ -63,18 +63,20 @@ public class StalkerNav : MonoBehaviour
     {
         _agent.isStopped = false;
         _inScriptedEvent = true;
-        _agent.SetDestination(position);
+        _agent.SetDestination(new Vector3(position.x, position.y, 0));
         _agent.speed = speed;
     }
 
     public void CheckDestinationReached()
     {
+        Debug.Log("Destination reached?");
         // Check if the agent has a valid path and its remaining distance is less than the threshold
         if (!_agent.pathPending && _agent.remainingDistance <= _stoppingDistanceThreshold && !_agent.hasPath)
         {
             _inScriptedEvent = false;
             _onDestinationReached.Invoke();
         }
+        Debug.Log(_agent.destination);
     }
 
     public void ChasePlayer()
@@ -90,7 +92,7 @@ public class StalkerNav : MonoBehaviour
     public void SnapPosition(Vector2 position)
     {
         _agent.enabled = false;
-        transform.position = position;
+        transform.position = new Vector3(position.x, position.y, 0);
         _agent.enabled = true;
     }
 }

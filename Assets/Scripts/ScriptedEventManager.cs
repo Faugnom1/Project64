@@ -65,6 +65,10 @@ public class ScriptedEventManager : MonoBehaviour
         {
             ControlDoors(scriptedEvent);
         }
+        if (!scriptedEvent.ShouldControlStalkerMovement)
+        {
+            StalkerEventComplete();
+        }
     }
 
     private void ControlPlayerMovement(ScriptedEventSO scriptedEvent)
@@ -105,6 +109,10 @@ public class ScriptedEventManager : MonoBehaviour
         else if (_currentEvent.StalkerOnComplete == StalkerScriptedEventCompleteResponse.Reset)
         {
             _stalker.ResetPosition();
+        }
+        else if (_currentEvent.StalkerOnComplete == StalkerScriptedEventCompleteResponse.Hold)
+        {
+            _stalker.HoldPosition(scriptedEvent.StalkerHoldPosition);
         }
         if (scriptedEvent.LinkedEvent != null)
         {

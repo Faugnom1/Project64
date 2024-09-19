@@ -5,7 +5,8 @@ public enum ItemName
     FLARE,
     ROOM_KEY,
     ARMORY_KEY,
-    LAB_KEY
+    LAB_KEY,
+    EXIT_KEY
 }
 
 public class Item : Interactable
