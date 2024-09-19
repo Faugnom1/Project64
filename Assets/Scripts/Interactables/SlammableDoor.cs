@@ -16,7 +16,7 @@ public class SlammableDoor : MonoBehaviour, DoorTrigger
         _door = GetComponent<Door>();
     }
 
-    public void HandleTrigger()
+    public void HandleTriggerEnter()
     {
         if (!_wasDoorSlammed)
         {
@@ -26,5 +26,10 @@ public class SlammableDoor : MonoBehaviour, DoorTrigger
                 _onDoorSlammed.Invoke();
             }
         }
+    }
+
+    public void HandleTriggerExit()
+    {
+
     }
 }

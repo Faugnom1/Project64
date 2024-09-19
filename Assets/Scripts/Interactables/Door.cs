@@ -4,7 +4,8 @@ using UnityEngine.Events;
 
 public interface DoorTrigger
 {
-    void HandleTrigger();
+    void HandleTriggerEnter();
+    void HandleTriggerExit();
 }
 
 public class Door : Interactable
@@ -81,8 +82,21 @@ public class Door : Interactable
     {
         if (_doorTrigger != null)
         {
-            _doorTrigger.HandleTrigger();
+            _doorTrigger.HandleTriggerEnter();
         }
+    }
+
+    protected override void OnTriggerExit2D(Collider2D collision)
+    {
+        if (_doorTrigger != null)
+        {
+            _doorTrigger.HandleTriggerExit();
+        }
+    }
+
+    public void SetInteractable(bool interactable)
+    {
+        _canInteract = interactable;
     }
 
     public void OpenDoor()
