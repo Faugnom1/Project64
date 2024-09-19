@@ -63,13 +63,13 @@ public class StalkerNav : MonoBehaviour
     {
         _agent.isStopped = false;
         _inScriptedEvent = true;
-        _agent.SetDestination(new Vector3(position.x, position.y, 0));
         _agent.speed = speed;
+        _agent.SetDestination(new Vector3(position.x, position.y, 0));
     }
 
     public void CheckDestinationReached()
     {
-        Debug.Log("Destination reached?");
+        Debug.Log(_agent.speed);
         // Check if the agent has a valid path and its remaining distance is less than the threshold
         if (!_agent.pathPending && _agent.remainingDistance <= _stoppingDistanceThreshold && !_agent.hasPath)
         {

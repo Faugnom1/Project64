@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Door : Interactable
@@ -24,11 +25,13 @@ public class Door : Interactable
     private bool _wasSlammed;
 
     private Animator _animator;
+    private NavMeshObstacle _navObstacle;
 
     protected override void Start()
     {
         base.Start();
         _animator = GetComponent<Animator>();
+        _navObstacle = GetComponent<NavMeshObstacle>();
 
         if (_eventControlled)
         {
@@ -65,6 +68,7 @@ public class Door : Interactable
                 _animator.SetTrigger("DoorOpen");
                 SoundEffectsManager.Instance.PlaySoundEffect(_onDoorOpenedClip, transform, _onDoorOpenedVolume);
                 _onDoorOpened.Invoke();
+                _navObstacle.enabled = false;
             }
         }
     }
@@ -87,12 +91,14 @@ public class Door : Interactable
         _canInteract = false;
         _animator.SetTrigger("DoorOpen");
         SoundEffectsManager.Instance.PlaySoundEffect(_onDoorOpenedClip, transform, _onDoorOpenedVolume);
+        _navObstacle.enabled = false;
         _onDoorOpened.Invoke();
     }
 
     public void SlamDoor()
     {
         _animator.SetTrigger("DoorSlam");
+        _navObstacle.enabled = true;
         _canInteract = false;
         _wasSlammed = true;
     }
