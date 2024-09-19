@@ -53,6 +53,16 @@ public class ScriptedEventSO : ScriptableObject
     public bool HasDelayOnComplete;
     public float DelayTime;
 
+    [Space(20)]
+
+    public bool ShouldControlDoors;
+    public bool SetDoorsOpen;
+    public string[] AffectedDoors;
+
+    [Space(20)]
+
+    public ScriptedEventSO LinkedEvent;
+
     [HideInInspector]
     public UnityEvent<ScriptedEventSO> Event;
 

@@ -61,6 +61,10 @@ public class ScriptedEventManager : MonoBehaviour
         {
             ControlSirens(scriptedEvent);
         }
+        if (scriptedEvent.ShouldControlDoors)
+        {
+            ControlDoors(scriptedEvent);
+        }
     }
 
     private void ControlPlayerMovement(ScriptedEventSO scriptedEvent)
@@ -102,6 +106,10 @@ public class ScriptedEventManager : MonoBehaviour
         {
             _stalker.ResetPosition();
         }
+        if (scriptedEvent.LinkedEvent != null)
+        {
+            HandleLinkedEvent(scriptedEvent);
+        }
     }
 
     private void ControlSirens(ScriptedEventSO scriptedEvent)
@@ -112,5 +120,24 @@ public class ScriptedEventManager : MonoBehaviour
             Siren siren = GameObject.Find(sirenName).GetComponent<Siren>();
             siren.ToggleSiren(scriptedEvent.SetSirensActive);
         }
+    }
+
+    private void ControlDoors(ScriptedEventSO scriptedEvent)
+    {
+        for (int i = 0; i < scriptedEvent.AffectedDoors.Length; i++)
+        {
+            string doorName = scriptedEvent.AffectedDoors[i];
+            Door door = GameObject.Find(doorName).GetComponent<Door>();
+            if (door != null && scriptedEvent.SetDoorsOpen)
+            {
+                door.OpenDoor();
+            }
+        }
+    }
+
+    private void HandleLinkedEvent(ScriptedEventSO scriptedEvent)
+    {
+        _currentEvent = null;
+        scriptedEvent.LinkedEvent.Event.Invoke(scriptedEvent.LinkedEvent);
     }
 }

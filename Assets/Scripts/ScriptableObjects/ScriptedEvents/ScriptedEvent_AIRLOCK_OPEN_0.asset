@@ -10,31 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cef0b1af6dca96449c9c34512536f3f, type: 3}
-  m_Name: ScriptedEvent_CHASE_END_0
+  m_Name: ScriptedEvent_AIRLOCK_OPEN_0
   m_EditorClassIdentifier: 
   IsPlayerMovementDisabled: 0
   ShouldControlPlayerMovement: 0
   PlayerStart: {x: 0, y: 0}
   PlayerEnd: {x: 0, y: 0}
   PlayerSpeed: 0
-  ShouldControlStalkerMovement: 1
-  StalkerStart: {x: -32.2, y: 17}
-  StalkerEnd: {x: -33.7, y: 17}
-  StalkerSpeed: 0.2
-  StalkerOnComplete: 1
+  ShouldControlStalkerMovement: 0
+  StalkerStart: {x: 0, y: 0}
+  StalkerEnd: {x: 0, y: 0}
+  StalkerSpeed: 0
+  StalkerOnComplete: 0
   ShouldScreenShake: 0
   ShouldDestroyTiles: 0
   ShouldPlayParticleSystemOnDestroy: 0
   DestroyTiles: []
-  ShouldControlSirens: 0
+  ShouldControlSirens: 1
   SetSirensActive: 0
-  AffectedSirens: []
+  AffectedSirens:
+  - SirenRoomA
+  - SirenRoomB
+  - SirenLabA
+  - SirenLabB
   HasDelayOnComplete: 0
   DelayTime: 0
-  ShouldControlDoors: 0
-  SetDoorsOpen: 0
-  AffectedDoors: []
-  LinkedEvent: {fileID: 11400000, guid: 754e2e1349423234995201c692ce3e73, type: 2}
+  ShouldControlDoors: 1
+  SetDoorsOpen: 1
+  AffectedDoors:
+  - Door_AIRLOCK_DOOR
+  LinkedEvent: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
