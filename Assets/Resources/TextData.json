@@ -1,7 +1,7 @@
 {
     "en": {
         "book_ending": "Goodbye World :(",
-        "book_reward": "[Found {item}]",
+        "reward_item": "[Found {item}]",
         "flare_pickup": "Picked up flare",
         "flare_drop": "Dropped flare",
         "key_pickup": "Picked up {key}",

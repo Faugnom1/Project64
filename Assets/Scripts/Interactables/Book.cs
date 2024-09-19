@@ -11,9 +11,7 @@ public class Book : Interactable
     [SerializeField] private float _onReadClipVolume;
 
     [Header("Reward Properties")]
-    [SerializeField] private Item _rewardItem;
-    [SerializeField] private ItemName _rewardItemName;
-    [SerializeField] private string _rewardTextKey;
+    [SerializeField] private RewardItemSO _rewardItem;
 
     private bool _itemGivenToPlayer;
 
@@ -24,7 +22,6 @@ public class Book : Interactable
         if (_rewardItem != null)
         {
             MessageManager.Instance.OnMessageRead.AddListener(GivePlayerItem);
-            _rewardItem.ItemName = _rewardItemName;
         }
     }
 
@@ -48,7 +45,7 @@ public class Book : Interactable
         if (gameObject == book && !_itemGivenToPlayer)
         {
             _itemGivenToPlayer = true;
-            GameManager.Instance.PlayerInventory.AddToInventory(_rewardItem);
+            GameManager.Instance.PlayerInventory.AddToInventory(_rewardItem.Item);
             StartCoroutine(RewardMessage());
             MessageManager.Instance.OnMessageRead.RemoveListener(GivePlayerItem);
         }
@@ -60,7 +57,7 @@ public class Book : Interactable
 
         yield return new WaitForSeconds(2f);
 
-        string message = ((string)TextManager.GetText(_rewardTextKey)).Replace("{item}", _rewardItem.ItemName.ToFormattedString());
+        string message = ((string)TextManager.GetText(_rewardItem.TextKey)).Replace("{item}", _rewardItem.Name.ToFormattedString());
         MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
     }
 }
