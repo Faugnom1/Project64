@@ -27,8 +27,8 @@ MonoBehaviour:
   ShouldDestroyTiles: 0
   ShouldPlayParticleSystemOnDestroy: 0
   DestroyTiles: []
-  ShouldControlSirens: 0
-  SetSirensActive: 0
+  ShouldControlSirens: 1
+  SetSirensActive: 1
   AffectedSirens: []
   HasDelayOnComplete: 1
   DelayTime: 1

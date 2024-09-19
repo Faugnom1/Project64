@@ -29,9 +29,16 @@ MonoBehaviour:
   DestroyTiles:
   - {x: -52, y: 55, z: 0}
   - {x: -53, y: 55, z: 0}
-  ShouldControlSirens: 0
-  SetSirensActive: 0
-  AffectedSirens: []
+  ShouldControlSirens: 1
+  SetSirensActive: 1
+  AffectedSirens:
+  - SirenOfficeA
+  - SirenOfficeB
+  - SirenCubeA
+  - SirenCubeB
+  - SirenCubeC
+  - SirenHallwayA
+  - SirenHallwayB
   HasDelayOnComplete: 1
   DelayTime: 1.5
   ShouldControlDoors: 0
