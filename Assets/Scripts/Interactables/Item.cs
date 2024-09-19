@@ -6,6 +6,7 @@ public enum ItemName
     ROOM_KEY,
     ARMORY_KEY,
     LAB_KEY,
+    OFFICE_WING_KEY,
     EXIT_KEY
 }
 
