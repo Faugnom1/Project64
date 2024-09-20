@@ -37,7 +37,7 @@ MonoBehaviour:
   - SirenLabA
   - SirenLabB
   HasDelayOnComplete: 1
-  DelayTime: 1.5
+  DelayTime: 1.75
   ShouldControlDoors: 0
   SetDoorsOpen: 0
   AffectedDoors: []
