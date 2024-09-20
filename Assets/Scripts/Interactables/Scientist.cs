@@ -5,6 +5,9 @@ public class Scientist : Interactable
 {
     [Header("Message Properties")]
     [SerializeField] private string _textKey;
+    [SerializeField] private string _choiceQuestionTextKey;
+    [SerializeField] private string _choiceYesTextKey;
+    [SerializeField] private string _choiceNoTextKey;
 
     [Header("Audio Properties")]
     [SerializeField] private AudioClip _onReadClip;
@@ -18,6 +21,11 @@ public class Scientist : Interactable
     protected override void Start()
     {
         base.Start();
+
+        if (_choiceQuestionTextKey != null)
+        {
+            ChoiceMessageManager.Instance.OnYesClick.AddListener(PlayMessageOnYes);
+        }
 
         if (_rewardItem != null)
         {
@@ -36,13 +44,23 @@ public class Scientist : Interactable
 
             // Show message
             _messageShown = true;
-            MessageManager.Instance.ShowMessage(TextManager.GetText(_textKey), _messageType, _messageSpeed, gameObject);
+            // MessageManager.Instance.ShowMessage(TextManager.GetText(_textKey), _messageType, _messageSpeed, gameObject);
+            ChoiceMessageManager.Instance.ShowMessage(TextManager.GetText("scientist_1a_Question").ToString(), _messageSpeed, gameObject);
         }
     }
 
-    private void GivePlayerItem(GameObject book)
+    private void PlayMessageOnYes(GameObject obj)
     {
-        if (gameObject == book && !_itemGivenToPlayer)
+        if (gameObject == obj)
+        {
+            MessageManager.Instance.ShowMessage(TextManager.GetText(_choiceYesTextKey), _messageType, _messageSpeed, gameObject);
+            ChoiceMessageManager.Instance.OnYesClick.RemoveListener(PlayMessageOnYes);
+        }
+    }
+
+    private void GivePlayerItem(GameObject obj)
+    {
+        if (gameObject == obj && !_itemGivenToPlayer)
         {
             _itemGivenToPlayer = true;
             GameManager.Instance.PlayerInventory.AddToInventory(_rewardItem.Item);
