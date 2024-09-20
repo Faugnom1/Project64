@@ -57,6 +57,7 @@ public class StalkerScriptable : MonoBehaviour
 
     public void ResetPosition()
     {
+        Debug.Log("Reset");
         _navComponent.SnapPosition(_resetPosition.position);
         _navComponent.StopChase();
     }

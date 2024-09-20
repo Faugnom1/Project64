@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cef0b1af6dca96449c9c34512536f3f, type: 3}
+  m_Name: ScriptedEvent_RESET
+  m_EditorClassIdentifier: 
+  IsPlayerMovementDisabled: 0
+  ShouldControlPlayerMovement: 0
+  PlayerStart: {x: 0, y: 0}
+  PlayerEnd: {x: 0, y: 0}
+  PlayerSpeed: 0
+  ShouldControlStalkerMovement: 0
+  StalkerStart: {x: 0, y: 0}
+  StalkerEnd: {x: 0, y: 0}
+  StalkerSpeed: 0
+  StalkerOnComplete: 1
+  StalkerHoldPosition: {x: 0, y: 0}
+  ShouldScreenShake: 0
+  ShouldDestroyTiles: 0
+  ShouldPlayParticleSystemOnDestroy: 0
+  DestroyTiles: []
+  ShouldControlSirens: 0
+  SetSirensActive: 0
+  AffectedSirens: []
+  HasDelayOnComplete: 0
+  DelayTime: 0
+  ShouldControlDoors: 0
+  SetDoorsOpen: 0
+  AffectedDoors: []
+  LinkedEvent: {fileID: 0}
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
