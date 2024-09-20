@@ -82,13 +82,12 @@ public class MessageManager : MonoBehaviour
             {
                 _nextArrow.SetActive(true);
 
-                if (wasInteractPressed)
+                if (wasInteractPressed && _messageDisplayed)
                 {
                     _largeTextMesh.pageToDisplay = ++_currentPage;
                 }
             }
-
-            if (wasInteractPressed && _messageDisplayed && _currentPage == _pageCount)
+            else if (wasInteractPressed && _messageDisplayed && _currentPage == _pageCount)
             {
                 ShowMessageBox(false, _messageType);
                 OnMessageRead?.Invoke(_currentEventObject);
@@ -102,11 +101,12 @@ public class MessageManager : MonoBehaviour
 
     public void ShowMessageBox(bool active, MessageType type = MessageType.LARGE)
     {
-        if (this != null && gameObject != null)
+        if (this != null && gameObject != null && _largeMessageBox != null)
         {
             // Show correct message box
             if (type == MessageType.LARGE)
             {
+                _largeTextMesh.pageToDisplay = 0;
                 _largeMessageBox.SetActive(active);
             }
         }
@@ -116,6 +116,8 @@ public class MessageManager : MonoBehaviour
     {
         // Set values
         _currentPage = 1;
+        _pageCount = 0;
+        _largeTextMesh.pageToDisplay = 0;
         _messageType = type;
         _currentEventObject = eventObject;
 

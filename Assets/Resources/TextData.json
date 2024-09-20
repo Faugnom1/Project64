@@ -7,6 +7,7 @@
         "key_pickup": "Picked up {key}",
         "door_closed": "{key} is required",
         "door_opened": "{key} used",
-        "max_item_capcity": "No more room"
+        "max_item_capcity": "No more room",
+        "scientist_1a": "You find the body of a deceased scientist. Listen to recording?"
     }
 }
