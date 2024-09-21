@@ -14,6 +14,8 @@ public class ScriptedEventManager : MonoBehaviour
     //       Add a check for this if needed
     private ScriptedEventSO _currentEvent;
 
+    private float _currentEventTimer;
+
     private void OnEnable()
     {
         for (int i = 0; i < _scriptedEvents.Length; i++)
@@ -34,8 +36,14 @@ public class ScriptedEventManager : MonoBehaviour
         _stalker.OnStalkerScriptedEventComplete.RemoveListener(StalkerEventComplete);
     }
 
+    private void Update()
+    {
+        _currentEventTimer += Time.deltaTime;
+    }
+
     private void HandleScriptedEvent(ScriptedEventSO scriptedEvent)
     {
+        _currentEventTimer = 0;
         _currentEvent = scriptedEvent;
         if (scriptedEvent.IsPlayerMovementDisabled)
         {
@@ -118,6 +126,7 @@ public class ScriptedEventManager : MonoBehaviour
         {
             HandleLinkedEvent(scriptedEvent);
         }
+        Debug.Log("Current Event Timer: " + _currentEventTimer);
     }
 
     private void ControlSirens(ScriptedEventSO scriptedEvent)
