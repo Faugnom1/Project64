@@ -4,13 +4,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GameOverPanelController : MonoBehaviour
+public enum GameOverOption
 {
-    enum GameOverOption
-    {
-        Restart,
-        Exit
-    }
+    Restart,
+    Exit
+}
+
+public class GameOverPanelController : MonoBehaviour
+{ 
+
+    [SerializeField] UIGameOverOptionEventChannel _gameOverOptionEvent;
 
     [SerializeField] private TextMeshProUGUI _restartText;
     [SerializeField] private TextMeshProUGUI _exitText;
@@ -30,15 +33,19 @@ public class GameOverPanelController : MonoBehaviour
     private void OnEnable()
     {
         _input.UI.Navigate.Enable();
+        _input.UI.Submit.Enable();
         _input.UI.Navigate.performed += OnNavigate;
+        _input.UI.Submit.performed += OnSubmit;
 
         SelectRestart();
     }
 
     private void OnDisable()
     {
+        _input.UI.Submit.performed -= OnSubmit;
         _input.UI.Navigate.performed -= OnNavigate;
         _input.UI.Navigate.Disable();
+        _input.UI.Submit.Disable();
     }
 
     private void SelectRestart()
@@ -53,6 +60,11 @@ public class GameOverPanelController : MonoBehaviour
         _restartText.color = _baseColor;
         _exitText.color = _selectedColor;
         _currentOption = GameOverOption.Exit;
+    }
+
+    private void OnSubmit(InputAction.CallbackContext context)
+    {
+        _gameOverOptionEvent.RaiseEvent(new UIGameOverOptionEvent(_currentOption));
     }
 
     private void OnNavigate(InputAction.CallbackContext context)
