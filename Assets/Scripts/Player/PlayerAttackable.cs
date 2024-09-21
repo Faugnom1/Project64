@@ -14,9 +14,14 @@ public interface IPlayerAttackable
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerAttackable : MonoBehaviour, IPlayerAttackable
 {
+    [SerializeField] private PlayerHealthEventChannel _healthEvent;
+
     [SerializeField] private float _releaseForce;
     [SerializeField] private float _lightFlickerInterval;
     [SerializeField] private int _maxFlicker;
+
+    [SerializeField] private float _maxHP;
+    [SerializeField] private float _enemyAttackDamage;
 
     private Light2D _light;
     private Rigidbody2D _rb;
@@ -30,6 +35,13 @@ public class PlayerAttackable : MonoBehaviour, IPlayerAttackable
     private const float FLICKER_RANDOM_RANGE = 0.2f;
 
     private bool _isImmobilized;
+
+    private float _currentHP;
+
+    private void Awake()
+    {
+        _currentHP = _maxHP;
+    }
 
     private void Start()
     {
@@ -59,6 +71,8 @@ public class PlayerAttackable : MonoBehaviour, IPlayerAttackable
         _releaseOnStop = true;
         _releaseAction = releaseCallback;
         _isImmobilized = false;
+
+        DoAttackDamage();
     }
 
     public void Bleed()
@@ -111,5 +125,15 @@ public class PlayerAttackable : MonoBehaviour, IPlayerAttackable
     {
         _light.enabled = enabled;
         yield return new WaitForSeconds(duration);
+    }
+
+    private void DoAttackDamage()
+    {
+        _currentHP -= _enemyAttackDamage;
+        if (_currentHP < 0)
+        {
+            _currentHP = 0;
+        }
+        _healthEvent.RaiseEvent(new PlayerHealthEventChannel.PlayerHealthEvent(_maxHP, _currentHP));
     }
 }
