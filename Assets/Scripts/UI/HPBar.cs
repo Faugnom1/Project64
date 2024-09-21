@@ -9,7 +9,7 @@ public class HPBar : MonoBehaviour
 {
     [SerializeField] private Image _fill;
 
-    public void UpdateHPBar(PlayerHealthEventChannel.PlayerHealthEvent hpEvent)
+    public void UpdateHPBar(PlayerHealthEvent hpEvent)
     {
         _fill.fillAmount = hpEvent.CurrentHP / hpEvent.MaxHP;
     }

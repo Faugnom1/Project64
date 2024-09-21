@@ -18,4 +18,9 @@ public class GameManager : MonoBehaviour
     {
         PlayerInventory = GameObject.Find("Player").GetComponent<PlayerInventory>();
     }
+
+    public void StopTime(PlayerDeathEvent deathEvent)
+    {
+        Time.timeScale = 0;
+    }
 }

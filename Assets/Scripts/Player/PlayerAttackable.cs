@@ -14,7 +14,9 @@ public interface IPlayerAttackable
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerAttackable : MonoBehaviour, IPlayerAttackable
 {
+    [Header("Event Channels")]
     [SerializeField] private PlayerHealthEventChannel _healthEvent;
+    [SerializeField] private PlayerDeathEventChannel _deathEvent;
 
     [SerializeField] private float _releaseForce;
     [SerializeField] private float _lightFlickerInterval;
@@ -92,6 +94,10 @@ public class PlayerAttackable : MonoBehaviour, IPlayerAttackable
             {
                 _releaseAction();
             }
+            if (_currentHP == 0)
+            {
+                _deathEvent.RaiseEvent(new PlayerDeathEvent());
+            }
         }
     }
 
@@ -134,6 +140,6 @@ public class PlayerAttackable : MonoBehaviour, IPlayerAttackable
         {
             _currentHP = 0;
         }
-        _healthEvent.RaiseEvent(new PlayerHealthEventChannel.PlayerHealthEvent(_maxHP, _currentHP));
+        _healthEvent.RaiseEvent(new PlayerHealthEvent(_maxHP, _currentHP));
     }
 }
