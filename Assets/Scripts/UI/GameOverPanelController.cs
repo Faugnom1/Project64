@@ -11,7 +11,9 @@ public enum GameOverOption
 }
 
 public class GameOverPanelController : MonoBehaviour
-{ 
+{
+    [SerializeField] private AudioClip _gameOverMusic;
+    [SerializeField] private BackgroundMusicManager _backgroundMusic;
 
     [SerializeField] UIGameOverOptionEventChannel _gameOverOptionEvent;
 
@@ -38,6 +40,8 @@ public class GameOverPanelController : MonoBehaviour
         _input.UI.Submit.performed += OnSubmit;
 
         SelectRestart();
+
+        _backgroundMusic.ChangeBackgroundMusic(_gameOverMusic);
     }
 
     private void OnDisable()

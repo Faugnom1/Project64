@@ -7,6 +7,7 @@ public class ScriptedEventManager : MonoBehaviour
     [SerializeField] private PlayerScriptable _player;
     [SerializeField] private StalkerScriptable _stalker;
     [SerializeField] private WallsScriptable _wallTiles;
+    [SerializeField] private BackgroundMusicManager _backgroundMusic;
 
     [SerializeField] private ScriptedEventSO[] _scriptedEvents;
 
@@ -73,10 +74,19 @@ public class ScriptedEventManager : MonoBehaviour
         {
             ControlDoors(scriptedEvent);
         }
+        if (scriptedEvent.ShouldChangeBackgroundMusic && !scriptedEvent.ShouldChangeBackgroundMusicOnComplete)
+        {
+            ChangeBackgroundMusic(scriptedEvent);
+        }
         if (!scriptedEvent.ShouldControlStalkerMovement)
         {
             StalkerEventComplete();
         }
+    }
+
+    private void ChangeBackgroundMusic(ScriptedEventSO scriptedEvent)
+    {
+        _backgroundMusic.ChangeBackgroundMusic(scriptedEvent.NewBackgroundMusic);
     }
 
     private void ControlPlayerMovement(ScriptedEventSO scriptedEvent)
@@ -121,6 +131,14 @@ public class ScriptedEventManager : MonoBehaviour
         else if (_currentEvent.StalkerOnComplete == StalkerScriptedEventCompleteResponse.Hold)
         {
             _stalker.HoldPosition(scriptedEvent.StalkerHoldPosition);
+        }
+        if (scriptedEvent.ShouldChangeBackgroundMusicOnComplete)
+        {
+            _backgroundMusic.ChangeBackgroundMusic(scriptedEvent.NewBackgroundMusic);
+        }
+        if (scriptedEvent.ShouldStopBackgroundMusic)
+        {
+            _backgroundMusic.StopMusic();
         }
         if (scriptedEvent.LinkedEvent != null)
         {

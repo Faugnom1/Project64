@@ -22,6 +22,7 @@ MonoBehaviour:
   StalkerEnd: {x: -33.7, y: 17}
   StalkerSpeed: 0.2
   StalkerOnComplete: 1
+  StalkerHoldPosition: {x: 0, y: 0}
   ShouldScreenShake: 0
   ShouldDestroyTiles: 0
   ShouldPlayParticleSystemOnDestroy: 0
@@ -34,6 +35,10 @@ MonoBehaviour:
   ShouldControlDoors: 0
   SetDoorsOpen: 0
   AffectedDoors: []
+  ShouldStopBackgroundMusic: 0
+  ShouldChangeBackgroundMusic: 1
+  ShouldChangeBackgroundMusicOnComplete: 1
+  NewBackgroundMusic: {fileID: 8300000, guid: aa87e33b211b7b344b76b9793ffe289c, type: 3}
   LinkedEvent: {fileID: 11400000, guid: 754e2e1349423234995201c692ce3e73, type: 2}
   Event:
     m_PersistentCalls:

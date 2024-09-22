@@ -10,7 +10,7 @@ public class BackgroundMusicManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);  // Keeps music playing across screens
+            //DontDestroyOnLoad(gameObject);  // Keeps music playing across screens
             audioSource = GetComponent<AudioSource>();
         }
         else
@@ -30,5 +30,16 @@ public class BackgroundMusicManager : MonoBehaviour
         {
             Debug.LogError("AudioSource not assigned in BackgroundMusicManager.");
         }
+    }
+
+    public void ChangeBackgroundMusic(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        audioSource.Stop();
     }
 }
