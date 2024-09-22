@@ -84,6 +84,8 @@ public class ScriptedEventSO : ScriptableObject
 
     [Space(20)]
 
+    public bool EndGameOnEventComplete;
+
     public ScriptedEventSO LinkedEvent;
 
     [HideInInspector]

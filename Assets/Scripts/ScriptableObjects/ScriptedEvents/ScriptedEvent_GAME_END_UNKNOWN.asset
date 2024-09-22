@@ -22,6 +22,10 @@ MonoBehaviour:
   StalkerStart: {x: 0, y: 0}
   StalkerEnd: {x: 0, y: 0}
   StalkerSpeed: 0
+  ShouldPlayStalkerSoundEffectAtStart: 0
+  StalkerStartSoundEffect: {fileID: 0}
+  ShouldPlayStepsSoundEffectAtStart: 0
+  StalkerStepsSoundEffect: {fileID: 0}
   StalkerOnComplete: 1
   StalkerHoldPosition: {x: 0, y: 0}
   ShouldScreenShake: 0
@@ -31,8 +35,8 @@ MonoBehaviour:
   ShouldControlSirens: 0
   SetSirensActive: 0
   AffectedSirens: []
-  HasDelayOnComplete: 0
-  DelayTime: 0
+  HasDelayOnComplete: 1
+  DelayTime: 6.5
   ShouldControlDoors: 0
   ControlDoorsOnComplete: 0
   SetDoorsOpen: 0
@@ -42,6 +46,7 @@ MonoBehaviour:
   ShouldChangeBackgroundMusicOnComplete: 0
   NewBackgroundMusic: {fileID: 0}
   LightsOffOnComplete: 0
+  EndGameOnEventComplete: 1
   LinkedEvent: {fileID: 0}
   Event:
     m_PersistentCalls:

@@ -9,6 +9,7 @@ public class ScriptedEventManager : MonoBehaviour
     [SerializeField] private WallsScriptable _wallTiles;
     [SerializeField] private BackgroundMusicManager _backgroundMusic;
     [SerializeField] private SoundEffectsManager _soundEffect;
+    [SerializeField] private GameManager _gameManager;
 
     [SerializeField] private ScriptedEventSO[] _scriptedEvents;
 
@@ -169,6 +170,10 @@ public class ScriptedEventManager : MonoBehaviour
         if (scriptedEvent.LinkedEvent != null)
         {
             HandleLinkedEvent(scriptedEvent);
+        }
+        if (scriptedEvent.EndGameOnEventComplete)
+        {
+            _gameManager.EndGame();
         }
         Debug.Log("Current Event Timer: " + _currentEventTimer);
     }

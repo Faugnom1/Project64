@@ -47,4 +47,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         ResumeTime();
     }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("CreditsScene");
+    }
 }
