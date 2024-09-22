@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-public static class EnumExtensions
+public static class CommonUtils
 {
     public static string ToFormattedString(this ItemName itemName)
     {

@@ -88,6 +88,14 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    protected virtual void LateUpdate()
+    {
+        if (_interactBubble != null)
+        {
+            _interactBubble.transform.rotation = Quaternion.Euler(0, _interactBubble.transform.rotation.eulerAngles.y, 0);
+        }
+    }
+
     protected bool IsPlayerInteracting()
     {
         return _canInteract && _isPlayerNearby && _interactInput.WasPressedThisFrame();

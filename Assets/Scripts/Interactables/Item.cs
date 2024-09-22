@@ -13,7 +13,7 @@ public enum ItemName
 
 public class Item : Interactable
 {
-    [field: SerializeField] public ItemName ItemName { get; private set; }
+    [field: SerializeField] public ItemName ItemName { get; set; }
 
     protected virtual bool AddToPlayerInventory()
     {

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public PlayerInventory PlayerInventory { get; private set; }
+    public PlayerMovement PlayerMovement { get; private set; }
 
     private void Awake()
     {
@@ -17,7 +18,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerInventory = GameObject.Find("Player").GetComponent<PlayerInventory>();
+        GameObject player = GameObject.Find("Player");
+
+        PlayerInventory = player.GetComponent<PlayerInventory>();
+        PlayerMovement = player.GetComponent<PlayerMovement>();
     }
 
     public void ResumeTime()

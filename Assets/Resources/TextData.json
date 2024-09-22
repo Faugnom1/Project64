@@ -1,11 +1,15 @@
 {
     "en": {
         "book_ending": "Goodbye World :(",
+        "reward_item": "[Found {item}]",
         "flare_pickup": "Picked up flare",
         "flare_drop": "Dropped flare",
         "key_pickup": "Picked up {key}",
         "door_closed": "{key} is required",
         "door_opened": "{key} used",
-        "max_item_capcity": "No more room"
+        "max_item_capcity": "No more room",
+        "scientist_1a": "You find the body of a deceased scientist.",
+        "scientist_1a_Question": "Listen to recording?",
+        "scientist_1a_Yes": "64 is everything. The culmination of my divine work. If I am to die then so be it. I have summoned god to this earth. This is his dream now."
     }
 }
