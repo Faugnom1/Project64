@@ -41,6 +41,10 @@ MonoBehaviour:
   ShouldControlDoors: 0
   SetDoorsOpen: 0
   AffectedDoors: []
+  ShouldStopBackgroundMusic: 0
+  ShouldChangeBackgroundMusic: 1
+  ShouldChangeBackgroundMusicOnComplete: 0
+  NewBackgroundMusic: {fileID: 8300000, guid: 57bd66e52cbd2364ba90a7e3bb30d87c, type: 3}
   LinkedEvent: {fileID: 0}
   Event:
     m_PersistentCalls:

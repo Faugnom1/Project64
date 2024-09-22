@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/ScriptableObjects/Stalker.meta
+guid: b390859b13cd22e4ab398dc6b785a379
+folderAsset: yes
+DefaultImporter:
+========
+guid: 6ba662eeb1c6aa54fa290806c790b5e8
+NativeFormatImporter:
+>>>>>>>> main:Assets/Shaders/FullscreenPaletteMaterial.mat.meta
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

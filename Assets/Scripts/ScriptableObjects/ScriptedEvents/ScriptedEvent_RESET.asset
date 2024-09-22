@@ -30,11 +30,15 @@ MonoBehaviour:
   ShouldControlSirens: 0
   SetSirensActive: 0
   AffectedSirens: []
-  HasDelayOnComplete: 0
-  DelayTime: 0
+  HasDelayOnComplete: 1
+  DelayTime: 3
   ShouldControlDoors: 0
   SetDoorsOpen: 0
   AffectedDoors: []
+  ShouldStopBackgroundMusic: 0
+  ShouldChangeBackgroundMusic: 1
+  ShouldChangeBackgroundMusicOnComplete: 0
+  NewBackgroundMusic: {fileID: 8300000, guid: aa87e33b211b7b344b76b9793ffe289c, type: 3}
   LinkedEvent: {fileID: 0}
   Event:
     m_PersistentCalls:

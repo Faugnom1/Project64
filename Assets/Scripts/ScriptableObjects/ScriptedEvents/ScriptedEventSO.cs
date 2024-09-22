@@ -62,6 +62,12 @@ public class ScriptedEventSO : ScriptableObject
     public string[] AffectedDoors;
 
     [Space(20)]
+    public bool ShouldStopBackgroundMusic;
+    public bool ShouldChangeBackgroundMusic;
+    public bool ShouldChangeBackgroundMusicOnComplete;
+    public AudioClip NewBackgroundMusic;
+
+    [Space(20)]
 
     public ScriptedEventSO LinkedEvent;
 
