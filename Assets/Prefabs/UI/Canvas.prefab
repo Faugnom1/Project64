@@ -633,20 +633,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869067519212490414, guid: 625d6d3d6e306c946be2901a3fd25b4a, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -3317008069683001466, guid: e8bd5e830907724439f1fcd0cde1f133, type: 2}
-    - target: {fileID: 4869067519212490414, guid: 625d6d3d6e306c946be2901a3fd25b4a, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4282462577
       objectReference: {fileID: 0}
     - target: {fileID: 4869067519212490414, guid: 625d6d3d6e306c946be2901a3fd25b4a, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4869067519212490414, guid: 625d6d3d6e306c946be2901a3fd25b4a, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6533605313125960467, guid: 625d6d3d6e306c946be2901a3fd25b4a, type: 3}
       propertyPath: m_AnchoredPosition.x

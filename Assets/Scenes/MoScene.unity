@@ -170,6 +170,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4191500558973154074, guid: 3d76bf0fbceebd94cad32b5eaa36f862, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191500558973154074, guid: 3d76bf0fbceebd94cad32b5eaa36f862, type: 3}
+      propertyPath: m_Size.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191500558973154074, guid: 3d76bf0fbceebd94cad32b5eaa36f862, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1303387539, guid: 19fe5c54323cc2b4898999f8d12acf77, type: 3}
+    - target: {fileID: 4191500558973154074, guid: 3d76bf0fbceebd94cad32b5eaa36f862, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8573252073060825523, guid: 3d76bf0fbceebd94cad32b5eaa36f862, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1059,14 +1075,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8498130644428874936, guid: d29173acbb6bfa1489a60fc713585f52, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -8116391028861741533, guid: ff6b898468f59814ca4a8ebe649aba78, type: 2}
-    - target: {fileID: 8498130644428874936, guid: d29173acbb6bfa1489a60fc713585f52, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1202,6 +1210,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4980536106998068332, guid: eadcad76b554af745ae34968a4cb1c3e, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5709008865645016072, guid: eadcad76b554af745ae34968a4cb1c3e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1
