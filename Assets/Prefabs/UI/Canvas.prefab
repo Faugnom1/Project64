@@ -443,7 +443,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4869067519212490414, guid: 625d6d3d6e306c946be2901a3fd25b4a, type: 3}
       propertyPath: m_overflowMode
-      value: 3
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869067519212490414, guid: 625d6d3d6e306c946be2901a3fd25b4a, type: 3}
+      propertyPath: m_pageToDisplay
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869067519212490414, guid: 625d6d3d6e306c946be2901a3fd25b4a, type: 3}
       propertyPath: m_sharedMaterial
