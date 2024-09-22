@@ -12,6 +12,7 @@ public class ChoiceMessageManager : MonoBehaviour
 
     public UnityEvent<GameObject> OnYesClick { get; private set; }
     public UnityEvent<GameObject> OnNoClick { get; private set; }
+    public UnityEvent<GameObject> OnMessageRead { get; private set; }
     private TextMeshProUGUI _choiceTextMesh;
     private GameObject _leftSelectArrow;
     private GameObject _rightSelectArrow;
@@ -20,11 +21,11 @@ public class ChoiceMessageManager : MonoBehaviour
     private bool _playerIsChoosing;
     private bool _messageDisplayed;
 
-
     private void Awake()
     {
         OnYesClick = new UnityEvent<GameObject>();
         OnNoClick = new UnityEvent<GameObject>();
+        OnMessageRead = new UnityEvent<GameObject>();
         _playerInput = new PlayerInput();
 
         if (Instance == null)
@@ -82,8 +83,6 @@ public class ChoiceMessageManager : MonoBehaviour
             }
             else if (_messageDisplayed && wasInteractPressed)
             {
-                EnableLeftArrow();
-
                 if (_leftSelectArrow.activeSelf)
                 {
                     ShowMessageBox(false);
@@ -124,6 +123,7 @@ public class ChoiceMessageManager : MonoBehaviour
     public void ShowMessage(string question, float speed = 0.05f, GameObject eventObject = null)
     {
         _currentEventObject = eventObject;
+        EnableLeftArrow();
 
         ShowMessageBox(true);
         StartCoroutine(TypeText(question, speed));

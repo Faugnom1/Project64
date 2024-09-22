@@ -27,8 +27,10 @@ public class MessageManager : MonoBehaviour
     private Coroutine _currentCoroutine;
     private GameObject _currentEventObject;
     private int _currentPage;
-    private int _pageCount;
-    private bool _messageDisplayed;
+    private bool _canGoToNextPage;
+    private int _totalPages;
+    private string _currentMessage;
+    private float _currentSpeed;
 
     private void Awake()
     {
@@ -77,18 +79,18 @@ public class MessageManager : MonoBehaviour
         if (_messageType == MessageType.LARGE)
         {
             bool wasInteractPressed = _playerInput.Player.Interact.WasPressedThisFrame();
+            _nextArrow.SetActive(_canGoToNextPage);
 
-            if (_pageCount > 1 && _currentPage != _pageCount)
+            if (_currentPage < _totalPages && _canGoToNextPage)
             {
-                _nextArrow.SetActive(true);
-
-                if (wasInteractPressed && _messageDisplayed)
+                if (wasInteractPressed)
                 {
-                    _largeTextMesh.pageToDisplay = ++_currentPage;
+                    StartCoroutine(TypeText(_currentMessage, _largeTextMesh, _currentSpeed, ++_currentPage));
                 }
             }
-            else if (wasInteractPressed && _messageDisplayed && _currentPage == _pageCount)
+            else if (_currentPage == _totalPages && _canGoToNextPage && wasInteractPressed)
             {
+                _nextArrow.SetActive(false);
                 ShowMessageBox(false, _messageType);
                 OnMessageRead?.Invoke(_currentEventObject);
             }
@@ -101,6 +103,8 @@ public class MessageManager : MonoBehaviour
 
     public void ShowMessageBox(bool active, MessageType type = MessageType.LARGE)
     {
+        GameManager.Instance.PlayerMovement.EnableMovement();
+
         if (this != null && gameObject != null && _largeMessageBox != null)
         {
             // Show correct message box
@@ -112,16 +116,8 @@ public class MessageManager : MonoBehaviour
         }
     }
 
-    public void ShowMessage(object message, MessageType type, float speed = 0.05f, GameObject eventObject = null)
+    private string GetFullMessage(object message)
     {
-        // Set values
-        _currentPage = 1;
-        _pageCount = 0;
-        _largeTextMesh.pageToDisplay = 0;
-        _messageType = type;
-        _currentEventObject = eventObject;
-
-        // Combine the messages, if required
         string fullMessage;
 
         if (message is List<string> messageList)
@@ -137,11 +133,27 @@ public class MessageManager : MonoBehaviour
             fullMessage = message.ToString();
         }
 
+        return fullMessage;
+    }
+
+    public void ShowMessage(object message, MessageType type, float speed = 0.05f, GameObject eventObject = null)
+    {
+        // Set values
+        _playerInput.Player.Interact.Reset();
+        _currentPage = 1;
+        _totalPages = 0;
+        _largeTextMesh.pageToDisplay = 0;
+        _messageType = type;
+        _currentEventObject = eventObject;
+        _currentMessage = GetFullMessage(message);
+        _currentSpeed = speed;
+
         // Show the box and type the message out
         if (type == MessageType.LARGE)
         {
+            GameManager.Instance.PlayerMovement.DisableMovement();
             _largeMessageBox.SetActive(true);
-            StartCoroutine(TypeText(fullMessage, _largeTextMesh, speed));
+            StartCoroutine(TypeText(_currentMessage, _largeTextMesh, _currentSpeed));
         }
         else
         {
@@ -152,18 +164,25 @@ public class MessageManager : MonoBehaviour
             }
 
             _smallMessageBox.SetActive(true);
-            _currentCoroutine = StartCoroutine(TypeText(fullMessage, _smallTextMesh, speed));
+            _currentCoroutine = StartCoroutine(TypeText(_currentMessage, _smallTextMesh, _currentSpeed));
         }
     }
 
-    private IEnumerator TypeText(string message, TextMeshProUGUI textMesh, float speed)
+    private IEnumerator TypeText(string message, TextMeshProUGUI textMesh, float speed, int page = 1)
     {
-        _messageDisplayed = false;
+        _canGoToNextPage = false;
+        textMesh.text = message;
+        textMesh.pageToDisplay = page;
+        textMesh.ForceMeshUpdate();
+        _totalPages = textMesh.textInfo.pageCount;
 
-        for (int i = 0; i < message.Length; i++)
+        TMP_PageInfo pageInfo = textMesh.textInfo.pageInfo[page - 1];
+        int startCharIndex = pageInfo.firstCharacterIndex;
+        int lastCharIndex = pageInfo.lastCharacterIndex;
+
+        for (int i = startCharIndex; i <= lastCharIndex; i++)
         {
-            textMesh.SetText(message[..(i + 1)]);
-            _pageCount = textMesh.textInfo.pageCount;
+            textMesh.maxVisibleCharacters = i + 1;
             yield return new WaitForSeconds(speed);
         }
 
@@ -173,6 +192,6 @@ public class MessageManager : MonoBehaviour
             _smallMessageBox.SetActive(false);
         }
 
-        _messageDisplayed = true;
+        _canGoToNextPage = true;
     }
 }
