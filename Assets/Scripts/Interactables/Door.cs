@@ -14,12 +14,6 @@ public class Door : Interactable
     [SerializeField] private string _doorLockedTextKey;
     [SerializeField] private string _doorOpenedTextKey;
 
-    [Header("Audio Properties")]
-    [SerializeField] private AudioClip _onDoorLockedClip;
-    [SerializeField] private float _onDoorLockedVolume;
-    [SerializeField] private AudioClip _onDoorOpenedClip;
-    [SerializeField] private float _onDoorOpenedVolume;
-
     [Header("Key Requirements")]
     [SerializeField] private ItemName _keyName;
     [SerializeField] private bool _eventControlled;
@@ -58,8 +52,6 @@ public class Door : Interactable
                     MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
                     _messageShown = true;
                 }
-                SoundEffectsManager.Instance.PlaySoundEffect(_onDoorLockedClip, transform, _onDoorLockedVolume);
-
             }
 
             if (IsPlayerInteracting() && GameManager.Instance.PlayerInventory.TryConsumeKey(_keyName) || (IsPlayerInteracting() && _noKeyRequired))
@@ -71,7 +63,6 @@ public class Door : Interactable
                 }
                 _canInteract = false;
                 _animator.SetTrigger("DoorOpen");
-                SoundEffectsManager.Instance.PlaySoundEffect(_onDoorOpenedClip, transform, _onDoorOpenedVolume);
                 _onDoorOpened.Invoke();
                 _navObstacle.enabled = false;
             }
@@ -103,7 +94,6 @@ public class Door : Interactable
     {
         _canInteract = false;
         _animator.SetTrigger("DoorOpen");
-        SoundEffectsManager.Instance.PlaySoundEffect(_onDoorOpenedClip, transform, _onDoorOpenedVolume);
         _navObstacle.enabled = false;
         _onDoorOpened.Invoke();
     }

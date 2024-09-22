@@ -8,6 +8,7 @@ public class ScriptedEventManager : MonoBehaviour
     [SerializeField] private StalkerScriptable _stalker;
     [SerializeField] private WallsScriptable _wallTiles;
     [SerializeField] private BackgroundMusicManager _backgroundMusic;
+    [SerializeField] private SoundEffectsManager _soundEffect;
 
     [SerializeField] private ScriptedEventSO[] _scriptedEvents;
 
@@ -82,6 +83,15 @@ public class ScriptedEventManager : MonoBehaviour
         {
             StalkerEventComplete();
         }
+        if (scriptedEvent.ShouldPlayStalkerSoundEffectAtStart)
+        {
+            PlaySoundEffectAtStart(scriptedEvent);
+        }
+    }
+
+    private void PlaySoundEffectAtStart(ScriptedEventSO scriptedEvent)
+    {
+        _soundEffect.PlaySoundEffect(scriptedEvent.StalkerStartSoundEffect, scriptedEvent.StalkerStart);
     }
 
     private void ChangeBackgroundMusic(ScriptedEventSO scriptedEvent)

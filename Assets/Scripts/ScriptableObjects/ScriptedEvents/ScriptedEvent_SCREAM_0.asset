@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cef0b1af6dca96449c9c34512536f3f, type: 3}
   m_Name: ScriptedEvent_SCREAM_0
   m_EditorClassIdentifier: 
-  IsPlayerMovementDisabled: 1
+  IsPlayerMovementDisabled: 0
   ShouldControlPlayerMovement: 0
   PlayerStart: {x: 0, y: 0}
   PlayerEnd: {x: 0, y: 0}
@@ -21,9 +21,11 @@ MonoBehaviour:
   StalkerStart: {x: 0, y: 0}
   StalkerEnd: {x: 0, y: 0}
   StalkerSpeed: 0
+  ShouldPlayStalkerSoundEffectAtStart: 1
+  StalkerStartSoundEffect: {fileID: 8300000, guid: 7ba8c1ca0619bf34c89a6fae965744ce, type: 3}
   StalkerOnComplete: 1
   StalkerHoldPosition: {x: 0, y: 0}
-  ShouldScreenShake: 1
+  ShouldScreenShake: 0
   ShouldDestroyTiles: 0
   ShouldPlayParticleSystemOnDestroy: 0
   DestroyTiles: []
@@ -35,6 +37,10 @@ MonoBehaviour:
   ShouldControlDoors: 0
   SetDoorsOpen: 0
   AffectedDoors: []
+  ShouldStopBackgroundMusic: 0
+  ShouldChangeBackgroundMusic: 0
+  ShouldChangeBackgroundMusicOnComplete: 0
+  NewBackgroundMusic: {fileID: 0}
   LinkedEvent: {fileID: 0}
   Event:
     m_PersistentCalls:

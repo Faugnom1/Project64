@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -16,11 +13,19 @@ public class StalkerNav : MonoBehaviour
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _minSpeed;
 
+    [SerializeField] private AudioClip _roarClip;
+
     private NavMeshAgent _agent;
 
     private bool _inScriptedEvent;
     private bool _isChasing;
     private float _speedTime;
+    private float _roarTimer;
+
+    private void Awake()
+    {
+        _roarTimer = Random.Range(4f, 6f);
+    }
 
     private void Start()
     {
@@ -37,12 +42,19 @@ public class StalkerNav : MonoBehaviour
         }
         else if (_isChasing)
         {
+            _roarTimer -= Time.deltaTime;
             HandleChasing();
         }
     }
 
     private void HandleChasing()
     {
+        if (_roarTimer <= 0)
+        {
+            SoundEffectsManager.Instance.PlaySoundEffect(_roarClip, (Vector2)transform.position);
+            _roarTimer = Random.Range(4f, 6f);
+        }
+
         if (_speedTime >= 0)
         {
             _agent.speed = _maxSpeed;

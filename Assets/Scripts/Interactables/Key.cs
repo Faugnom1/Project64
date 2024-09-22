@@ -6,10 +6,6 @@ public class Key : Item
     [Header("Message Properties")]
     [SerializeField] private string _itemTextKey;
 
-    [Header("Audio Properties")]
-    [SerializeField] private AudioClip _onInteractClip;
-    [SerializeField] private float _onInteractClipVolume;
-
     [SerializeField] private UnityEvent _onPickup;
 
     protected override void Update()
@@ -18,9 +14,6 @@ public class Key : Item
 
         if (IsPlayerInteracting())
         {
-            // Play sound effect
-            SoundEffectsManager.Instance.PlaySoundEffect(_onInteractClip, transform, _onInteractClipVolume);
-
             // Show message
             if (!_messageShown)
             {

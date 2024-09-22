@@ -30,6 +30,10 @@ public class ScriptedEventSO : ScriptableObject
     public float StalkerSpeed;
 
     [Space(20)]
+    public bool ShouldPlayStalkerSoundEffectAtStart;
+    public AudioClip StalkerStartSoundEffect;
+
+    [Space(20)]
 
     public StalkerScriptedEventCompleteResponse StalkerOnComplete;
     public Vector2 StalkerHoldPosition;
