@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Book : Interactable
 {
@@ -13,6 +14,8 @@ public class Book : Interactable
     [Header("Reward Properties")]
     [SerializeField] private Item _rewardItem;
     [SerializeField] private ItemName _name;
+
+    [SerializeField] private UnityEvent _onItemPickup;
 
     private bool _itemGivenToPlayer;
     private Item _newRewardItem;
@@ -63,5 +66,6 @@ public class Book : Interactable
 
         string message = ((string)TextManager.GetText("reward_item")).Replace("{item}", _newRewardItem.ItemName.ToFormattedString());
         MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
+        _onItemPickup?.Invoke();
     }
 }
