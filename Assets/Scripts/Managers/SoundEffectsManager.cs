@@ -36,6 +36,6 @@ public class SoundEffectsManager : MonoBehaviour
 
     public void PlaySoundEffect(SoundEffectEvent soundEvent)
     {
-        PlaySoundEffect(_soundEffect.clip, Vector2.one);
+        PlaySoundEffect(soundEvent.AudioClip, Vector2.one);
     }
 }
