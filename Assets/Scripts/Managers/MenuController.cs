@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class MenuController : MonoBehaviour
 {
@@ -16,44 +17,86 @@ public class MenuController : MonoBehaviour
     public AudioClip moveSound;
     public AudioClip selectSound;
 
-    void Start()
+    private PlayerInput _input;
+
+    [SerializeField] private Color _selectedColor;
+    [SerializeField] private Color _baseColor;
+
+    private void Awake()
     {
-        UpdateMarkerPosition();
+        _input = new PlayerInput();
     }
 
-    void Update()
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        _input.UI.Navigate.Enable();
+        _input.UI.Submit.Enable();
+
+        _input.UI.Navigate.performed += OnNavigate;
+        _input.UI.Submit.performed += OnSubmit;
+    }
+
+    private void OnDisable()
+    {
+        _input.UI.Navigate.performed -= OnNavigate;
+        _input.UI.Submit.performed -= OnSubmit;
+
+        _input.UI.Navigate.Disable();
+        _input.UI.Submit.Disable();
+    }
+
+    void Start()
+    {
+        //UpdateMarkerPosition();
+        UpdateSelection();
+    }
+    
+    private void OnNavigate(InputAction.CallbackContext context)
+    {
+        Vector2 direction = _input.UI.Navigate.ReadValue<Vector2>();
+        if (direction == Vector2.up)
         {
             currentIndex--;
             if (currentIndex < 0)
             {
                 currentIndex = menuOptions.Length - 1;
             }
-            UpdateMarkerPosition();
+            UpdateSelection();
             PlayMoveSound();
         }
-
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (direction == Vector2.down)
         {
             currentIndex++;
             if (currentIndex >= menuOptions.Length)
             {
                 currentIndex = 0;
             }
-            UpdateMarkerPosition();
+            UpdateSelection();
             PlayMoveSound();
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+    private void OnSubmit(InputAction.CallbackContext context)
+    {
+        SelectOption();
+        PlaySelectSound();
+    }
+
+    private void UpdateSelection()
+    {
+        SetBaseColors();
+        TextMeshProUGUI selected = menuOptions[currentIndex];
+        if (selected != null)
         {
-            SelectOption();
-            PlaySelectSound();
+            selected.color = _selectedColor;
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.M))
+    private void SetBaseColors()
+    {
+        for (int i = 0; i < menuOptions.Length; i++)
         {
-            AccessPauseScreen();
+            menuOptions[i].color = _baseColor;
         }
     }
 
@@ -84,12 +127,12 @@ public class MenuController : MonoBehaviour
             Debug.Log("Start Game selected");
             // Add logic to start the game here
         }
-        else if (currentIndex == 1) 
-        {
-            Debug.Log("Volume Settings selected");
-            ShowVolumeSettings();
-        }
-        else if (currentIndex == 2)
+        //else if (currentIndex == 1) 
+        //{
+        //    Debug.Log("Volume Settings selected");
+        //    ShowVolumeSettings();
+        //}
+        else if (currentIndex == 1)
         {
             Debug.Log("Quit Game selected");
 #if UNITY_EDITOR
