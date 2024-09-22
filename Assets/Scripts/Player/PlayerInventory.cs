@@ -101,6 +101,7 @@ public class PlayerInventory : MonoBehaviour
 
         if (keyIndex != -1)
         {
+            Destroy(_inventory[keyIndex]);
             _inventory.RemoveAt(keyIndex);
             return true;
         }

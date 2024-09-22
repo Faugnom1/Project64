@@ -58,6 +58,7 @@ MonoBehaviour:
   _onReadClip: {fileID: 0}
   _onReadClipVolume: 0
   _rewardItem: {fileID: 11400000, guid: 4bcb829bc051a994cbf9af97b304ccf0, type: 2}
+  _name: 0
 --- !u!212 &3030035038485577814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,7 +100,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 732417177, guid: e695974213a137849b1f1a23403a9b67, type: 3}
+  m_Sprite: {fileID: 225645686, guid: 5e87bfea299b266488522f6d32900a65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

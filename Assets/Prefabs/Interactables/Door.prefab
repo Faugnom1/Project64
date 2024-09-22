@@ -59,7 +59,12 @@ MonoBehaviour:
   _onDoorLockedVolume: 1
   _onDoorOpenedClip: {fileID: 0}
   _onDoorOpenedVolume: 1
-  _keyName: 2
+  _keyName: 5
+  _eventControlled: 0
+  _noKeyRequired: 0
+  _onDoorOpened:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &8214333883124248792
 Animator:
   serializedVersion: 5
