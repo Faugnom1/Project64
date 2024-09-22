@@ -85,13 +85,17 @@ public class ScriptedEventManager : MonoBehaviour
         }
         if (scriptedEvent.ShouldPlayStalkerSoundEffectAtStart)
         {
-            PlaySoundEffectAtStart(scriptedEvent);
+            PlaySoundEffectAtStart(scriptedEvent, scriptedEvent.StalkerStartSoundEffect);
+        }
+        if (scriptedEvent.ShouldPlayStepsSoundEffectAtStart)
+        {
+            PlaySoundEffectAtStart(scriptedEvent, scriptedEvent.StalkerStepsSoundEffect);
         }
     }
 
-    private void PlaySoundEffectAtStart(ScriptedEventSO scriptedEvent)
+    private void PlaySoundEffectAtStart(ScriptedEventSO scriptedEvent, AudioClip audioClip)
     {
-        _soundEffect.PlaySoundEffect(scriptedEvent.StalkerStartSoundEffect, scriptedEvent.StalkerStart);
+        _soundEffect.PlaySoundEffect(audioClip, scriptedEvent.StalkerStart);
     }
 
     private void ChangeBackgroundMusic(ScriptedEventSO scriptedEvent)
