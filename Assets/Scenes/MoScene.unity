@@ -813,6 +813,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flare
       objectReference: {fileID: 0}
+    - target: {fileID: 446767293207714474, guid: 06b7de009e6b09240966f87ee21e1aae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -870,6 +874,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book
       objectReference: {fileID: 0}
+    - target: {fileID: 8944380041750217683, guid: 6cbaba942ae6e6f408fc2281d51f934a, type: 3}
+      propertyPath: _name
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944380041750217683, guid: 6cbaba942ae6e6f408fc2281d51f934a, type: 3}
+      propertyPath: _rewardItem
+      value: 
+      objectReference: {fileID: 7014774529049817547, guid: 8e1e5ac706a96c94d9e7b90ce1f13916, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -883,6 +895,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 220543560}
     m_Modifications:
+    - target: {fileID: 396301961691615094, guid: cb045ed7db83e1a4faa8c0fdfe67d017, type: 3}
+      propertyPath: _name
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 396301961691615094, guid: cb045ed7db83e1a4faa8c0fdfe67d017, type: 3}
+      propertyPath: _rewardItem
+      value: 
+      objectReference: {fileID: 7014774529049817547, guid: 8e1e5ac706a96c94d9e7b90ce1f13916, type: 3}
     - target: {fileID: 657919244980323887, guid: cb045ed7db83e1a4faa8c0fdfe67d017, type: 3}
       propertyPath: m_Name
       value: Scientist
@@ -926,14 +946,6 @@ PrefabInstance:
     - target: {fileID: 1931017818253041034, guid: cb045ed7db83e1a4faa8c0fdfe67d017, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 48.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3030035038485577814, guid: cb045ed7db83e1a4faa8c0fdfe67d017, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 225645686, guid: 5e87bfea299b266488522f6d32900a65, type: 3}
-    - target: {fileID: 3722249811037619598, guid: cb045ed7db83e1a4faa8c0fdfe67d017, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1212,7 +1224,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2383600964539420361, guid: b6b18c6d59e685840b06c120f26b220d, type: 3}
       propertyPath: _keyName
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4914601140848952924, guid: b6b18c6d59e685840b06c120f26b220d, type: 3}
       propertyPath: m_Materials.Array.data[0]
