@@ -622,6 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scrollSpeed: 30
   _beforeScrollDuration: 1
+  targetYPosition: 220
 --- !u!1 &904809662
 GameObject:
   m_ObjectHideFlags: 0
