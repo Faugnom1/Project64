@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -125,7 +126,7 @@ public class MenuController : MonoBehaviour
         if (currentIndex == 0)
         {
             Debug.Log("Start Game selected");
-            // Add logic to start the game here
+            StartGame();
         }
         //else if (currentIndex == 1) 
         //{
@@ -173,5 +174,10 @@ public class MenuController : MonoBehaviour
         {
             Debug.LogError("SfxSource or SelectSound not assigned.");
         }
+    }
+
+    private void StartGame()
+    {
+        SceneManager.LoadScene("GroundUp");
     }
 }
