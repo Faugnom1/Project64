@@ -21,6 +21,10 @@ MonoBehaviour:
   StalkerStart: {x: -12, y: 39.5}
   StalkerEnd: {x: -11.99, y: 31.5}
   StalkerSpeed: 1.65
+  ShouldPlayStalkerSoundEffectAtStart: 0
+  StalkerStartSoundEffect: {fileID: 0}
+  ShouldPlayStepsSoundEffectAtStart: 1
+  StalkerStepsSoundEffect: {fileID: 8300000, guid: 2ea9e3f6da3b6c44b8c5089cdbafa651, type: 3}
   StalkerOnComplete: 1
   StalkerHoldPosition: {x: 0, y: 0}
   ShouldScreenShake: 1
@@ -35,6 +39,10 @@ MonoBehaviour:
   ShouldControlDoors: 0
   SetDoorsOpen: 0
   AffectedDoors: []
+  ShouldStopBackgroundMusic: 0
+  ShouldChangeBackgroundMusic: 0
+  ShouldChangeBackgroundMusicOnComplete: 0
+  NewBackgroundMusic: {fileID: 0}
   LinkedEvent: {fileID: 0}
   Event:
     m_PersistentCalls:

@@ -21,6 +21,8 @@ MonoBehaviour:
   StalkerStart: {x: -40, y: 12}
   StalkerEnd: {x: -41.5, y: 12}
   StalkerSpeed: 0.2
+  ShouldPlayStalkerSoundEffectAtStart: 1
+  StalkerStartSoundEffect: {fileID: 8300000, guid: 7ba8c1ca0619bf34c89a6fae965744ce, type: 3}
   StalkerOnComplete: 0
   StalkerHoldPosition: {x: 0, y: 0}
   ShouldScreenShake: 1

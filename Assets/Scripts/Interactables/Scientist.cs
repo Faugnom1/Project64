@@ -62,7 +62,7 @@ public class Scientist : Interactable
             _canInteract = false;
 
             // Play sound effect
-            SoundEffectsManager.Instance.PlaySoundEffect(_onReadClip, transform, _onReadClipVolume);
+            SoundEffectsManager.Instance.PlaySoundEffect(_onReadClip, transform.position, _onReadClipVolume);
 
             // Show message
             _messageShown = true;

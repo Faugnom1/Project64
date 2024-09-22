@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class SlammableDoor : MonoBehaviour, DoorTrigger
 {
+    [SerializeField] private AudioClip _doorSlamClip;
     [SerializeField] private UnityEvent _onDoorSlammed;
 
     private Door _door;
@@ -20,7 +21,10 @@ public class SlammableDoor : MonoBehaviour, DoorTrigger
     {
         if (!_wasDoorSlammed)
         {
+            _wasDoorSlammed = true;
             _door.SlamDoor();
+            SoundEffectsManager.Instance.PlaySoundEffect(_doorSlamClip, transform.position);
+
             if (_onDoorSlammed != null)
             {
                 _onDoorSlammed.Invoke();

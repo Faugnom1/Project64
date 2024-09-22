@@ -6,10 +6,6 @@ public class Flare : Item
     [Header("Message Properties")]
     [SerializeField] private string _itemTextKey;
 
-    [Header("Audio Properties")]
-    [SerializeField] private AudioClip _onInteractClip;
-    [SerializeField] private float _onInteractClipVolume;
-
     [Header("Flare Stats")]
     [SerializeField] private float _lifetime;
 
@@ -32,9 +28,6 @@ public class Flare : Item
             if (isAdded)
             {
                 _canInteract = false;
-
-                // Play sound effect
-                SoundEffectsManager.Instance.PlaySoundEffect(_onInteractClip, transform, _onInteractClipVolume);
 
                 // Show message
                 if (!_messageShown)

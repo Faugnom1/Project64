@@ -32,6 +32,16 @@ public class ScriptedEventSO : ScriptableObject
 
     [Space(20)]
 
+    public bool ShouldPlayStalkerSoundEffectAtStart;
+    public AudioClip StalkerStartSoundEffect;
+
+    [Space(20)]
+
+    public bool ShouldPlayStepsSoundEffectAtStart;
+    public AudioClip StalkerStepsSoundEffect;
+
+    [Space(20)]
+
     public StalkerScriptedEventCompleteResponse StalkerOnComplete;
     public Vector2 StalkerHoldPosition;
 

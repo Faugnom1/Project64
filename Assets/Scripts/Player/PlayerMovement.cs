@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -11,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerInput _playerInput;
     private Rigidbody2D _rb;
+    private Animator _animator;
 
     private Vector2 _moveInput;
     private Vector2 _facingDirection;
@@ -32,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -49,13 +47,14 @@ public class PlayerMovement : MonoBehaviour
         if (_shouldUpdate)
         {
             _moveInput = _playerInput.Player.Move.ReadValue<Vector2>();
+            HandleMoveAnimation();
         }
         else
         {
             _moveInput = Vector2.zero;
         }
 
-        UpdateFacingDirection();
+        // UpdateFacingDirection();
     }
 
     private void FixedUpdate()
@@ -85,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         if (_moveInput != Vector2.zero && _moveInput != _facingDirection)
         {
             _facingDirection = _moveInput;
-            
+
             float angle = Mathf.Atan2(_facingDirection.y, _facingDirection.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90.0f));
             transform.rotation = rotation;
@@ -113,5 +112,32 @@ public class PlayerMovement : MonoBehaviour
         _scriptedEnd = end;
         _scriptedTime = time;
         _elapsedScriptedTime = 0;
+    }
+
+    private void HandleMoveAnimation()
+    {
+        if (_animator != null)
+        {
+            if (_moveInput == Vector2.zero)
+            {
+                _animator.SetTrigger("Idle");
+            }
+            else
+            {
+                if (_moveInput == Vector2.right || _moveInput == Vector2.left)
+                {
+                    _animator.SetTrigger("WalkHorizontal");
+                    transform.localScale = new Vector3(_moveInput.x, 1, 1);
+                }
+                else if (_moveInput == Vector2.up)
+                {
+                    _animator.SetTrigger("WalkUp");
+                }
+                else if (_moveInput == Vector2.down)
+                {
+                    _animator.SetTrigger("WalkDown");
+                }
+            }
+        }
     }
 }

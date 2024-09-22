@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -16,11 +13,22 @@ public class StalkerNav : MonoBehaviour
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _minSpeed;
 
+    [SerializeField] private AudioClip _roarClip;
+    [SerializeField] private AudioClip[] _stepClips;
+
     private NavMeshAgent _agent;
 
     private bool _inScriptedEvent;
     private bool _isChasing;
     private float _speedTime;
+    private float _roarTimer;
+    private float _stepsTimer;
+
+    private void Awake()
+    {
+        _roarTimer = Random.Range(4f, 6f);
+        _stepsTimer = 1f;
+    }
 
     private void Start()
     {
@@ -38,6 +46,8 @@ public class StalkerNav : MonoBehaviour
         else if (_isChasing)
         {
             HandleChasing();
+            RoarAtRandomInterval();
+            PlayStepSoundEffectAtInterval();
         }
     }
 
@@ -57,6 +67,29 @@ public class StalkerNav : MonoBehaviour
             _speedTime = _maxSpeedTime;
         }
         _speedTime -= Time.deltaTime;
+    }
+
+    private void RoarAtRandomInterval()
+    {
+        _roarTimer -= Time.deltaTime;
+
+        if (_roarTimer <= 0)
+        {
+            SoundEffectsManager.Instance.PlaySoundEffect(_roarClip, (Vector2)transform.position);
+            _roarTimer = Random.Range(4f, 6f);
+        }
+    }
+
+    private void PlayStepSoundEffectAtInterval()
+    {
+        _stepsTimer -= Time.deltaTime;
+
+        if (_stepsTimer <= 0)
+        {
+            int clipIndex = Random.Range(0, _stepClips.Length - 1);
+            SoundEffectsManager.Instance.PlaySoundEffect(_stepClips[clipIndex], (Vector2)transform.position);
+            _stepsTimer = 1f;
+        }
     }
 
     public void SetScriptedEventDestination(Vector2 position, float speed)

@@ -14,7 +14,7 @@ public class SoundEffectsManager : MonoBehaviour
         }
     }
 
-    public void PlaySoundEffect(AudioClip audioClip, Transform spawnTransform, float volume)
+    public void PlaySoundEffect(AudioClip audioClip, Vector2 spawnPosition, float volume = 1f)
     {
         // Make sure audio clip exists
         if (audioClip == null)
@@ -23,7 +23,7 @@ public class SoundEffectsManager : MonoBehaviour
         }
 
         // Spawn GameObject
-        AudioSource audioSource = Instantiate(_soundEffect, spawnTransform.position, Quaternion.identity);
+        AudioSource audioSource = Instantiate(_soundEffect, spawnPosition, Quaternion.identity);
 
         // Assign the AudioClip, volume, and play
         audioSource.clip = audioClip;
@@ -32,5 +32,10 @@ public class SoundEffectsManager : MonoBehaviour
 
         // Destroy GameObject after clip plays
         Destroy(audioSource.gameObject, audioSource.clip.length);
+    }
+
+    public void PlaySoundEffect(SoundEffectEvent soundEvent)
+    {
+        PlaySoundEffect(soundEvent.AudioClip, Vector2.one);
     }
 }
