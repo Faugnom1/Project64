@@ -9,6 +9,7 @@ public class ScriptedEventManager : MonoBehaviour
     [SerializeField] private WallsScriptable _wallTiles;
     [SerializeField] private BackgroundMusicManager _backgroundMusic;
     [SerializeField] private SoundEffectsManager _soundEffect;
+    [SerializeField] private GameManager _gameManager;
 
     [SerializeField] private ScriptedEventSO[] _scriptedEvents;
 
@@ -55,6 +56,10 @@ public class ScriptedEventManager : MonoBehaviour
         {
             ControlPlayerMovement(scriptedEvent);
         }
+        if (scriptedEvent.StalkerNotHostile)
+        {
+            _stalker.SetNonHostile();
+        }
         if (scriptedEvent.ShouldControlStalkerMovement)
         {
             ControlStalkerMovement(scriptedEvent);
@@ -71,7 +76,7 @@ public class ScriptedEventManager : MonoBehaviour
         {
             ControlSirens(scriptedEvent);
         }
-        if (scriptedEvent.ShouldControlDoors)
+        if (scriptedEvent.ShouldControlDoors && !scriptedEvent.ControlDoorsOnComplete)
         {
             ControlDoors(scriptedEvent);
         }
@@ -105,7 +110,7 @@ public class ScriptedEventManager : MonoBehaviour
 
     private void ControlPlayerMovement(ScriptedEventSO scriptedEvent)
     {
-
+        _player.SetPath(scriptedEvent.PlayerStart, scriptedEvent.PlayerEnd, scriptedEvent.PlayerTime);
     }
 
     private void ControlStalkerMovement(ScriptedEventSO scriptedEvent)
@@ -134,6 +139,10 @@ public class ScriptedEventManager : MonoBehaviour
     private void CompleteEvent(ScriptedEventSO scriptedEvent)
     {
         _player.ReturnControl();
+        if (_currentEvent.LightsOffOnComplete)
+        {
+            _player.LightsOff();
+        }
         if (_currentEvent.StalkerOnComplete == StalkerScriptedEventCompleteResponse.Chase)
         {
             _stalker.StartChase();
@@ -146,6 +155,10 @@ public class ScriptedEventManager : MonoBehaviour
         {
             _stalker.HoldPosition(scriptedEvent.StalkerHoldPosition);
         }
+        if (scriptedEvent.ControlDoorsOnComplete)
+        {
+            ControlDoors(scriptedEvent);
+        }
         if (scriptedEvent.ShouldChangeBackgroundMusicOnComplete)
         {
             _backgroundMusic.ChangeBackgroundMusic(scriptedEvent.NewBackgroundMusic);
@@ -157,6 +170,10 @@ public class ScriptedEventManager : MonoBehaviour
         if (scriptedEvent.LinkedEvent != null)
         {
             HandleLinkedEvent(scriptedEvent);
+        }
+        if (scriptedEvent.EndGameOnEventComplete)
+        {
+            _gameManager.EndGame();
         }
         Debug.Log("Current Event Timer: " + _currentEventTimer);
     }

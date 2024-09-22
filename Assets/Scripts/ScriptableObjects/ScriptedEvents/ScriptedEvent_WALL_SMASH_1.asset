@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: ScriptedEvent_WALL_SMASH_1
   m_EditorClassIdentifier: 
   IsPlayerMovementDisabled: 1
-  ShouldControlPlayerMovement: 1
+  ShouldControlPlayerMovement: 0
   PlayerStart: {x: 0, y: 0}
   PlayerEnd: {x: 0, y: 0}
-  PlayerSpeed: 0
+  PlayerTime: 0
+  StalkerNotHostile: 0
   ShouldControlStalkerMovement: 1
   StalkerStart: {x: -26, y: 27}
   StalkerEnd: {x: -26, y: 28.5}
@@ -42,12 +43,14 @@ MonoBehaviour:
   HasDelayOnComplete: 1
   DelayTime: 1.5
   ShouldControlDoors: 0
+  ControlDoorsOnComplete: 0
   SetDoorsOpen: 0
   AffectedDoors: []
   ShouldStopBackgroundMusic: 0
   ShouldChangeBackgroundMusic: 1
   ShouldChangeBackgroundMusicOnComplete: 0
   NewBackgroundMusic: {fileID: 8300000, guid: 57bd66e52cbd2364ba90a7e3bb30d87c, type: 3}
+  LightsOffOnComplete: 0
   LinkedEvent: {fileID: 0}
   Event:
     m_PersistentCalls:
