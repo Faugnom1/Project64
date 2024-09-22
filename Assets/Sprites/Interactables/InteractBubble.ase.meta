@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638618636130524945
+  platformSettingsDirtyTick: 638625664748612640
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 10
       height: 10
-    spriteID: 19e8dfb75596a2d429fb5527d16ad857
+    spriteID: c9fe83f5108587c4093772c93ef75d3c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 22
       width: 10
       height: 10
-    spriteID: 764fdeb057cf41545804bc278d592793
+    spriteID: 812ccb9f66d5f7f438a03e1059bd9380
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 40
       width: 10
       height: 10
-    spriteID: b042e3455b16ed3479951e3e3040beca
+    spriteID: c22cd6eca3926a2449e61ce76c76c21c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -192,7 +192,7 @@ ScriptedImporter:
       y: 4
       width: 10
       height: 10
-    spriteID: d89afac540d3e434a9fcb8aaafc785e1
+    spriteID: 5f431289fce98a3408d4e4131b4f7394
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -218,7 +218,7 @@ ScriptedImporter:
         y: 1
         width: 10
         height: 10
-      spriteId: 19e8dfb75596a2d429fb5527d16ad857
+      spriteId: c9fe83f5108587c4093772c93ef75d3c
     - name: InteractBubble_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
@@ -227,7 +227,7 @@ ScriptedImporter:
         y: 0
         width: 10
         height: 10
-      spriteId: 764fdeb057cf41545804bc278d592793
+      spriteId: 812ccb9f66d5f7f438a03e1059bd9380
     - name: InteractBubble_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
@@ -236,7 +236,7 @@ ScriptedImporter:
         y: 1
         width: 10
         height: 10
-      spriteId: b042e3455b16ed3479951e3e3040beca
+      spriteId: c22cd6eca3926a2449e61ce76c76c21c
     - name: InteractBubble_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
@@ -245,7 +245,7 @@ ScriptedImporter:
         y: 2
         width: 10
         height: 10
-      spriteId: d89afac540d3e434a9fcb8aaafc785e1
+      spriteId: 5f431289fce98a3408d4e4131b4f7394
     linkedCells: []
     parentIndex: -1
   platformSettings:
