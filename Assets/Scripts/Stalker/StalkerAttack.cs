@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Bson;
 using System.Collections;
 using UnityEngine;
 
@@ -10,14 +11,17 @@ public class StalkerAttack : MonoBehaviour
     private StalkerNav _nav;
     private BoxCollider2D _boxCollider;
 
+    private bool _aggressive;
+
     private void Start()
     {
+        _aggressive = true;
         _nav = GetComponent<StalkerNav>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && _aggressive)
         {
             IPlayerAttackable player = collision.collider.GetComponent<IPlayerAttackable>();
             if (player != null)
@@ -25,6 +29,11 @@ public class StalkerAttack : MonoBehaviour
                 AttackPlayer(player);
             }
         }
+    }
+
+    public void DisableAggression()
+    {
+        _aggressive = false;
     }
 
     private void AttackPlayer(IPlayerAttackable player)

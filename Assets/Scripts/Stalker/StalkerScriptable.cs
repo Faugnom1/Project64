@@ -11,6 +11,7 @@ public class StalkerScriptable : MonoBehaviour
     public UnityEvent OnStalkerScriptedEventComplete {  get; private set; }
 
     private StalkerNav _navComponent;
+    private StalkerAttack _attackComponent;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class StalkerScriptable : MonoBehaviour
     private void Start()
     {
         _navComponent = GetComponent<StalkerNav>();
+        _attackComponent = GetComponent<StalkerAttack>();
     }
 
     private void Update()
@@ -47,6 +49,11 @@ public class StalkerScriptable : MonoBehaviour
     public void PathComplete()
     {
         OnStalkerScriptedEventComplete.Invoke();
+    }
+
+    public void SetNonHostile()
+    {
+        _attackComponent.DisableAggression();
     }
 
     public void StartChase()

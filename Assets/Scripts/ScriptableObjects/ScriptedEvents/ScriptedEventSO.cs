@@ -20,10 +20,11 @@ public class ScriptedEventSO : ScriptableObject
     public bool ShouldControlPlayerMovement;
     public Vector2 PlayerStart;
     public Vector2 PlayerEnd;
-    public float PlayerSpeed;
+    public float PlayerTime;
 
     [Space(20)]
 
+    public bool StalkerNotHostile;
     public bool ShouldControlStalkerMovement;
     public Vector2 StalkerStart;
     public Vector2 StalkerEnd;
@@ -58,6 +59,7 @@ public class ScriptedEventSO : ScriptableObject
     [Space(20)]
 
     public bool ShouldControlDoors;
+    public bool ControlDoorsOnComplete;
     public bool SetDoorsOpen;
     public string[] AffectedDoors;
 
@@ -66,6 +68,9 @@ public class ScriptedEventSO : ScriptableObject
     public bool ShouldChangeBackgroundMusic;
     public bool ShouldChangeBackgroundMusicOnComplete;
     public AudioClip NewBackgroundMusic;
+
+    [Space(20)]
+    public bool LightsOffOnComplete;
 
     [Space(20)]
 

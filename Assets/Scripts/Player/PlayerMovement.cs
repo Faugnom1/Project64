@@ -16,6 +16,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _facingDirection;
 
     private bool _shouldUpdate;
+    private bool _onScriptedPath;
+
+    private Vector2 _scriptedStart;
+    private Vector2 _scriptedEnd;
+    private float _scriptedTime;
+    private float _elapsedScriptedTime;
 
     private void Awake()
     {
@@ -54,7 +60,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_shouldUpdate)
+        if (_onScriptedPath)
+        {
+            if (_elapsedScriptedTime < _scriptedTime)
+            {
+                Vector2 currentPos = Vector2.Lerp(_scriptedStart, _scriptedEnd, _elapsedScriptedTime / _scriptedTime);
+                _rb.MovePosition(currentPos);
+                _elapsedScriptedTime += Time.fixedDeltaTime;
+            }
+            else
+            {
+                _rb.MovePosition(_scriptedEnd);
+                _onScriptedPath = false;
+            }
+        }
+        else if (_shouldUpdate)
         {
             _rb.velocity = _moveInput * _moveSpeed;
         }
@@ -81,5 +101,17 @@ public class PlayerMovement : MonoBehaviour
     public void EnableMovement()
     {
         _shouldUpdate = true;
+    }
+
+    public void SetScriptedPath(Vector2 start, Vector2 end, float time)
+    {
+        _onScriptedPath = true;
+        _rb.isKinematic = true;
+        _rb.position = start;
+
+        _scriptedStart = start;
+        _scriptedEnd = end;
+        _scriptedTime = time;
+        _elapsedScriptedTime = 0;
     }
 }

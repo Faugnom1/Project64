@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Scientist : Interactable
 {
@@ -16,6 +17,9 @@ public class Scientist : Interactable
     [Header("Reward Properties")]
     [SerializeField] private Item _rewardItem;
     [SerializeField] private ItemName _name;
+
+    [SerializeField] private UnityEvent _onRewardComplete;
+    [SerializeField] private UnityEvent _onInteract;
 
     private bool _itemGivenToPlayer;
     private bool _choiceGivenToPlayer;
@@ -55,12 +59,16 @@ public class Scientist : Interactable
 
         if (IsPlayerInteracting() && !_messageShown)
         {
+            _canInteract = false;
+
             // Play sound effect
             SoundEffectsManager.Instance.PlaySoundEffect(_onReadClip, transform, _onReadClipVolume);
 
             // Show message
             _messageShown = true;
             MessageManager.Instance.ShowMessage(TextManager.GetText(_textKey), _messageType, _messageSpeed, gameObject);
+
+            _onInteract?.Invoke();
         }
     }
 
@@ -73,7 +81,7 @@ public class Scientist : Interactable
                 _choiceGivenToPlayer = true;
                 ChoiceMessageManager.Instance.ShowMessage(TextManager.GetText(_choiceQuestionTextKey).ToString(), _messageSpeed, gameObject);
             }
-            else if (_choiceGivenToPlayer && _playerChoseYes)
+            else if (_choiceGivenToPlayer)
             {
                 GivePlayerItem();
             }
@@ -116,5 +124,6 @@ public class Scientist : Interactable
 
         string message = ((string)TextManager.GetText("reward_item")).Replace("{item}", _newRewardItem.ItemName.ToFormattedString());
         MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
+        _onRewardComplete?.Invoke();
     }
 }
