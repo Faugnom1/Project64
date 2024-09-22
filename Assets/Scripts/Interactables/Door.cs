@@ -62,7 +62,7 @@ public class Door : Interactable
 
             }
 
-            if (IsPlayerInteracting() && GameManager.Instance.PlayerInventory.TryConsumeKey(_keyName) || IsPlayerInteracting() && _noKeyRequired)
+            if (IsPlayerInteracting() && GameManager.Instance.PlayerInventory.TryConsumeKey(_keyName) || (IsPlayerInteracting() && _noKeyRequired))
             {
                 if (!_noKeyRequired)
                 {

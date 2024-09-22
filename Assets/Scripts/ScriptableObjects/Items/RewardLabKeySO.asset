@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff99a6314e6fc8479afa46b1f471bc2, type: 3}
+  m_Name: RewardLabKeySO
+  m_EditorClassIdentifier: 
+  Item: {fileID: 7014774529049817547, guid: 8e1e5ac706a96c94d9e7b90ce1f13916, type: 3}
+  Name: 3
+  TextKey: reward_item
