@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Bson;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,7 @@ public class StalkerScriptable : MonoBehaviour
 
     public void SetPath(Vector2 start, Vector2 end, float speed)
     {
+        Debug.Log("Doing it");
         _navComponent.SnapPosition(start);
         _navComponent.SetScriptedEventDestination(end, speed);
     }
@@ -49,11 +51,20 @@ public class StalkerScriptable : MonoBehaviour
 
     public void StartChase()
     {
+        Debug.Log("Chasing");
         _navComponent.ChasePlayer();
     }
 
     public void ResetPosition()
     {
+        Debug.Log("Reset");
         _navComponent.SnapPosition(_resetPosition.position);
+        _navComponent.StopChase();
+    }
+
+    public void HoldPosition(Vector2 position)
+    {
+        _navComponent.SnapPosition(position);
+        _navComponent.StopChase();
     }
 }

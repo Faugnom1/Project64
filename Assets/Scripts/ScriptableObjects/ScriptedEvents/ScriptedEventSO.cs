@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public enum StalkerScriptedEventCompleteResponse
 {
     Chase,
-    Reset
+    Reset,
+    Hold
 }
 
 [CreateAssetMenu(fileName = "NewScriptedEventSO", menuName = "ScriptableObjects/ScriptedEventSO")]
@@ -31,6 +32,7 @@ public class ScriptedEventSO : ScriptableObject
     [Space(20)]
 
     public StalkerScriptedEventCompleteResponse StalkerOnComplete;
+    public Vector2 StalkerHoldPosition;
 
     [Space(20)]
 
@@ -41,6 +43,27 @@ public class ScriptedEventSO : ScriptableObject
     public bool ShouldDestroyTiles;
     public bool ShouldPlayParticleSystemOnDestroy;
     public Vector3Int[] DestroyTiles;
+
+    [Space(20)]
+
+    public bool ShouldControlSirens;
+    public bool SetSirensActive;
+    public string[] AffectedSirens;
+
+    [Space(20)]
+
+    public bool HasDelayOnComplete;
+    public float DelayTime;
+
+    [Space(20)]
+
+    public bool ShouldControlDoors;
+    public bool SetDoorsOpen;
+    public string[] AffectedDoors;
+
+    [Space(20)]
+
+    public ScriptedEventSO LinkedEvent;
 
     [HideInInspector]
     public UnityEvent<ScriptedEventSO> Event;

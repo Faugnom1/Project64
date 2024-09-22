@@ -22,12 +22,26 @@ MonoBehaviour:
   StalkerEnd: {x: -41.5, y: 12}
   StalkerSpeed: 0.2
   StalkerOnComplete: 0
+  StalkerHoldPosition: {x: 0, y: 0}
   ShouldScreenShake: 1
   ShouldDestroyTiles: 1
   ShouldPlayParticleSystemOnDestroy: 1
   DestroyTiles:
   - {x: -82, y: 24, z: 0}
   - {x: -82, y: 23, z: 0}
+  ShouldControlSirens: 1
+  SetSirensActive: 1
+  AffectedSirens:
+  - SirenRoomA
+  - SirenRoomB
+  - SirenLabA
+  - SirenLabB
+  HasDelayOnComplete: 1
+  DelayTime: 1.75
+  ShouldControlDoors: 0
+  SetDoorsOpen: 0
+  AffectedDoors: []
+  LinkedEvent: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []

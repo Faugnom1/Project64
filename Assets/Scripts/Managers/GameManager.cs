@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,5 +22,29 @@ public class GameManager : MonoBehaviour
 
         PlayerInventory = player.GetComponent<PlayerInventory>();
         PlayerMovement = player.GetComponent<PlayerMovement>();
+    }
+
+    public void ResumeTime()
+    {
+        Time.timeScale = 1;
+    }
+
+    public void StopTime(PlayerDeathEvent deathEvent)
+    {
+        Time.timeScale = 0;
+    }
+
+    public void OnGameOverOptionSelected(UIGameOverOptionEvent gameOverOptionEvent)
+    {
+        if (gameOverOptionEvent.GameOverOption == GameOverOption.Restart)
+        {
+            ReloadGame();
+        }
+    }
+
+    private void ReloadGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ResumeTime();
     }
 }

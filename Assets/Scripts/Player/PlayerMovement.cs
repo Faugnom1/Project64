@@ -54,7 +54,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.velocity = _moveInput * _moveSpeed;
+        if (_shouldUpdate)
+        {
+            _rb.velocity = _moveInput * _moveSpeed;
+        }
     }
 
     private void UpdateFacingDirection()
@@ -71,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void DisableMovement()
     {
+        _rb.velocity = Vector2.zero;
         _shouldUpdate = false;
     }
 

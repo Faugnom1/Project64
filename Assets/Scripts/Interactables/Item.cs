@@ -6,7 +6,9 @@ public enum ItemName
     ROOM_KEY,
     ARMORY_KEY,
     LAB_KEY,
-    GENERAL_KEY
+    OFFICE_WING_KEY,
+    EXIT_KEY,
+    SCIENTIST_OFFICE_KEY
 }
 
 public class Item : Interactable

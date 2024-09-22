@@ -7,6 +7,7 @@ public class TriggerAreas : MonoBehaviour
 {
     [SerializeField] private ScriptedEventSO _scriptedEvent;
     [SerializeField] private bool _startEnabled;
+    [SerializeField] private string _triggerActivatorTag;
 
     private BoxCollider2D _collider;
 
@@ -18,8 +19,9 @@ public class TriggerAreas : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null && collision.CompareTag("Player"))
+        if (collision != null && collision.CompareTag(_triggerActivatorTag))
         {
+            Debug.Log("Running: " + gameObject.name);
             _collider.enabled = false;
             _scriptedEvent.StartEvent();
         }

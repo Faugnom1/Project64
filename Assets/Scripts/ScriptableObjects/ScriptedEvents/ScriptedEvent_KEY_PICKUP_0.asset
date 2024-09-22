@@ -18,11 +18,19 @@ MonoBehaviour:
   PlayerEnd: {x: 0, y: 0}
   PlayerSpeed: 0
   ShouldControlStalkerMovement: 1
-  StalkerStart: {x: -30.5, y: 17}
+  StalkerStart: {x: -32, y: 17}
   StalkerEnd: {x: -35.5, y: 17}
   StalkerSpeed: 0.4
   StalkerOnComplete: 1
   ShouldScreenShake: 1
+  ShouldDestroyTiles: 0
+  ShouldPlayParticleSystemOnDestroy: 0
+  DestroyTiles: []
+  ShouldControlSirens: 0
+  SetSirensActive: 0
+  AffectedSirens: []
+  HasDelayOnComplete: 0
+  DelayTime: 0
   Event:
     m_PersistentCalls:
       m_Calls: []

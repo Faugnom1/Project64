@@ -14,17 +14,25 @@ public class Scientist : Interactable
     [SerializeField] private float _onReadClipVolume;
 
     [Header("Reward Properties")]
-    [SerializeField] private RewardItemSO _rewardItem;
+    [SerializeField] private Item _rewardItem;
+    [SerializeField] private ItemName _name;
 
     private bool _itemGivenToPlayer;
     private bool _choiceGivenToPlayer;
     private bool _playerChoseYes;
+    private Item _newRewardItem;
 
     protected override void Start()
     {
         base.Start();
 
         MessageManager.Instance.OnMessageRead.AddListener(DoMessageReadAction);
+
+        if (_rewardItem != null)
+        {
+            _newRewardItem = Instantiate(_rewardItem, new Vector3(0, 0, 0), Quaternion.identity);
+            _newRewardItem.ItemName = _name;
+        }
 
         if (_choiceQuestionTextKey != null)
         {
@@ -95,7 +103,7 @@ public class Scientist : Interactable
         if (_rewardItem != null && !_itemGivenToPlayer)
         {
             _itemGivenToPlayer = true;
-            GameManager.Instance.PlayerInventory.AddToInventory(_rewardItem.Item);
+            GameManager.Instance.PlayerInventory.AddToInventory(_newRewardItem);
             StartCoroutine(RewardMessage());
         }
     }
@@ -106,7 +114,7 @@ public class Scientist : Interactable
 
         yield return new WaitForSeconds(1f);
 
-        string message = ((string)TextManager.GetText(_rewardItem.TextKey)).Replace("{item}", _rewardItem.Name.ToFormattedString());
+        string message = ((string)TextManager.GetText("reward_item")).Replace("{item}", _newRewardItem.ItemName.ToFormattedString());
         MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
     }
 }

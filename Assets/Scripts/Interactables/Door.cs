@@ -1,4 +1,12 @@
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Events;
+
+public interface DoorTrigger
+{
+    void HandleTriggerEnter();
+    void HandleTriggerExit();
+}
 
 public class Door : Interactable
 {
@@ -14,54 +22,96 @@ public class Door : Interactable
 
     [Header("Key Requirements")]
     [SerializeField] private ItemName _keyName;
+    [SerializeField] private bool _eventControlled;
+    [SerializeField] private bool _noKeyRequired;
 
-    private bool _wasSlammed;
+    [SerializeField] private UnityEvent _onDoorOpened;
 
     private Animator _animator;
+    private NavMeshObstacle _navObstacle;
+    private DoorTrigger _doorTrigger;
 
     protected override void Start()
     {
         base.Start();
         _animator = GetComponent<Animator>();
+        _navObstacle = GetComponent<NavMeshObstacle>();
+        _doorTrigger = GetComponent<DoorTrigger>();
+
+        if (_eventControlled)
+        {
+            _canInteract = false;
+        }
     }
 
     protected override void Update()
     {
         base.Update();
 
-        if (IsPlayerInteracting() && !_messageShown && !GameManager.Instance.PlayerInventory.HasItem(_keyName))
+        if (!_eventControlled) { }
         {
-            string message = ((string)TextManager.GetText(_doorLockedTextKey)).Replace("{key}", _keyName.ToFormattedString());
+            if (IsPlayerInteracting() && !_messageShown && !GameManager.Instance.PlayerInventory.HasItem(_keyName))
+            {
+                if (!_noKeyRequired)
+                {
+                    string message = ((string)TextManager.GetText(_doorLockedTextKey)).Replace("{key}", _keyName.ToFormattedString());
+                    MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
+                    _messageShown = true;
+                }
+                SoundEffectsManager.Instance.PlaySoundEffect(_onDoorLockedClip, transform, _onDoorLockedVolume);
 
-            _messageShown = true;
-            SoundEffectsManager.Instance.PlaySoundEffect(_onDoorLockedClip, transform, _onDoorLockedVolume);
-            MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
-        }
+            }
 
-        if (IsPlayerInteracting() && GameManager.Instance.PlayerInventory.TryConsumeKey(_keyName))
-        {
-            string message = ((string)TextManager.GetText(_doorOpenedTextKey)).Replace("{key}", _keyName.ToFormattedString());
-
-            _canInteract = false;
-            _animator.SetTrigger("DoorOpen");
-            SoundEffectsManager.Instance.PlaySoundEffect(_onDoorOpenedClip, transform, _onDoorOpenedVolume);
-            MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
+            if (IsPlayerInteracting() && GameManager.Instance.PlayerInventory.TryConsumeKey(_keyName) || IsPlayerInteracting() && _noKeyRequired)
+            {
+                if (!_noKeyRequired)
+                {
+                    string message = ((string)TextManager.GetText(_doorOpenedTextKey)).Replace("{key}", _keyName.ToFormattedString());
+                    MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
+                }
+                _canInteract = false;
+                _animator.SetTrigger("DoorOpen");
+                SoundEffectsManager.Instance.PlaySoundEffect(_onDoorOpenedClip, transform, _onDoorOpenedVolume);
+                _onDoorOpened.Invoke();
+                _navObstacle.enabled = false;
+            }
         }
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
-        if (!_wasSlammed)
+        if (_doorTrigger != null)
         {
-            SlamDoor();
+            _doorTrigger.HandleTriggerEnter();
         }
+    }
+
+    protected override void OnTriggerExit2D(Collider2D collision)
+    {
+        if (_doorTrigger != null)
+        {
+            _doorTrigger.HandleTriggerExit();
+        }
+    }
+
+    public void SetInteractable(bool interactable)
+    {
+        _canInteract = interactable;
+    }
+
+    public void OpenDoor()
+    {
+        _canInteract = false;
+        _animator.SetTrigger("DoorOpen");
+        SoundEffectsManager.Instance.PlaySoundEffect(_onDoorOpenedClip, transform, _onDoorOpenedVolume);
+        _navObstacle.enabled = false;
+        _onDoorOpened.Invoke();
     }
 
     public void SlamDoor()
     {
         _animator.SetTrigger("DoorSlam");
+        _navObstacle.enabled = true;
         _canInteract = false;
-        _wasSlammed = true;
     }
 }

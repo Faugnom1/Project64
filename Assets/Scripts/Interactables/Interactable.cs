@@ -40,6 +40,14 @@ public class Interactable : MonoBehaviour
         _interactInput.Disable();
     }
 
+    protected virtual void OnDestroy()
+    {
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (_canInteract && collision.collider.CompareTag("Player"))

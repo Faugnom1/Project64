@@ -14,6 +14,8 @@ public class ScriptedEventManager : MonoBehaviour
     //       Add a check for this if needed
     private ScriptedEventSO _currentEvent;
 
+    private float _currentEventTimer;
+
     private void OnEnable()
     {
         for (int i = 0; i < _scriptedEvents.Length; i++)
@@ -34,8 +36,14 @@ public class ScriptedEventManager : MonoBehaviour
         _stalker.OnStalkerScriptedEventComplete.RemoveListener(StalkerEventComplete);
     }
 
+    private void Update()
+    {
+        _currentEventTimer += Time.deltaTime;
+    }
+
     private void HandleScriptedEvent(ScriptedEventSO scriptedEvent)
     {
+        _currentEventTimer = 0;
         _currentEvent = scriptedEvent;
         if (scriptedEvent.IsPlayerMovementDisabled)
         {
@@ -57,6 +65,18 @@ public class ScriptedEventManager : MonoBehaviour
         {
             _wallTiles.DestroyTiles(scriptedEvent.DestroyTiles, scriptedEvent.ShouldPlayParticleSystemOnDestroy);
         }
+        if (scriptedEvent.ShouldControlSirens)
+        {
+            ControlSirens(scriptedEvent);
+        }
+        if (scriptedEvent.ShouldControlDoors)
+        {
+            ControlDoors(scriptedEvent);
+        }
+        if (!scriptedEvent.ShouldControlStalkerMovement)
+        {
+            StalkerEventComplete();
+        }
     }
 
     private void ControlPlayerMovement(ScriptedEventSO scriptedEvent)
@@ -71,6 +91,24 @@ public class ScriptedEventManager : MonoBehaviour
 
     private void StalkerEventComplete()
     {
+        if (_currentEvent.HasDelayOnComplete)
+        {
+            StartCoroutine(DelayComplete(_currentEvent));
+        }
+        else
+        {
+            CompleteEvent(_currentEvent);
+        }
+    }
+
+    private IEnumerator DelayComplete(ScriptedEventSO scriptedEvent)
+    {
+        yield return new WaitForSeconds(scriptedEvent.DelayTime);
+        CompleteEvent(scriptedEvent);
+    }
+
+    private void CompleteEvent(ScriptedEventSO scriptedEvent)
+    {
         _player.ReturnControl();
         if (_currentEvent.StalkerOnComplete == StalkerScriptedEventCompleteResponse.Chase)
         {
@@ -80,5 +118,43 @@ public class ScriptedEventManager : MonoBehaviour
         {
             _stalker.ResetPosition();
         }
+        else if (_currentEvent.StalkerOnComplete == StalkerScriptedEventCompleteResponse.Hold)
+        {
+            _stalker.HoldPosition(scriptedEvent.StalkerHoldPosition);
+        }
+        if (scriptedEvent.LinkedEvent != null)
+        {
+            HandleLinkedEvent(scriptedEvent);
+        }
+        Debug.Log("Current Event Timer: " + _currentEventTimer);
+    }
+
+    private void ControlSirens(ScriptedEventSO scriptedEvent)
+    {
+        for (int i = 0; i < scriptedEvent.AffectedSirens.Length; i++)
+        {
+            string sirenName = scriptedEvent.AffectedSirens[i];
+            Siren siren = GameObject.Find(sirenName).GetComponent<Siren>();
+            siren.ToggleSiren(scriptedEvent.SetSirensActive);
+        }
+    }
+
+    private void ControlDoors(ScriptedEventSO scriptedEvent)
+    {
+        for (int i = 0; i < scriptedEvent.AffectedDoors.Length; i++)
+        {
+            string doorName = scriptedEvent.AffectedDoors[i];
+            Door door = GameObject.Find(doorName).GetComponent<Door>();
+            if (door != null && scriptedEvent.SetDoorsOpen)
+            {
+                door.OpenDoor();
+            }
+        }
+    }
+
+    private void HandleLinkedEvent(ScriptedEventSO scriptedEvent)
+    {
+        _currentEvent = null;
+        scriptedEvent.LinkedEvent.Event.Invoke(scriptedEvent.LinkedEvent);
     }
 }

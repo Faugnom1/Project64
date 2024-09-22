@@ -58,6 +58,7 @@ MonoBehaviour:
   _onReadClip: {fileID: 0}
   _onReadClipVolume: 0
   _rewardItem: {fileID: 11400000, guid: 4bcb829bc051a994cbf9af97b304ccf0, type: 2}
+  _name: 0
 --- !u!212 &3030035038485577814
 SpriteRenderer:
   m_ObjectHideFlags: 0
