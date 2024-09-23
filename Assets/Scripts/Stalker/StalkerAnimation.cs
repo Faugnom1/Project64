@@ -6,11 +6,6 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Animator))]
 public class StalkerAnimation : MonoBehaviour
 {
-    [SerializeField] private bool _walkLeft;
-    [SerializeField] private bool _walkRight;
-    [SerializeField] private bool _walkDown;
-    [SerializeField] private bool _walkUp;
-
     private Animator _animator;
     private NavMeshAgent _agent;
 
@@ -21,14 +16,6 @@ public class StalkerAnimation : MonoBehaviour
         Vector2.left,
         Vector2.right,
     };
-
-    private void Awake()
-    {
-        _walkLeft = false;
-        _walkRight = false;
-        _walkDown = false;
-        _walkUp = false;
-    }
 
     private void Start()
     {
@@ -89,49 +76,28 @@ public class StalkerAnimation : MonoBehaviour
 
     public void StartRightAnimation()
     {
-        _walkLeft = false;
-        _walkDown = false;
-        _walkUp = false;
-
         _animator.SetTrigger("WalkHorizontal");
         transform.localScale = new Vector3(1, 1, 1);
     }
 
     public void StartLeftAnimation()
     {
-        _walkRight = false;
-        _walkDown = false;
-        _walkUp = false;
-
         _animator.SetTrigger("WalkHorizontal");
         transform.localScale = new Vector3(-1, 1, 1);
     }
 
     public void StartDownAnimation()
     {
-        _walkRight = false;
-        _walkLeft = false;
-        _walkUp = false;
-
         _animator.SetTrigger("WalkDown");
     }
 
     public void StartUpAnimation()
     {
-        _walkRight = false;
-        _walkLeft = false;
-        _walkDown = false;
-
         _animator.SetTrigger("WalkUp");
     }
 
     public void StartIdleAnimation()
     {
-        _walkRight = false;
-        _walkLeft = false;
-        _walkDown = false;
-        _walkUp = false;
-
         _animator.SetTrigger("Idle");
     }
 }

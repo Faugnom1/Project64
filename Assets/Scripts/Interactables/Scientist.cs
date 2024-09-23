@@ -23,7 +23,6 @@ public class Scientist : Interactable
 
     private bool _itemGivenToPlayer;
     private bool _choiceGivenToPlayer;
-    private bool _playerChoseYes;
     private Item _newRewardItem;
 
     protected override void Start()
@@ -48,9 +47,7 @@ public class Scientist : Interactable
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
         base.OnTriggerEnter2D(collider);
-
         _choiceGivenToPlayer = false;
-        _playerChoseYes = false;
     }
 
     protected override void Update()
@@ -92,7 +89,6 @@ public class Scientist : Interactable
     {
         if (_choiceYesTextKey != null && _choiceYesTextKey != "" && gameObject == obj)
         {
-            _playerChoseYes = true;
             MessageManager.Instance.ShowMessage(TextManager.GetText(_choiceYesTextKey), _messageType, _messageSpeed, gameObject);
         }
     }
@@ -101,7 +97,6 @@ public class Scientist : Interactable
     {
         if (_choiceNoTextKey != null && _choiceNoTextKey != "" && gameObject == obj)
         {
-            _playerChoseYes = false;
             MessageManager.Instance.ShowMessage(TextManager.GetText(_choiceNoTextKey), _messageType, _messageSpeed, gameObject);
         }
     }
