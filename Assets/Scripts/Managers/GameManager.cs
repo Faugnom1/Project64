@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
-    
+
     private void Start()
     {
         GameObject player = GameObject.Find("Player");
@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
         if (gameOverOptionEvent.GameOverOption == GameOverOption.Restart)
         {
             ReloadGame();
+        }
+        else if (gameOverOptionEvent.GameOverOption == GameOverOption.Exit)
+        {
+            Application.Quit();
         }
     }
 
