@@ -52,9 +52,11 @@ MonoBehaviour:
   _messageSpeed: 0.05
   _interactBubble: {fileID: 4363578649881991684}
   _bookTextKey: book_ending
-  _onReadClip: {fileID: 8300000, guid: 9adfdef10987f4b47b1ab49fba0ac6aa, type: 3}
-  _onReadClipVolume: 0
   _rewardItem: {fileID: 11400000, guid: ab26a04d82663ca4197db5ba22dd4226, type: 2}
+  _name: 0
+  _onItemPickup:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &2272007537829726950
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -96,7 +98,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 20
-  m_Sprite: {fileID: 477577558, guid: dd0bf3d3a4fd53640aa9475b5d762af8, type: 3}
+  m_Sprite: {fileID: -1191796797, guid: f45ca499cecbcb2438d09d892cdd7bcd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -178,7 +180,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.625, y: 0.75}
+    oldSize: {x: 0.5, y: 0.625}
     newSize: {x: 0.625, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
