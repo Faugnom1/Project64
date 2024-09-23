@@ -1,35 +1,70 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CreditsController : MonoBehaviour
 {
-    [SerializeField] private float _scrollSpeed;
-    [SerializeField] private float _beforeScrollDuration;
-    [SerializeField] private float targetYPosition;
+    [Header("Objects")]
+    [SerializeField] private GameObject _outroPanel;
+    [SerializeField] private GameObject _creditsPanel;
 
-    private RectTransform _rectTransform;
-    private float _beforeScrollTimer;
+    [Header("Credits")]
+    [SerializeField] private float _creditsScrollSpeed;
+    [SerializeField] private float _creditsEndPositionY;
+
+    [Header("Outro")]
+    [SerializeField] private float _outroTextDuration;
+    [SerializeField] private float _outroTextMessageSpeed;
+
+    private TextMeshProUGUI _outroTextMesh;
+    private RectTransform _creditsRect;
+    private float _outroTextTimer;
 
     private void Start()
     {
-        _rectTransform = GetComponent<RectTransform>();
-        _beforeScrollTimer = _beforeScrollDuration;
+        _outroTextTimer = _outroTextDuration;
+        _outroTextMesh = _outroPanel.GetComponentInChildren<TextMeshProUGUI>();
+        _creditsRect = _creditsPanel.GetComponent<RectTransform>();
+
+        StartCoroutine(TypeOutroText());
     }
 
     private void Update()
     {
-        _beforeScrollTimer -= Time.deltaTime;
+        _outroTextTimer -= Time.deltaTime;
 
-        if (_beforeScrollTimer < 0)
+        if (_outroTextTimer < 0)
         {
-            _rectTransform.anchoredPosition += new Vector2(0, _scrollSpeed * Time.deltaTime);
+            _outroPanel.SetActive(false);
+
+            ScrollCredits();
+
+            if (IsAtEndTargetPosition())
+            {
+                SceneManager.LoadScene("StartScreen");
+            }
         }
+    }
 
-        if (Mathf.Abs(_rectTransform.anchoredPosition.y - targetYPosition) <= 0.01f)
+    private void ScrollCredits()
+    {
+        _creditsRect.anchoredPosition += new Vector2(0, _creditsScrollSpeed * Time.deltaTime);
+    }
+
+    private bool IsAtEndTargetPosition()
+    {
+        return Mathf.Abs(_creditsRect.anchoredPosition.y - _creditsEndPositionY) <= 0.01f;
+    }
+
+    private IEnumerator TypeOutroText()
+    {
+        _outroTextMesh.ForceMeshUpdate();
+
+        for (int i = 0; i < _outroTextMesh.textInfo.characterCount; i++)
         {
-            SceneManager.LoadScene("StartScreen");
+            _outroTextMesh.maxVisibleCharacters = i + 1;
+            yield return new WaitForSeconds(_outroTextMessageSpeed);
         }
     }
 }
