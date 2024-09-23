@@ -5060,19 +5060,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onVentOpen:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: cc13a4d14759ead4c841eeb30acb03c7, type: 2}
-        m_TargetAssemblyTypeName: ScriptedEventSO, Assembly-CSharp
-        m_MethodName: StartEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  _openClip: {fileID: 8300000, guid: d7be3163093331443952e0f7a1145ef3, type: 3}
 --- !u!1 &6875994966365898241
 GameObject:
   m_ObjectHideFlags: 0

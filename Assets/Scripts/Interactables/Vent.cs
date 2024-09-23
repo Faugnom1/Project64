@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class Vent : MonoBehaviour
 {
     [SerializeField] private UnityEvent _onVentOpen;
+    [SerializeField] private AudioClip _openClip;
 
     private BoxCollider2D _boxCollider;
     private ParticleSystem[] _particles;
@@ -27,6 +28,7 @@ public class Vent : MonoBehaviour
             _ventObstacle.Activate();
             PlayParticles();
             _onVentOpen.Invoke();
+            SoundEffectsManager.Instance.PlaySoundEffect(_openClip, transform.position);
         }
     }
 
