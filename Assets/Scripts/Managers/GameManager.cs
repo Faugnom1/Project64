@@ -54,6 +54,10 @@ public class GameManager : MonoBehaviour
         else if (gameOverOptionEvent.GameOverOption == GameOverOption.Exit)
         {
             Application.Quit();
+
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #endif
         }
     }
 
