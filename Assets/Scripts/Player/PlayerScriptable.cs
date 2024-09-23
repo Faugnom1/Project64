@@ -7,15 +7,21 @@ using UnityEngine.Rendering.Universal;
 
 public class PlayerScriptable : MonoBehaviour
 {
+    [SerializeField] private RuntimeAnimatorController _playerDarkAnimController;
+
     private PlayerMovement _playerMovement;
     private Light2D _light2;
     private CinemachineImpulseSource _impulseSource;
+    private Animator _animator;
+    private RuntimeAnimatorController _originalAnimController;
 
     private void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
         _impulseSource = GetComponent<CinemachineImpulseSource>();
         _light2 = GetComponentInChildren<Light2D>();
+        _animator = GetComponent<Animator>();
+        _originalAnimController = _animator.runtimeAnimatorController;
     }
 
     public void TakeControl()
@@ -31,6 +37,7 @@ public class PlayerScriptable : MonoBehaviour
     public void LightsOff()
     {
         _light2.enabled = false;
+        TurnPlayerDark();
         StartCoroutine(TurnLightsOn());
     }
 
@@ -53,5 +60,18 @@ public class PlayerScriptable : MonoBehaviour
     public void StartScreenShake()
     {
         _impulseSource.GenerateImpulseWithForce(1);
+    }
+
+    public void TurnPlayerLight()
+    {
+        _animator.runtimeAnimatorController = _originalAnimController;
+    }
+
+    public void TurnPlayerDark()
+    {
+        if (_playerDarkAnimController != null)
+        {
+            _animator.runtimeAnimatorController = _playerDarkAnimController;
+        }
     }
 }
