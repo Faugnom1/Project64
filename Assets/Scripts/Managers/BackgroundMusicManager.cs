@@ -2,20 +2,33 @@ using UnityEngine;
 
 public class BackgroundMusicManager : MonoBehaviour
 {
-    public static BackgroundMusicManager instance;
-    private AudioSource audioSource;
-
-    void Awake()
+    private static BackgroundMusicManager _instance;
+    public static BackgroundMusicManager Instance
     {
-        if (instance == null)
+        get
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);  // Keeps music playing across screens
-            audioSource = GetComponent<AudioSource>();
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<BackgroundMusicManager>();
+            }
+            return _instance;
+        }
+    }
+
+    [SerializeField] private AudioSource audioSource;
+
+    // Make sure there is only one instance
+    private void Awake()
+    {
+        // Check if another instance exists and destroy it
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 
@@ -34,6 +47,7 @@ public class BackgroundMusicManager : MonoBehaviour
 
     public void ChangeBackgroundMusic(AudioClip clip)
     {
+        audioSource.enabled = true;
         audioSource.clip = clip;
         audioSource.Play();
     }

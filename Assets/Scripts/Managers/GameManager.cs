@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public PlayerInventory PlayerInventory { get; private set; }
     public PlayerMovement PlayerMovement { get; private set; }
 
+    [SerializeField] private AudioClip _startBGM;
+
     private void Awake()
     {
         if (Instance == null)
@@ -15,13 +17,22 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
-
+    
     private void Start()
     {
         GameObject player = GameObject.Find("Player");
 
         PlayerInventory = player.GetComponent<PlayerInventory>();
         PlayerMovement = player.GetComponent<PlayerMovement>();
+
+        BackgroundMusicManager.Instance.ChangeBackgroundMusic(_startBGM);
+
+        int scale = Mathf.FloorToInt(Screen.height / 144f); // Find the closest integer scale factor
+        int targetWidth = scale * 160;
+        int targetHeight = scale * 144;
+
+        // Set resolution and ensure no stretching
+        Screen.SetResolution(targetWidth, targetHeight, FullScreenMode.FullScreenWindow);
     }
 
     public void ResumeTime()
