@@ -21,6 +21,7 @@ public class Scientist : Interactable
     [SerializeField] private UnityEvent _onRewardComplete;
     [SerializeField] private UnityEvent _onInteract;
 
+    private bool _playerChoseYes;
     private bool _itemGivenToPlayer;
     private bool _choiceGivenToPlayer;
     private Item _newRewardItem;
@@ -82,6 +83,11 @@ public class Scientist : Interactable
             {
                 GivePlayerItem();
             }
+            if (_playerChoseYes)
+            {
+                _playerChoseYes = false;
+                _onRewardComplete?.Invoke();
+            }
         }
     }
 
@@ -90,7 +96,7 @@ public class Scientist : Interactable
         if (_choiceYesTextKey != null && _choiceYesTextKey != "" && gameObject == obj)
         {
             MessageManager.Instance.ShowMessage(TextManager.GetText(_choiceYesTextKey), _messageType, _messageSpeed, gameObject);
-            _onRewardComplete?.Invoke();
+            _playerChoseYes = true;
         }
     }
 
