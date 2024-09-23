@@ -90,14 +90,15 @@ public class Scientist : Interactable
         if (_choiceYesTextKey != null && _choiceYesTextKey != "" && gameObject == obj)
         {
             MessageManager.Instance.ShowMessage(TextManager.GetText(_choiceYesTextKey), _messageType, _messageSpeed, gameObject);
+            _onRewardComplete?.Invoke();
         }
     }
 
     private void PlayMessageOnNo(GameObject obj)
     {
-        if (_choiceNoTextKey != null && _choiceNoTextKey != "" && gameObject == obj)
+        if (gameObject == obj)
         {
-            MessageManager.Instance.ShowMessage(TextManager.GetText(_choiceNoTextKey), _messageType, _messageSpeed, gameObject);
+            GivePlayerItem();
         }
     }
 
@@ -119,6 +120,5 @@ public class Scientist : Interactable
 
         string message = ((string)TextManager.GetText("reward_item")).Replace("{item}", _newRewardItem.ItemName.ToFormattedString());
         MessageManager.Instance.ShowMessage(message, _messageType, _messageSpeed);
-        _onRewardComplete?.Invoke();
     }
 }

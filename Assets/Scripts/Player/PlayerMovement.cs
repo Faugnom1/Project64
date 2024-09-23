@@ -93,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void DisableMovement()
     {
+        _animator.SetTrigger("Idle");
         _rb.velocity = Vector2.zero;
         _shouldUpdate = false;
     }
