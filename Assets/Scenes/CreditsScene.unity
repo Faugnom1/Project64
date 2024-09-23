@@ -819,9 +819,9 @@ MonoBehaviour:
   _outroPanel: {fileID: 9689597}
   _creditsPanel: {fileID: 3865997415497593796}
   _creditsScrollSpeed: 20
-  _creditsEndPositionY: 500
-  _outroTextDuration: 5
-  _outroTextMessageSpeed: 0.05
+  _creditsEndPositionY: 450
+  _outroTextDuration: 8
+  _outroTextMessageSpeed: 0.1
 --- !u!114 &1556773081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,7 +1094,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Spooky outro and make you shiver
+  m_text: 'you have reached the surface
+
+    ...
+
+    ...
+
+    ...
+
+    subject 64'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 578aadffb0707364bbab64058aa20c01, type: 2}
   m_sharedMaterial: {fileID: -707540011710411402, guid: 578aadffb0707364bbab64058aa20c01, type: 2}
@@ -1481,7 +1489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -207}
+  m_AnchoredPosition: {x: 0, y: -177.3}
   m_SizeDelta: {x: 0, y: 129.7634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8190418424138599965
