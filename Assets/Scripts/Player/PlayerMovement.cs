@@ -96,11 +96,13 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetTrigger("Idle");
         _rb.velocity = Vector2.zero;
         _shouldUpdate = false;
+        _animator.enabled = false;
     }
 
     public void EnableMovement()
     {
         _shouldUpdate = true;
+        _animator.enabled = true;
     }
 
     public void SetScriptedPath(Vector2 start, Vector2 end, float time)
