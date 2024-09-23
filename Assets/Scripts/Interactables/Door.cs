@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 
 public interface DoorTrigger
 {
@@ -24,6 +25,7 @@ public class Door : Interactable
     private Animator _animator;
     private NavMeshObstacle _navObstacle;
     private DoorTrigger _doorTrigger;
+    private ShadowCaster2D _shadowCaster;
 
     protected override void Start()
     {
@@ -31,6 +33,7 @@ public class Door : Interactable
         _animator = GetComponent<Animator>();
         _navObstacle = GetComponent<NavMeshObstacle>();
         _doorTrigger = GetComponent<DoorTrigger>();
+        _shadowCaster = GetComponent<ShadowCaster2D>();
 
         if (_eventControlled)
         {
@@ -65,6 +68,7 @@ public class Door : Interactable
                 _animator.SetTrigger("DoorOpen");
                 _onDoorOpened.Invoke();
                 _navObstacle.enabled = false;
+                _shadowCaster.enabled = false;
             }
         }
     }
@@ -96,6 +100,7 @@ public class Door : Interactable
         _animator.SetTrigger("DoorOpen");
         _navObstacle.enabled = false;
         _onDoorOpened.Invoke();
+        _shadowCaster.enabled = false;
     }
 
     public void SlamDoor()
