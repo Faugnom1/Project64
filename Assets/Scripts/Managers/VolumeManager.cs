@@ -32,7 +32,7 @@ public class VolumeManager : MonoBehaviour
     public void SetMusicVolume(float value)
     {
         musicVolume = value;
-        BackgroundMusicManager.instance.SetMusicVolume(musicVolume);
+        BackgroundMusicManager.Instance.SetMusicVolume(musicVolume);
     }
 
     public void SetSFXVolume(float value)

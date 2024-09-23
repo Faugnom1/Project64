@@ -7,7 +7,6 @@ public class ScriptedEventManager : MonoBehaviour
     [SerializeField] private PlayerScriptable _player;
     [SerializeField] private StalkerScriptable _stalker;
     [SerializeField] private WallsScriptable _wallTiles;
-    [SerializeField] private BackgroundMusicManager _backgroundMusic;
     [SerializeField] private SoundEffectsManager _soundEffect;
     [SerializeField] private GameManager _gameManager;
 
@@ -105,7 +104,7 @@ public class ScriptedEventManager : MonoBehaviour
 
     private void ChangeBackgroundMusic(ScriptedEventSO scriptedEvent)
     {
-        _backgroundMusic.ChangeBackgroundMusic(scriptedEvent.NewBackgroundMusic);
+        BackgroundMusicManager.Instance.ChangeBackgroundMusic(scriptedEvent.NewBackgroundMusic);
     }
 
     private void ControlPlayerMovement(ScriptedEventSO scriptedEvent)
@@ -161,11 +160,11 @@ public class ScriptedEventManager : MonoBehaviour
         }
         if (scriptedEvent.ShouldChangeBackgroundMusicOnComplete)
         {
-            _backgroundMusic.ChangeBackgroundMusic(scriptedEvent.NewBackgroundMusic);
+            BackgroundMusicManager.Instance.ChangeBackgroundMusic(scriptedEvent.NewBackgroundMusic);
         }
         if (scriptedEvent.ShouldStopBackgroundMusic)
         {
-            _backgroundMusic.StopMusic();
+            BackgroundMusicManager.Instance.StopMusic();
         }
         if (scriptedEvent.LinkedEvent != null)
         {
