@@ -54,7 +54,7 @@ public class CreditsController : MonoBehaviour
 
     private bool IsAtEndTargetPosition()
     {
-        return Mathf.Abs(_creditsRect.anchoredPosition.y - _creditsEndPositionY) <= 0.01f;
+        return Mathf.Abs(_creditsRect.anchoredPosition.y - _creditsEndPositionY) <= 5f;
     }
 
     private IEnumerator TypeOutroText()
