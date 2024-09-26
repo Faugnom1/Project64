@@ -27,12 +27,14 @@ public class GameManager : MonoBehaviour
 
         BackgroundMusicManager.Instance.ChangeBackgroundMusic(_startBGM);
 
-        int scale = Mathf.FloorToInt(Screen.height / 144f); // Find the closest integer scale factor
-        int targetWidth = scale * 160;
-        int targetHeight = scale * 144;
+        // int scale = Mathf.FloorToInt(Screen.height / 144f); // Find the closest integer scale factor
+        // int targetWidth = scale * 160;
+        // int targetHeight = scale * 144;
 
-        // Set resolution and ensure no stretching
-        Screen.SetResolution(targetWidth, targetHeight, FullScreenMode.FullScreenWindow);
+        // // Set resolution and ensure no stretching
+        // Screen.SetResolution(targetWidth, targetHeight, FullScreenMode.Windowed);
+
+        ScreenManager.Instance.SetWindowed();
     }
 
     public void ResumeTime()

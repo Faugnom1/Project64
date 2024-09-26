@@ -28,6 +28,8 @@ public class CreditsController : MonoBehaviour
         _creditsRect = _creditsPanel.GetComponent<RectTransform>();
 
         StartCoroutine(TypeOutroText());
+
+        ScreenManager.Instance.SetWindowed();
     }
 
     private void Update()
