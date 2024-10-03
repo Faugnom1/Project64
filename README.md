@@ -39,13 +39,8 @@ You can play the game at [https://sevlak.itch.io/subject64](https://sevlak.itch.
 
 If you'd like to contribute to the game, feel free to submit a pull request or open an issue. Suggestions and feedback are always welcome!
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
 For any inquiries, feel free to reach out via:
 
-- **Email**: your.email@example.com
-- **GitHub**: [yourusername](https://github.com/yourusername)
+- **Email**: michael.faugno.dev@gmail.com
