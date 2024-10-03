@@ -2,6 +2,8 @@
 
 Subject 64 is a Gameboy-style game created in Unity. The game takes inspiration from retro games, featuring classic pixel art, simple controls, and nostalgic gameplay. In this project, players navigate a mysterious world while solving puzzles and overcoming challenges.
 
+![Subject 64 Title Screen](./subject64.png)
+
 ## Features
 
 - **Retro Graphics**: Inspired by the classic Gameboy style with pixel art animation.
