@@ -1,6 +1,6 @@
 # Subject 64
 
-Subject 64 is a Gameboy-style game created in Unity. The game takes inspiration from retro games, featuring classic pixel art, simple controls, and nostalgic gameplay. In this project, players navigate a mysterious world while solving puzzles and overcoming challenges.
+Subject 64 is a Gameboy-style game created in Unity for an Itch.io 10 day game development jam. The game takes inspiration from retro games, featuring classic pixel art, simple controls, and nostalgic gameplay. In this project, players navigate a mysterious world while solving puzzles and overcoming challenges.
 
 ![Subject 64 Title Screen](./subject64.png)
 
